@@ -1,0 +1,16 @@
+The source code included in this package has been tested with
+ISE Eiffel 5.4.
+
+It requires that you have ISE Eiffel (at least 5.4) installed
+on your machine and the environment variable ISE_EIFFEL set
+to the installation directory of ISE Eiffel. 
+
+You should also set the environment variable PATTERN to the
+directory where you will unzip this package.
+
+If you miss these two environment variables, you will have to
+update the provided Ace files manually to be able to compile
+the given examples.
+
+--
+Copyright (c) 2002-2004, ETH Zurich, Switzerland

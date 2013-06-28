@@ -1,0 +1,37 @@
+indexing
+
+	description:
+		"[
+			Concrete factory 2 for products 
+			of type PRODUCT_A2 and PRODUCT_B2
+		]"
+
+	pattern: "Abstract Factory"
+	reusable_version: "Factory library (see ${PATTERN}/library/factory)"
+	author: "Karine Arnout"
+	copyright: "Copyright (c) 2002-2004, ETH Zurich, Switzerland"
+	license: "Eiffel Forum License v2 (see License.txt)"
+	date: "$Date: 2004/03/15 $"
+	revision: "$Revision: 1.0 $"
+
+class FACTORY_2
+
+inherit
+
+	FACTORY
+
+feature -- Factory methods
+
+	new_product_a: PRODUCT_A2 is
+			-- New product of type `PRODUCT_A2'
+		do
+			create Result
+		end
+
+	new_product_b: PRODUCT_B2 is
+			-- New product of type `PRODUCT_B2'
+		do
+			create Result
+		end
+
+end

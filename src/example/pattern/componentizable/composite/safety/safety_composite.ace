@@ -1,0 +1,34 @@
+system
+
+	safety_composite
+
+root
+
+	APPLICATION: "make"
+
+default
+
+	assertion (all)
+	multithreaded (no)
+	console_application (no)
+	dynamic_runtime (no)
+	dead_code_removal (yes)
+	profile (no)
+	line_generation (no)
+	array_optimization (no)
+	inlining (no)
+	inlining_size ("10")
+	debug (yes)
+
+cluster
+
+		-- Example classes
+	composite: "${PATTERN}/src/example/pattern/componentizable/composite/safety"
+
+		-- EiffelBase library
+	all base: "${ISE_EIFFEL}/library/base"
+		exclude
+			"table_eiffel3"; "desc"
+		end
+
+end

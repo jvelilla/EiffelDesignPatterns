@@ -1,0 +1,37 @@
+system
+
+	chain_of_responsibility
+
+root
+
+	APPLICATION: make
+
+default
+
+	assertion (all)
+	multithreaded (no)
+	console_application (no)
+	dynamic_runtime (no)
+	dead_code_removal (yes)
+	profile (no)
+	line_generation (no)
+	array_optimization (no)
+	inlining (no)
+	inlining_size ("10")
+	debug (yes)
+
+cluster
+
+		-- Example classes
+	chain_of_responsibility: "${PATTERN}/src/example/library/chain_of_responsibility"
+
+		-- Chain of Responsibility library
+	chain_of_responsibility_library: "${PATTERN}/src/library/chain_of_responsibility"
+
+		-- EiffelBase library
+	all base: "${ISE_EIFFEL}/library/base"
+		exclude
+			"table_eiffel3"; "desc"
+		end
+
+end

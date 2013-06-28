@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+
+<project name="src" default="help">
+
+	<description>
+		description: "Eiffel Ant file for Eiffel Pattern Library and examples"
+		author: "Karine Arnout"		
+		copyright: "Copyright (c) 2002-2004, ETH Zurich, Switzerland"
+		license: "Eiffel Forum License v2 (see License.txt)"
+		date: "$Date: 2004/03/15 $"
+		revision: "$Revision: 1.0 $"
+	</description>
+
+	<target name="help">
+		<echo message="usage:"/>
+		<echo message="   geant compile"/>
+		<echo message="   geant compile_debug"/>
+		<echo message="   geant clean"/>
+		<echo message="   geant clobber"/>
+	</target>
+
+	<target name="compile" depend="init">
+		<description>
+			Compile Eiffel Pattern Library and examples.
+			Use ISE Eiffel compiler.
+		</description>
+
+		<set name="target" value="compile"/>
+		<geant target="do_all"/>
+	</target>
+
+	<target name="compile_debug" depend="init">
+		<description>
+			Compile Eiffel Pattern Library and examples in debug mode.
+			Use ISE Eiffel compiler.
+		</description>
+
+		<set name="target" value="compile_debug"/>
+		<geant target="do_all"/>
+	</target>
+
+	<target name="clean" depend="init">
+		<description>
+			Remove intermediary generated files.
+		</description>
+
+		<set name="target" value="clean"/>
+		<geant target="do_all"/>
+	</target>
+
+	<target name="clobber" depend="init">
+		<description>
+			Remove all generated files.
+		</description>
+
+		<set name="target" value="clobber"/>
+		<geant target="do_all"/>
+	</target>
+
+
+<!-- Implementation -->
+
+	<target name="init">
+		<!-- do nothing -->
+	</target>
+
+	<target name="do_all" depend="init">
+		<description>
+			Call 'geant' with the same target ${target}
+			in all subdirectories.
+		</description>
+
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/builder/three_part"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/builder/two_part"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/chain_of_responsibility"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/command/auto_executable"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/command/history_executable"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/composite/safety"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/composite/safety_with_parent"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/composite/transparency"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/composite/transparency_with_parent"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/event"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/factory"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/flyweight"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/mediator"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/memento"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/proxy"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/state"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/strategy/agents"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/strategy/genericity"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/library/visitor"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/abstract_factory"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/builder"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/chain_of_responsibility"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/command/auto_executable"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/command/history_executable"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/composite/safety"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/composite/transparency"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/factory_method"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/flyweight"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/mediator/event_library"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/mediator/pattern"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/memento"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/observer"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/proxy"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/state"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/strategy"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/componentizable/visitor"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/adapter/class_adapter"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/adapter/object_adapter"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/bridge/deferred_classes"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/bridge/effective_classes"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/bridge/inheritance"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/decorator"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/facade"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/interpreter"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/singleton"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/template_method/agents"/>
+		<geant file="build.eant" target="${target}" dir="${PATTERN}/src/example/pattern/non_componentizable/template_method/pattern"/>
+		
+	</target>
+
+</project>

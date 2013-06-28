@@ -1,0 +1,37 @@
+system
+
+	mediator_with_event_library
+
+root
+
+	APPLICATION: make
+
+default
+
+	assertion (all)
+	multithreaded (no)
+	console_application (no)
+	dynamic_runtime (no)
+	dead_code_removal (yes)
+	profile (no)
+	line_generation (no)
+	array_optimization (no)
+	inlining (no)
+	inlining_size ("10")
+	debug (yes)
+
+cluster
+
+		-- Example classes
+	mediator: "${PATTERN}/src/example/pattern/componentizable/mediator/event_library"
+
+		-- Event library
+	event_library: "${PATTERN}/src/library/event"
+
+		-- EiffelBase library
+	all base: "${ISE_EIFFEL}/library/base"
+		exclude
+			"table_eiffel3"; "desc"
+		end
+
+end
