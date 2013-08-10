@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,21 +15,21 @@ deferred class BUILDER [G]
 
 feature -- Access
 
-	last_product: G is
+	last_product: detachable G
 			-- Product under construction
 		deferred
 		end
 
 feature -- Status report
 
-	is_ready: BOOLEAN is
+	is_ready: BOOLEAN
 			-- Is builder ready to build `last_product'?
 		deferred
 		end
 
 feature -- Basic operations
 
-	build is
+	build
 			-- Build `last_product'.
 		require
 			is_ready: is_ready

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -28,7 +28,7 @@ feature -- Access
 
 feature {THREE_PART_BUILDER} -- Status Setting
 
-	set_g (a_g: like g) is
+	set_g (a_g: like g) 
 			-- Set `g' to `a_g'.
 		require
 			a_g_not_void: a_g /= Void
@@ -38,7 +38,7 @@ feature {THREE_PART_BUILDER} -- Status Setting
 			g_set: g = a_g
 		end
 
-	set_h (a_h: like h) is
+	set_h (a_h: like h)
 			-- Set `h' to `a_h'.
 		require
 			a_h_not_void: a_h /= Void
@@ -48,7 +48,7 @@ feature {THREE_PART_BUILDER} -- Status Setting
 			h_set: h = a_h
 		end
 
-	set_j (a_j: like j) is
+	set_j (a_j: like j)
 			-- Set `j' to `a_j'.
 		require
 			a_j_not_void: a_j /= Void
@@ -57,5 +57,5 @@ feature {THREE_PART_BUILDER} -- Status Setting
 		ensure
 			j_set: j = a_j
 		end
-		
+
 end

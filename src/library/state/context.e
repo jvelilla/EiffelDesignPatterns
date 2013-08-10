@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize `state' to a "null" state
 			-- that does nothing.
 		do
@@ -30,7 +30,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic operations
 
-	do_something is
+	do_something
 			-- Do something depending on the state.
 		do
 			state.do_something
@@ -43,7 +43,7 @@ feature -- Access
 
 feature -- Element change
 
-	set_state (a_state: like state) is
+	set_state (a_state: like state) 
 			-- Set `state' to `a_state'.
 		require
 			a_state_not_void: a_state /= Void
@@ -51,7 +51,7 @@ feature -- Element change
 			state := a_state
 		ensure
 			state_set: state = a_state
-		end 
+		end
 
 invariant
 

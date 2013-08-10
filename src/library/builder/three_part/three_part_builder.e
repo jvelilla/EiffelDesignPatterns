@@ -1,9 +1,9 @@
-indexing
+note
 
 	description:
 		"[
 			Build a product of type `F', 
-			which is composed of three parts
+			which  composed of three parts
 			(the first part being of type `G',
 			the second part of type `H'
 			and the third part of type `J').
@@ -29,7 +29,7 @@ create
 feature {NONE} -- Initialization
 
 	make (f: like factory_function_f; g: like factory_function_g;
-		h: like factory_function_h; j: like factory_function_j) is
+		h: like factory_function_h; j: like factory_function_j)
 			-- Set `factory_function_f' to `f'.
 			-- Set `factory_function_g' to `g'.
 			-- Set `factory_function_h' to `h'.
@@ -57,18 +57,18 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	last_product: F
+	last_product: detachable F
 			-- Product under construction
 
 feature -- Status report
 
-	is_ready: BOOLEAN is
+	is_ready: BOOLEAN
 			-- Is builder ready to build `last_product'?
 		do
 			Result := valid_args ([], [], [], [])
 		end
 
-	valid_args (args_f, args_g, args_h, args_j: TUPLE): BOOLEAN is
+	valid_args (args_f, args_g, args_h, args_j: TUPLE): BOOLEAN
 			-- Are `args_f', `args_g', `args_h' and `args_j' valid arguments
 			-- to build `last_product'?
 		do
@@ -80,12 +80,14 @@ feature -- Status report
 
 feature -- Basic Operations
 
-	build is
+	build
 			-- Build `new_product'.
 			--|Successively call `build_g', `build_h' and `build_j'
 			--|to build the corresponding product parts.
 		do
-			last_product := f_factory.new
+			check attached f_factory.new as l_new then
+				last_product := l_new
+			end
 			check
 				last_product_not_void: last_product /= Void
 			end
@@ -93,12 +95,12 @@ feature -- Basic Operations
 			build_h ([])
 			build_j ([])
 		ensure then
-			g_not_void: last_product.g /= Void
-			h_not_void: last_product.h /= Void
-			j_not_void: last_product.j /= Void
+			g_not_void: attached last_product as l_last_product and then attached l_last_product.g
+			h_not_void: attached l_last_product.h
+			j_not_void: attached l_last_product.j 
 		end
 
-	build_with_args (args_f, args_g, args_h, args_j: TUPLE) is
+	build_with_args (args_f, args_g, args_h, args_j: TUPLE)
 			-- Build `new_product' with `args_f'.
 			--|Successively call `build_g' with `args_g'
 			--|`build_h' with `args_h',
@@ -106,7 +108,9 @@ feature -- Basic Operations
 		require
 			valid_args: valid_args (args_f, args_g, args_h, args_j)
 		do
-			last_product := f_factory.new_with_args (args_f)
+			if attached f_factory.new_with_args (args_f) as l_f_new then
+				last_product := l_f_new
+			end
 			check
 				last_product_not_void: last_product /= Void
 			end
@@ -115,9 +119,9 @@ feature -- Basic Operations
 			build_j (args_j)
 		ensure
 			last_product_not_void: last_product /= Void
-			g_not_void: last_product.g /= Void
-			h_not_void: last_product.h /= Void
-			j_not_void: last_product.j /= Void
+			g_not_void:  attached last_product as l_last_product and then attached l_last_product.g
+			h_not_void:  attached l_last_product.h
+			j_not_void:  attached l_last_product.j
 		end
 
 feature -- Access
@@ -140,40 +144,49 @@ feature -- Access
 
 feature {NONE} -- Basic Operations
 
-	build_g (args_g: TUPLE) is
-			-- Set `last_product.g' with a new instance of 
+	build_g (args_g: TUPLE)
+			-- Set `last_product.g' with a new instance of
 			-- type `G' created with arguments `args_g'.
 		require
 			last_product_not_void: last_product /= Void
 			valid_args_g: factory_function_g.valid_operands (args_g)
 		do
-			last_product.set_g (g_factory.new_with_args (args_g))
+			if  attached last_product as l_last_product and then
+				attached g_factory.new_with_args (args_g) as l_g_new  then
+				l_last_product.set_g (l_g_new)
+			end
 		ensure
-			g_not_void: last_product.g /= Void
+			g_not_void: attached last_product as l_last_product and then attached l_last_product.g
 		end
 
-	build_h (args_h: TUPLE) is
-			-- Set `last_product.h' with a new instance of 
+	build_h (args_h: TUPLE)
+			-- Set `last_product.h' with a new instance of
 			-- type `H' created with arguments `args_h'.
 		require
 			last_product_not_void: last_product /= Void
 			valid_args_h: factory_function_h.valid_operands (args_h)
 		do
-			last_product.set_h (h_factory.new_with_args (args_h))
+			if  attached last_product as l_last_product and then
+				attached h_factory.new_with_args (args_h) as l_h_new then
+				l_last_product.set_h (l_h_new)
+			end
 		ensure
-			h_not_void: last_product.h /= Void
+			h_not_void: attached last_product as l_last_product and then attached l_last_product.h
 		end
 
-	build_j (args_j: TUPLE) is
-			-- Set `last_product.j' with a new instance of 
+	build_j (args_j: TUPLE)
+			-- Set `last_product.j' with a new instance of
 			-- type `J' created with arguments `args_j'.
 		require
 			last_product_not_void: last_product /= Void
 			valid_args_j: factory_function_j.valid_operands (args_j)
 		do
-			last_product.set_j (j_factory.new_with_args (args_j))
+			if  attached last_product as l_last_product and then
+				attached j_factory.new_with_args (args_j) as l_j_new then
+				l_last_product.set_j (l_j_new)
+			end
 		ensure
-			j_not_void: last_product.j /= Void
+			j_not_void:  attached last_product as l_last_product and then attached l_last_product.j
 		end
 
 feature {NONE} -- Factories

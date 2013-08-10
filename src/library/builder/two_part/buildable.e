@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -25,7 +25,7 @@ feature -- Access
 
 feature {TWO_PART_BUILDER} -- Status Setting
 
-	set_g (a_g: like g) is
+	set_g (a_g: like g) 
 			-- Set `g' to `a_g'.
 		require
 			a_g_not_void: a_g /= Void
@@ -35,7 +35,7 @@ feature {TWO_PART_BUILDER} -- Status Setting
 			g_set: g = a_g
 		end
 
-	set_h (a_h: like h) is
+	set_h (a_h: like h)
 			-- Set `h' to `a_h'.
 		require
 			a_h_not_void: a_h /= Void

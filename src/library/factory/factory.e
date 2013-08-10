@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature -- Initialization
 
-	make (a_function: like factory_function) is
+	make (a_function: like factory_function)
 			-- Set `factory_function' to `a_function'.
 		require
 			a_function_not_void: a_function /= Void
@@ -31,7 +31,7 @@ feature -- Initialization
 
 feature -- Status report
 
-	valid_args (args: TUPLE): BOOLEAN is
+	valid_args (args: TUPLE): BOOLEAN
 			-- Are `args' valid to create a new instance of type `G'?
 		do
 			Result := factory_function.valid_operands (args)
@@ -39,7 +39,7 @@ feature -- Status report
 
 feature -- Factory functions
 
-	new: G is
+	new: detachable G
 			-- New instance of type `G'
 		require
 			valid_args: valid_args ([])
@@ -50,7 +50,7 @@ feature -- Factory functions
 			new_not_void: Result /= Void
 		end
 
-	new_with_args (args: TUPLE): G is
+	new_with_args (args: TUPLE): detachable G
 			-- New instance of type `G' initialized with `args'
 		require
 			args_valid: valid_args (args)

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ deferred class STATE
 
 feature {NONE} -- Initialization
 
-	make (a_context: like context) is
+	make (a_context: like context)
 			-- Set `context' to `a_context'.
 		require
 			a_context_not_void: a_context /= Void
@@ -25,7 +25,7 @@ feature {NONE} -- Initialization
 			context_set: context = a_context
 		end
 
-	make_with_next (a_context: like context; a_state: like next) is
+	make_with_next (a_context: like context; a_state: like next)
 			-- Set `context' to `a_context'.
 			-- Set `next' to `a_state'.
 		require
@@ -44,12 +44,12 @@ feature -- Access
 	context: CONTEXT
 			-- Application context
 
-	next: STATE
+	next: detachable STATE
 			-- Next state
 
 feature -- Status setting
 
-	set_next (a_state: like next) is
+	set_next (a_state: like next)
 			-- Set `next' to `a_state'.
 		do
 			next := a_state
@@ -59,14 +59,14 @@ feature -- Status setting
 
 feature -- Basic operations
 
-	do_something is
+	do_something
 			-- Do something depending on the state.
 		require
-			state_not_null: not conforms_to (create {NULL_STATE}.make (context)) 
+			state_not_null: not conforms_to (create {NULL_STATE}.make (context))
 		do
 			do_something_imp
-			if next /= Void then
-				context.set_state (next)
+			if attached next as l_next then
+				context.set_state (l_next)
 			end
 		ensure
 			next_state_set: next /= Void implies context.state = next
@@ -75,7 +75,7 @@ feature -- Basic operations
 
 feature {NONE} -- Implementation
 
-	do_something_imp is
+	do_something_imp
 			-- Do something depending on the state.
 		require
 			state_not_null: not conforms_to (create {NULL_STATE}.make (context))

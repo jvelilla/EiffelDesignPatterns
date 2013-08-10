@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -23,7 +23,7 @@ create
 
 feature {NONE} -- Implementation
 
-	do_something_imp is
+	do_something_imp 
 			-- Do something depending on the state.
 		do
 			-- Do something.
