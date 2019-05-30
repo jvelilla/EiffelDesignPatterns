@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,7 +16,7 @@ deferred class COLLEAGUE
 
 feature {NONE} -- Initialization
 
-	make (a_mediator: like mediator) is
+	make (a_mediator: like mediator)
 			-- Set `mediator' to `a_mediator'.
 		require
 			a_mediator_not_void: a_mediator /= Void
@@ -33,7 +33,7 @@ feature -- Access
 
 feature -- Mediator pattern
 
-	notify_mediator is
+	notify_mediator
 			-- Notify `mediator' that Current has changed.
 		do
 			mediator.update_colleagues (Current)

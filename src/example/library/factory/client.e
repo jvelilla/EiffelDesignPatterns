@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -22,40 +22,41 @@ inherit
 
 	ANY
 
-create 
+create
 
 	make
 
 feature -- Initialization
 
-	make (an_id: INTEGER) is
+	make (an_id: INTEGER)
 			-- Create a product depending on `an_id'.
 		require
 			id_valid: is_valid_product_family_id (an_id)
 		do
 			inspect an_id
-			when product_family_1_id then 
+			when product_family_1_id then
 				create {FACTORY [PRODUCT_A1]} factory_a.make (agent new_product_a1)
 				create {FACTORY [PRODUCT_B1]} factory_b.make (agent new_product_b1)
-			when product_family_2_id then 
+			when product_family_2_id then
 				create {FACTORY [PRODUCT_A2]} factory_a.make (agent new_product_a2)
 				create {FACTORY [PRODUCT_B2]} factory_b.make (agent new_product_b2)
 			end
 			product_a := factory_a.new
-			debug 
-				io.put_string ("A new product of type ")
-				io.put_string (product_a.generating_type)
-				io.put_string (" has been created.%N%N")
+			if attached product_a as l_prod_a then
+				debug
+					io.put_string ("A new product of type ")
+					io.put_string (l_prod_a.generating_type)
+					io.put_string (" has been created.%N%N")
+				end
 			end
 			product_b := factory_b.new
-			debug 
-				io.put_string ("A new product of type ")
-				io.put_string (product_b.generating_type)
-				io.put_string (" has been created.%N%N")
+			if attached product_b as l_prod_b then
+				debug
+					io.put_string ("A new product of type ")
+					io.put_string (l_prod_b.generating_type)
+					io.put_string (" has been created.%N%N")
+				end
 			end
-		ensure
-			product_a_not_void: product_a /= Void
-			product_b_not_void: product_b /= Void
 		end
 
 feature -- Access
@@ -66,15 +67,15 @@ feature -- Access
 	factory_b: FACTORY [PRODUCT_B]
 			-- Factory of PRODUCT_B
 
-	product_a: PRODUCT_A
+	product_a: detachable PRODUCT_A
 			-- Abstract product A
 
-	product_b: PRODUCT_B
+	product_b: detachable PRODUCT_B
 			-- Abtract product B
 
 feature {NONE} -- Implementation
 
-	new_product_a1: PRODUCT_A1 is
+	new_product_a1: PRODUCT_A1
 			-- New product of type PRODUCT_A1
 		do
 			create Result
@@ -82,7 +83,7 @@ feature {NONE} -- Implementation
 			product_a1_not_void: Result /= Void
 		end
 
-	new_product_a2: PRODUCT_A2 is
+	new_product_a2: PRODUCT_A2
 			-- New product of type PRODUCT_A2
 		do
 			create Result
@@ -90,7 +91,7 @@ feature {NONE} -- Implementation
 			product_a2_not_void: Result /= Void
 		end
 
-	new_product_b1: PRODUCT_B1 is
+	new_product_b1: PRODUCT_B1
 			-- New product of type PRODUCT_B1
 		do
 			create Result
@@ -98,7 +99,7 @@ feature {NONE} -- Implementation
 			product_b1_not_void: Result /= Void
 		end
 
-	new_product_b2: PRODUCT_B2 is
+	new_product_b2: PRODUCT_B2
 			-- New product of type PRODUCT_B2
 		do
 			create Result

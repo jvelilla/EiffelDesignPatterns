@@ -1,4 +1,4 @@
-indexing
+NOTE
 
 	description:
 		"[
@@ -23,7 +23,7 @@ inherit
 
 feature {NONE} -- Factory method
 
-	new_product: MY_PRODUCT is
+	new_product: MY_PRODUCT 
 			-- New instance of type `MY_PRODUCT'
 		do
 			create Result

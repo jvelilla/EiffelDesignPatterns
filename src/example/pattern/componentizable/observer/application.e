@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -14,16 +14,16 @@ indexing
 
 class APPLICATION
 
-create 
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Do something using the Observer pattern.
 		local
-			my_display: MY_DISPLAY
+			my_display: MY_DISPLAY2
 		do
 			create my_display.make (create {MY_DATA})
 		end

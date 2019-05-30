@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,14 +15,14 @@ deferred class COMPONENT [G]
 
 feature -- Basic Operation
 
-	do_something is
+	do_something
 			-- Do something.
 		deferred
 		end
 
 feature -- Status report
 
-	is_composite: BOOLEAN is
+	is_composite: BOOLEAN
 			-- Is component a composite?
 		do
 			Result := False
@@ -30,7 +30,7 @@ feature -- Status report
 
 feature -- Access
 
-	item: COMPONENT [G] is
+	item: COMPONENT [G]
 			-- Current part of composite
 		require
 			is_composite: is_composite
@@ -41,7 +41,7 @@ feature -- Access
 			component_not_void: Result /= Void
 		end
 
-	i_th, infix "@" (i: INTEGER): like item is
+	i_th alias "@" (i: INTEGER): like item
 			-- `i'-th part
 		require
 			is_composite: is_composite
@@ -53,7 +53,7 @@ feature -- Access
 			component_not_void: Result /= Void
 		end
 
-	first: like item is
+	first: like item
 			-- First component part
 		require
 			is_composite: is_composite
@@ -65,7 +65,7 @@ feature -- Access
 			component_not_void: Result /= Void
 		end
 
-	last: like item is
+	last: like item
 			-- Last component part
 		require
 			is_composite: is_composite
@@ -79,7 +79,7 @@ feature -- Access
 
 feature -- Status report
 
-	has (a_part: like item): BOOLEAN is
+	has (a_part: like item): BOOLEAN
 			-- Does composite contain `a_part'?
 		require
 			is_composite: is_composite
@@ -90,7 +90,7 @@ feature -- Status report
 			definition: Result = parts.has (a_part)
 		end
 
-	is_empty: BOOLEAN is
+	is_empty: BOOLEAN
 			-- Does component contain no part?
 		require
 			is_composite: is_composite
@@ -100,7 +100,7 @@ feature -- Status report
 			definition: Result = (count = 0)
 		end
 
-	off: BOOLEAN is
+	off: BOOLEAN
 			-- Is there no component at current position?
 		require
 			is_composite: is_composite
@@ -110,7 +110,7 @@ feature -- Status report
 			definition: Result = (after or before)
 		end
 
-	after: BOOLEAN is
+	after: BOOLEAN
 			-- Is there no valid position to the right of current one?
 		require
 			is_composite: is_composite
@@ -120,7 +120,7 @@ feature -- Status report
 			definition: Result = parts.after
 		end
 
-	before: BOOLEAN is
+	before: BOOLEAN
 			-- Is there no valid position to the left of current one?
 		require
 			is_composite: is_composite
@@ -132,7 +132,7 @@ feature -- Status report
 
 feature -- Measurement
 
-	count: INTEGER is
+	count: INTEGER
 			-- Number of component parts
 		require
 			is_composite: is_composite
@@ -144,7 +144,7 @@ feature -- Measurement
 
 feature -- Element change
 
-	add (a_part: like item) is
+	add (a_part: like item)
 			-- Add `a_part' to component `parts'.
 		require
 			is_composite: is_composite
@@ -162,7 +162,7 @@ feature -- Element change
 
 feature -- Removal
 
-	remove (a_part: like item) is
+	remove (a_part: like item)
 			-- Remove `a_part' from component `parts'.
 		require
 			is_composite: is_composite
@@ -181,7 +181,7 @@ feature -- Removal
 
 feature -- Cursor movement
 
-	start is
+	start
 			-- Move cursor to first component part.
 			-- Go `after' if no such part.
 		require
@@ -190,7 +190,7 @@ feature -- Cursor movement
 			parts.start
 		end
 
-	forth is
+	forth
 			-- Move cursor to the next component.
 			-- Go `after' if no such part.
 		require
@@ -200,7 +200,7 @@ feature -- Cursor movement
 			parts.forth
 		end
 
-	finish is
+	finish
 			-- Move cursor to last component.
 			-- Go `before' if no such part.
 		require
@@ -209,7 +209,7 @@ feature -- Cursor movement
 			parts.finish
 		end
 
-	back is
+	back
 			-- Move cursor to the previous component.
 			-- Go `before' if no such part.
 		require
@@ -221,14 +221,14 @@ feature -- Cursor movement
 
 feature {NONE} -- Implementation
 
-	parts: LINKED_LIST [like item] is
+	parts: LINKED_LIST [like item]
 			-- Component parts (which are themselves components)
 		deferred
 		end
 
 invariant
 
-	parts_consistent:
-		is_composite implies (parts /= Void and then not parts.has (Void))
-	
+--	parts_consistent:
+--		is_composite implies (parts /= Void and then not parts.has (Void))
+
 end

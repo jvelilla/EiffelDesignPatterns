@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -24,7 +24,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_characteristic: like characteristic_a) is
+	make (a_characteristic: like characteristic_a)
 			-- Set `characteristic_a' to `a_characteristic'.
 		require
 			a_characteristic_not_void: a_characteristic /= Void
@@ -36,7 +36,7 @@ feature {NONE} -- Initialization
 
 feature -- Visitor pattern
 
-	accept (a_visitor: VISITOR) is
+	accept (a_visitor: VISITOR)
 			-- Accept `a_visitor'.
 			-- (Call `visit_element_a' procedure on `a_visitor'.)
 		do
@@ -45,7 +45,7 @@ feature -- Visitor pattern
 
 feature -- Basic operation
 
-	do_something_a is
+	do_something_a 
 			-- Do something.
 		do
 			debug

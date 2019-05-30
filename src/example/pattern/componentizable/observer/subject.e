@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -27,11 +27,11 @@ feature {NONE} -- Initialization
 			-- Create `observers'.
 		do
 			create observers.make
-		end 
+		end
 
 feature -- Observer pattern
 
-	add_observer (an_observer: OBSERVER) is
+	add_observer (an_observer: OBSERVER)
 			-- Add an_observer to the list of observers.
 		require
 			not_yet_an_observer: not observers.has (an_observer)
@@ -42,7 +42,7 @@ feature -- Observer pattern
 			one_more: observers.count = old observers.count + 1
 		end
 
-	remove_observer (an_observer: OBSERVER) is
+	remove_observer (an_observer: OBSERVER)
 			-- Remove an_observer from the list of observers.
 		require
 			is_an_observer: observers.has (an_observer)
@@ -54,7 +54,7 @@ feature -- Observer pattern
 			one_less: observers.count = old observers.count - 1
 		end
 
-	notify_observers is
+	notify_observers 
 			-- Notify all observers.
 			-- (Call update on each observer.)
 		do

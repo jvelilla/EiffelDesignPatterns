@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -24,7 +24,7 @@ create
 
 feature -- Basic operations
 
-	change_2 is
+	change_2
 			-- Change something on Current.
 		do
 			debug
@@ -36,7 +36,7 @@ feature -- Basic operations
 			notify_mediator
 		end
 
-	do_something_2 is
+	do_something_2
 			-- Do something.
 		do
 			debug

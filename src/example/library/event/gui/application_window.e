@@ -1,10 +1,10 @@
-indexing
+note
 
 	description:
 
 		"Representation of a GUI window subscribed to the publisher (class SENSOR)."
 
-	note: "Subscribed class"
+	description: "Subscribed class"
 	see_also: "Class SENSOR: the publisher"
 	author: "Volkan Arslan, Karine Arnout"
 	copyright: "Copyright (c) 2002-2004, ETH Zurich, Switzerland"
@@ -13,11 +13,12 @@ indexing
 	revision: "$Revision: 1.1"
 
 class APPLICATION_WINDOW
-	
+
 inherit
 
 	EV_TITLED_WINDOW
 		redefine
+			create_interface_objects,
 			initialize,
 			is_in_default_state
 		end
@@ -26,9 +27,9 @@ create
 
 	default_create
 
-feature -- Initialization
+feature {NONE}-- Initialization
 
-	initialize is
+	initialize
 			-- Build the interface of this window.
 		do
 			Precursor {EV_TITLED_WINDOW}
@@ -38,10 +39,23 @@ feature -- Initialization
 		ensure then
 			window_size_set: width = Window_width and height = Window_height
 		end
-		
+
+	frozen create_interface_objects
+			-- Create objects
+		do
+			create enclosing_box
+			create temperature_label
+			create temperature_value_label
+			create humidity_label
+			create humidity_value_label
+			create pressure_label
+			create pressure_value_label
+		end
+
+
 feature -- Display update
 
-	display_temperature (a_temperature: INTEGER) is
+	display_temperature (a_temperature: INTEGER)
 			-- Update the text of `temperature_value_label' with `a_temperature'.
 		do
 			if a_temperature /= 0  then
@@ -54,7 +68,7 @@ feature -- Display update
 			temperature_displayed: a_temperature /= 0 implies temperature_value_label.text.is_equal (a_temperature.out)
 		end
 
-	display_humidity (a_humidity: INTEGER) is
+	display_humidity (a_humidity: INTEGER)
 			-- Update the text of `humidity_value_label' with `a_humidity'.
 		do
 			if a_humidity /= 0 then
@@ -67,7 +81,7 @@ feature -- Display update
 			humidity_displayed: a_humidity /= 0 implies humidity_value_label.text.is_equal (a_humidity.out)
 		end
 
-	display_pressure (a_pressure: INTEGER) is
+	display_pressure (a_pressure: INTEGER)
 			-- Update the text of `pressure_value_label' with `a_pressure'.
 		do
 			if a_pressure /= 0 then
@@ -80,7 +94,7 @@ feature -- Display update
 			pressure_displayed: a_pressure /= 0 implies pressure_value_label.text.is_equal (a_pressure.out)
 		end
 
-	reset_widget is
+	reset_widget
 			-- Delete text of all widgets.
 		do
 			temperature_value_label.set_text ("-")
@@ -92,22 +106,20 @@ feature -- Display update
 
 feature {NONE} -- Implementation GUI
 
-	build_widgets is
+	build_widgets
 			-- Build GUI elements.
 		do
-			create enclosing_box
 			extend (enclosing_box)
 			build_temperature_widgets
 			build_humidity_widgets
 			build_pressure_widgets
 		end
 
-	build_temperature_widgets is
+	build_temperature_widgets
 			-- Build the widgets for temperature
 		require
 			enclosing_box_not_void: enclosing_box /= Void
 		do
-			create temperature_label
 			temperature_label.set_text ("Temperature:")
 			temperature_label.set_foreground_color (create {EV_COLOR}.make_with_8_bit_rgb (255, 0, 0))
 			temperature_label.set_font (internal_font)
@@ -115,8 +127,7 @@ feature {NONE} -- Implementation GUI
 			enclosing_box.extend (temperature_label)
 			enclosing_box.set_item_x_position (temperature_label, 10)
 			enclosing_box.set_item_y_position (temperature_label, 20)
-			
-			create temperature_value_label
+
 			temperature_value_label.set_text ("-")
 			temperature_value_label.set_foreground_color (create {EV_COLOR}.make_with_8_bit_rgb (255, 0, 0))
 			temperature_value_label.set_font (internal_font)
@@ -126,12 +137,11 @@ feature {NONE} -- Implementation GUI
 			enclosing_box.set_item_y_position (temperature_value_label, 20)
 		end
 
-	build_humidity_widgets is
+	build_humidity_widgets
 			-- Build the widgets for humidity
 		require
 			enclosing_box_not_void: enclosing_box /= Void
 		do
-			create humidity_label
 			humidity_label.set_text ("Humidity:")
 			humidity_label.set_foreground_color (create {EV_COLOR}.make_with_8_bit_rgb (0, 0, 255))
 			humidity_label.set_font (internal_font)
@@ -140,7 +150,6 @@ feature {NONE} -- Implementation GUI
 			enclosing_box.set_item_x_position (humidity_label, 10)
 			enclosing_box.set_item_y_position (humidity_label, 100)
 
-			create humidity_value_label
 			humidity_value_label.set_text ("-")
 			humidity_value_label.set_foreground_color (create {EV_COLOR}.make_with_8_bit_rgb (0, 0, 255))
 			humidity_value_label.set_font (internal_font)
@@ -150,12 +159,11 @@ feature {NONE} -- Implementation GUI
 			enclosing_box.set_item_y_position (humidity_value_label, 100)
 		end
 
-	build_pressure_widgets is
+	build_pressure_widgets
 			-- Build the widgets for pressure
 		require
 			enclosing_box_not_void: enclosing_box /= Void
 		do
-			create pressure_label
 			pressure_label.set_text ("Pressure")
 			pressure_label.set_foreground_color (create {EV_COLOR}.make_with_8_bit_rgb (0, 255, 0))
 			pressure_label.set_font (internal_font)
@@ -164,7 +172,6 @@ feature {NONE} -- Implementation GUI
 			enclosing_box.set_item_x_position (pressure_label, 10)
 			enclosing_box.set_item_y_position (pressure_label, 180)
 
-			create pressure_value_label
 			pressure_value_label.set_text ("-")
 			pressure_value_label.set_foreground_color (create {EV_COLOR}.make_with_8_bit_rgb (0, 255, 0))
 			pressure_value_label.set_font (internal_font)
@@ -176,7 +183,7 @@ feature {NONE} -- Implementation GUI
 
 feature {NONE} -- Contract checking
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is current window in default state?
 		do
 			Result := True
@@ -207,24 +214,24 @@ feature {NONE} -- Implementation widgets
 
 feature {NONE} -- Implementation Constants	
 
-	Window_width: INTEGER is 400
+	Window_width: INTEGER = 700
 
-	Window_height: INTEGER is 300
+	Window_height: INTEGER = 500
 
-	Font_size_height: INTEGER is 26
+	Font_size_height: INTEGER = 26
 
-	Dash: STRING is "-"
+	Dash: STRING = "-"
 
-	internal_font: EV_FONT is
+	internal_font: EV_FONT
 			-- Internal font used by various widgets
 		once
-			create Result.make_with_values (feature {EV_FONT_CONSTANTS}.Family_sans, feature {EV_FONT_CONSTANTS}.Weight_regular, feature {EV_FONT_CONSTANTS}.Shape_regular, Font_size_height)
+			create Result.make_with_values ({EV_FONT_CONSTANTS}.Family_sans, {EV_FONT_CONSTANTS}.Weight_regular, {EV_FONT_CONSTANTS}.Shape_regular, Font_size_height)
 		ensure
 			internal_font_created: Result /= Void
-			font_family_set_to_family_sans: Result.family = feature {EV_FONT_CONSTANTS}.Family_sans
-			font_weight_set_to_weight_regular: Result.weight = feature {EV_FONT_CONSTANTS}.Weight_regular
-			font_shape_set_to_shape_regular: Result.shape = feature {EV_FONT_CONSTANTS}.Shape_regular
+			font_family_set_to_family_sans: Result.family = {EV_FONT_CONSTANTS}.Family_sans
+			font_weight_set_to_weight_regular: Result.weight = {EV_FONT_CONSTANTS}.Weight_regular
+			font_shape_set_to_shape_regular: Result.shape = {EV_FONT_CONSTANTS}.Shape_regular
 			font_height_set_to_font_size_height: Result.height = Font_size_height
-		end 
+		end
 
 end

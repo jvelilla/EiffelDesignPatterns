@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,7 +16,7 @@ deferred class ELEMENT
 
 feature -- Visitor pattern
 
-	accept (a_visitor: VISITOR) is
+	accept (a_visitor: VISITOR) 
 			-- Accept `a_visitor'.
 			-- (Call `visit_*' procedure on `a_visitor'.)
 		require

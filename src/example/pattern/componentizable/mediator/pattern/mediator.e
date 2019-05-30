@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,7 +16,7 @@ deferred class MEDIATOR
 
 feature -- Basic operations
 
-	update_colleagues (a_colleague: COLLEAGUE) is
+	update_colleagues (a_colleague: COLLEAGUE)
 			-- Update colleagues because `a_colleague' changed.
 		require
 			a_colleague_not_void: a_colleague /= Void

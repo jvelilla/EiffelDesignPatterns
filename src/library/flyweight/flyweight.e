@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -22,7 +22,7 @@ inherit
 
 feature -- Initialization
 
-	make (a_procedure: like procedure) is
+	make (a_procedure: like procedure)
 			-- Set `procedure' to `a_procedure'.
 		require
 			a_procedure_not_void: a_procedure /= Void
@@ -34,7 +34,7 @@ feature -- Initialization
 
 feature -- Access
 
-	external_characteristic (a_context: FLYWEIGHT_CONTEXT [G]): G is
+	external_characteristic (a_context: FLYWEIGHT_CONTEXT [G]): G
 			-- External characteristic of flyweight in `a_context'
 		require
 			a_context_not_void: a_context /= Void
@@ -49,8 +49,8 @@ feature -- Access
 
 feature -- Element change
 
-	set_external_characteristic (a_characteristic: like external_characteristic; 
-								a_context: FLYWEIGHT_CONTEXT [G]) is
+	set_external_characteristic (a_characteristic: like external_characteristic;
+								a_context: FLYWEIGHT_CONTEXT [G])
 			-- Set external_characteristic of `a_context' to `a_characteristic'.
 		require
 			a_characteristic_not_void: a_characteristic /= Void
@@ -64,7 +64,7 @@ feature -- Element change
 
 feature -- Output
 
-	do_something (a_context: FLYWEIGHT_CONTEXT [G]) is
+	do_something (a_context: FLYWEIGHT_CONTEXT [G]) 
 			-- Draw flyweight according to `a_context'.
 		require
 			a_context_not_void: a_context /= Void

@@ -1,0 +1,2 @@
+Catcall detected in {TUPLE}.is_equal for arg#1: expected TUPLE [!COLLEAGUE_1] but got TUPLE [!COLLEAGUE]
+Catcall detected in {TUPLE}.is_equal for arg#1: expected TUPLE [!COLLEAGUE_1] but got TUPLE [!COLLEAGUE]

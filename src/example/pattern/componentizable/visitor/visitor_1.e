@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,13 +20,13 @@ inherit
 
 feature -- Visitor pattern
 
-	visit_element_a (an_element_a: ELEMENT_A) is
+	visit_element_a (an_element_a: ELEMENT_A)
 			-- Visit `an_element_a'.
 		do
 			an_element_a.do_something_a
 		end
 
-	visit_element_b (an_element_b: ELEMENT_B) is
+	visit_element_b (an_element_b: ELEMENT_B) 
 			-- Visit `an_element_b'.
 		do
 			an_element_b.do_something_b

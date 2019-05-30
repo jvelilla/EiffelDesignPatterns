@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -27,17 +27,17 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize component parts.
 		do
 			create parts.make
 		end
 
-	make_from_components (some_components: like parts) is
+	make_from_components (some_components: like parts)
 			-- Set `parts' to `some_components'.
 		require
 			some_components_not_void: some_components /= Void
-			no_void_component: not some_components.has (Void)
+--			no_void_component: not some_components.has (Void)
 		do
 			parts := some_components
 		ensure
@@ -46,7 +46,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_composite: BOOLEAN is
+	is_composite: BOOLEAN
 			-- Is component a composite?
 		do
 			Result := True
@@ -54,7 +54,7 @@ feature -- Status report
 
 feature -- Basic Operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			debug
@@ -75,6 +75,6 @@ invariant
 
 	is_composite: is_composite
 	parts_not_void: parts /= Void
-	no_void_part: not parts.has (Void)
+--	no_void_part: not parts.has (Void)
 
 end

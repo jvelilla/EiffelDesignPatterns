@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -14,21 +14,21 @@ class PRODUCT_CONSTANTS
 
 feature -- Constants
 
-	Product_family_1_id: INTEGER is 1
+	Product_family_1_id: INTEGER = 1
 			-- Identifier of first product family
 
-	Product_family_2_id: INTEGER is 2
+	Product_family_2_id: INTEGER = 2
 			-- Identifier of second product family
 
 feature -- Status report
 
-	is_valid_product_family_id (an_id: INTEGER): BOOLEAN is
+	is_valid_product_family_id (an_id: INTEGER): BOOLEAN 
 			-- Is `an_id' a valid product family identifier?
 		do
-			Result := an_id >= product_family_1_id 
+			Result := an_id >= product_family_1_id
 						and an_id <= product_family_2_id
 		ensure
-			definition: Result = (an_id >= product_family_1_id 
+			definition: Result = (an_id >= product_family_1_id
 								and an_id <= product_family_2_id)
 		end
 

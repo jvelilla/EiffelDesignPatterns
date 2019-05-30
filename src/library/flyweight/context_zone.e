@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create {FLYWEIGHT_CONTEXT}
 
 feature {FLYWEIGHT_CONTEXT} -- Initialization
 
-	make (a_characteristic: like external_characteristic; a_size: like size) is
+	make (a_characteristic: like external_characteristic; a_size: like size) 
 			-- Set `external_characteristic' to `a_characteristic'.
 			-- Set `size' to `a_size'.
 		require

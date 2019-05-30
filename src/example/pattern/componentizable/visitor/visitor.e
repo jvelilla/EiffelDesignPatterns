@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,14 +16,14 @@ deferred class VISITOR
 
 feature -- Visitor pattern
 
-	visit_element_a (an_element_a: ELEMENT_A) is
+	visit_element_a (an_element_a: ELEMENT_A)
 			-- Visit `an_element_a'.
 		require
 			an_element_a_not_void: an_element_a /= Void
 		deferred
 		end
 
-	visit_element_b (an_element_b: ELEMENT_B) is
+	visit_element_b (an_element_b: ELEMENT_B) 
 			-- Visit `an_element_b'.
 		require
 			an_element_b_not_void: an_element_b /= Void

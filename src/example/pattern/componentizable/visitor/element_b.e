@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,7 +20,7 @@ inherit
 
 feature -- Visitor pattern
 
-	accept (a_visitor: VISITOR) is
+	accept (a_visitor: VISITOR) 
 			-- Accept `a_visitor'.
 			-- (Call `visit_element_b' procedure on `a_visitor'.)
 		do
@@ -29,7 +29,7 @@ feature -- Visitor pattern
 
 feature -- Basic operation
 
-	do_something_b is
+	do_something_b
 			-- Do something.
 		do
 			debug

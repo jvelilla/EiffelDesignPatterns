@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -10,7 +10,7 @@ indexing
 	date: "$Date: 2004/03/15 $"
 	revision: "$Revision: 1.0 $"
 
-class 
+class
 
 	APPLICATION
 
@@ -23,13 +23,13 @@ inherit
 
 	ANY
 
-create 
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Create two clients to create two product families.
 		local
 			client_1: CLIENT

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize `colleagues'.
 		do
 			create colleagues.make
@@ -32,7 +32,7 @@ feature -- Access
 
 feature -- Element change
 
-	extend (a_colleague: G) is
+	extend (a_colleague: G)
 			-- Extend `colleagues' with `a_colleague'.
 			-- Update event subscription of `colleagues'.
 		require
@@ -76,7 +76,7 @@ feature -- Element change
 
 feature -- Removal
 
-	remove (a_colleague: G) is
+	remove (a_colleague: G)
 			-- Remove `a_colleague' from `colleagues'.
 			-- Update event subscription of remaining `colleagues'.
 		require
@@ -118,8 +118,8 @@ feature -- Removal
 		end
 
 feature {NONE} -- Implementation
- 
-	is_colleague_subscribed (a_colleague: G): BOOLEAN is
+
+	is_colleague_subscribed (a_colleague: G): BOOLEAN
 			-- Is a colleague subscribed to other colleagues' event?
 		require
 			a_colleague_not_void: a_colleague /= Void
@@ -129,7 +129,7 @@ feature {NONE} -- Implementation
 			definition: Result = a_colleague.subscribed
 		end
 
-	is_colleague_unsubscribed (a_colleague: G): BOOLEAN is
+	is_colleague_unsubscribed (a_colleague: G): BOOLEAN
 			-- Is a colleague unsubscribed from other colleagues' event?
 		require
 			a_colleague_not_void: a_colleague /= Void
@@ -142,6 +142,6 @@ feature {NONE} -- Implementation
 invariant
 
 	colleagues_not_void: colleagues /= Void
-	no_void_colleague: not colleagues.has (Void)
+--	no_void_colleague: not colleagues.has (Void)
 
 end

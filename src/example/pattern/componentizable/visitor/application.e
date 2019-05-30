@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -14,7 +14,7 @@ indexing
 
 class APPLICATION
 
-create 
+create
 
 	make
 

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -30,7 +30,7 @@ create
 
 feature -- Initialization
 
-	make (a_characteristic: like characteristic) is
+	make (a_characteristic: like characteristic)
 			-- Set `characteristic' to `a_characteristic'.
 		require
 			a_characteristic_not_void: a_characteristic /= Void
@@ -40,8 +40,8 @@ feature -- Initialization
 			characteristic_set: characteristic = a_characteristic
 		end
 
-	make_from_procedure (a_characteristic: like characteristic; 
-					a_procedure: like procedure) is
+	make_from_procedure (a_characteristic: like characteristic;
+					a_procedure: like procedure)
 			-- Set `characteristic' to `a_characteristic'.
 			-- Set `procedure' to `a_procedure'.
 		require
@@ -66,8 +66,8 @@ feature -- Access
 feature -- Element change
 
 	set_external_characteristic (a_characteristic: like external_characteristic;
-								a_context: FLYWEIGHT_CONTEXT [G]) is
-			-- Set external characteristic of `a_context' to `a_characteristic' 
+								a_context: FLYWEIGHT_CONTEXT [G])
+			-- Set external characteristic of `a_context' to `a_characteristic'
 			-- (i.e. for all flyweights of the composite).
 		do
 			Precursor {FLYWEIGHT} (a_characteristic, a_context)
@@ -76,7 +76,7 @@ feature -- Element change
 
 feature -- Output
 
-	do_something (a_context: FLYWEIGHT_CONTEXT [G]) is
+	do_something (a_context: FLYWEIGHT_CONTEXT [G])
 			-- Call `procedure' if not Void otherwise do nothing.
 		do
 			if procedure /= Void then
@@ -86,7 +86,7 @@ feature -- Output
 
 feature {NONE} -- Basic operations
 
-	do_something_component is
+	do_something_component 
 			-- Do nothing.
 			-- May be redefined in descendants.
 		do

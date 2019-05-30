@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -12,20 +12,22 @@ indexing
 
 class APPLICATION
 
-create 
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Use visitors.
 		local
+
 			element_a: ELEMENT_A
 			element_b: ELEMENT_B
-			visitor_1: VISITOR [ELEMENT]
-			visitor_2: VISITOR [ELEMENT]
+			visitor_1: VISITOR [like element]
+			visitor_2: VISITOR [like element]
 		do
+			create element
 			create element_a.make ("Characteristic A")
 			create element_b
 
@@ -49,9 +51,11 @@ feature {NONE} -- Initialization
 			visitor_2.visit (element_b)
 		end
 
+	element: ELEMENT
+
 feature {NONE} -- Implementation
 
-	do_something (an_element: ELEMENT_A) is
+	do_something (an_element: ELEMENT_A)
 			-- Do something with characteristic of `an_element'.
 			-- (This feature could be defined in another class
 			-- from which APPLICATION would inherit or be a client of.)

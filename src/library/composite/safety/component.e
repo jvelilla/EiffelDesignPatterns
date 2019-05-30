@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,14 +15,14 @@ deferred class COMPONENT [G]
 
 feature -- Basic Operation
 
-	do_something is
+	do_something
 			-- Do something.
 		deferred
 		end
-			
+
 feature -- Status report
 
-	is_composite: BOOLEAN is
+	is_composite: BOOLEAN
 			-- Is component a composite?
 		do
 			Result := False

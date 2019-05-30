@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,4 +16,4 @@ inherit
 
 	PRODUCT_B
 
-end 
+end

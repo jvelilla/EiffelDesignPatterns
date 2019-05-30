@@ -1,4 +1,4 @@
-indexing
+NOTE
 
 	description:
 
@@ -18,8 +18,8 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
-			-- Create a mediator and 
+	make 
+			-- Create a mediator and
 			-- change some of its colleagues.
 		local
 			a_mediator: MEDIATOR [COLLEAGUE]

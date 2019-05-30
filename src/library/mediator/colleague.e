@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ deferred class COLLEAGUE
 
 feature {NONE} -- Initialization
 
-	make (a_mediator: like mediator) is
+	make (a_mediator: like mediator)
 			-- Set `mediator' to `a_mediator'.
 		require
 			a_mediator_not_void: a_mediator /= Void
@@ -38,7 +38,7 @@ feature -- Event
 
 feature -- Status report
 
-	subscribed: BOOLEAN is
+	subscribed: BOOLEAN
 			-- Is current colleague subscribed to other colleagues' event?
 		local
 			colleagues: LINKED_LIST [COLLEAGUE]
@@ -48,15 +48,15 @@ feature -- Status report
 			colleagues := mediator.colleagues
 			if not colleagues.is_empty then
 				a_cursor := colleagues.cursor
-				from 
+				from
 					colleagues.start
 					Result := True
 				until
-					colleagues.after 
+					colleagues.after
 				loop
 					a_colleague := colleagues.item
 					if a_colleague /= Current then
-						Result := Result and a_colleague.event.has (agent do_something)
+						Result := Result and has_colleague (a_colleague.event)
 					end
 					colleagues.forth
 				end
@@ -64,7 +64,7 @@ feature -- Status report
 			end
 		end
 
-	unsubscribed: BOOLEAN is
+	unsubscribed: BOOLEAN
 			-- Is current colleague unsubscribed from other colleagues' event?
 		local
 			colleagues: LINKED_LIST [COLLEAGUE]
@@ -78,7 +78,7 @@ feature -- Status report
 				from colleagues.start until colleagues.after loop
 					a_colleague := colleagues.item
 					if a_colleague /= Current then
-						Result := Result and not a_colleague.event.has (agent do_something)
+						Result := Result and not has_colleague (a_colleague.event)
 					end
 					colleagues.forth
 				end
@@ -88,7 +88,7 @@ feature -- Status report
 
 feature -- Basic operations
 
-	change is
+	change
 			-- Change something on Current.
 		do
 			-- Do something that changes Current's state.
@@ -96,17 +96,26 @@ feature -- Basic operations
 			event.publish ([])
 		end
 
-	do_something is
+	do_something
 			-- Do something.
-		deferred 
+		deferred
 		end
 
 feature {NONE} -- Implementation
 
-	do_change is
+	do_change
 			-- Do something that changes Current's state.
 		deferred
 		end
+
+	has_colleague (a_event: like event): BOOLEAN
+		local
+			internal: INTERNAL
+		do
+			create internal
+			Result := internal.type_of (event.item).is_conforming_to (internal.type_of (agent do_something))
+		end
+
 
 invariant
 

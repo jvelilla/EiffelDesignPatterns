@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -25,11 +25,11 @@ feature -- Basic operation
 	do_something is
 			-- Do something.
 		do
-			debug
+--			debug
 				io.put_string ("Do something in ")
 				io.put_string (generating_type)
 				io.put_string (".%N")
-			end
+--			end
 			-- Do something.
 		end
 
@@ -38,12 +38,12 @@ feature {NONE} -- Implementation
 	do_change is
 			-- Do something that changes Current's state.
 		do
-			debug
+--			debug
 				io.put_new_line
 				io.put_string ("Change something in ")
 				io.put_string (generating_type)
 				io.put_string (".%N")
-			end
+--			end
 			-- Do something that changes Current's state.
 		end
 

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -53,7 +53,7 @@ feature -- Initialization
 			create context.make (default_external_characteristic)
 			create flyweight_pool.make (flyweight_pool_count)
 		ensure then
-			context_external_characteristic_set: 
+			context_external_characteristic_set:
 				context.external_characteristic.code = feature {FLYWEIGHT_CONSTANTS}.default_code
 		end
 
@@ -72,7 +72,7 @@ feature -- Element change
 
 	set_external_characteristic (a_characteristic: like external_characteristic;
 								a_context: FLYWEIGHT_CONTEXT [G]) is
-			-- Set external characteristic of `a_context' to `a_characteristic' 
+			-- Set external characteristic of `a_context' to `a_characteristic'
 			-- (i.e. for all flyweights of the composite).
 		do
 			Precursor {FLYWEIGHT} (a_characteristic, a_context)
@@ -135,7 +135,7 @@ feature -- Element change
 	insert_flyweights (some_flyweights: ARRAY [like item]; an_index: INTEGER) is
 			-- Insert `some_flyweights' in current composite flyweight
 			-- starting from `an_index'.
-		require 
+		require
 			some_flyweights_not_void: some_flyweights /= Void
 			no_void_flyweight: not some_flyweights.has (Void)
 			some_flyweights_not_empty: not some_flyweights.is_empty

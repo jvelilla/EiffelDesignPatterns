@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,6 +16,7 @@ inherit
 
 	EV_TITLED_WINDOW
 		redefine
+			create_interface_objects,
 			initialize,
 			is_in_default_state
 		end
@@ -24,18 +25,18 @@ create
 
 	default_create
 
-feature -- Initialization	
+feature {NONE}-- Initialization
 
-	initialize is
+	frozen initialize
 			-- Build the interface of this window.
 		do
 			Precursor {EV_TITLED_WINDOW}
 
 				-- Execute 'close_windows' when the user clicks on the cross in the title bar
 			close_request_actions.extend (agent destroy_application)
-			
+
 			build_widgets
-			
+
 			set_title (Window_title)
 			set_size (Window_width, Window_height)
 			disable_user_resize
@@ -43,24 +44,34 @@ feature -- Initialization
 			window_title_set: title.is_equal (Window_title)
 			window_size_set: width = Window_width and height = Window_height
 		end
-		
+
+
+	frozen create_interface_objects
+			-- Create objects
+		do
+			create enclosing_box
+			create start_button.make_with_text ("Start the application")
+
+			create application_window_1
+			create application_window_2
+			create application_window_3
+		end
+
 feature {NONE} -- Implementation
 
-	build_widgets is
+	build_widgets
 			-- Create the GUI elements.
-		require
-			enclosing_box_not_yet_created: enclosing_box = Void
-			start_button_not_yet_created: start_button = Void
+--		require
+--			enclosing_box_not_yet_created: enclosing_box = Void
+--			start_button_not_yet_created: start_button = Void
 		do
 				-- Avoid flicker on some platforms
 			lock_update
-			
+
 				-- Cover entire window area with a primitive container.
-			create enclosing_box
 			extend (enclosing_box)
 
 				-- Add `start' button primitive
-			create start_button.make_with_text ("Start the application")
 
 			start_button.select_actions.extend (agent start_actions)
 
@@ -69,10 +80,7 @@ feature {NONE} -- Implementation
 			enclosing_box.set_item_y_position (start_button, 115)
 
 
-			create application_window_1
-			create application_window_2
-			create application_window_3
-			
+
 			application_window_1.set_title ("Event application: client window 1")
 			application_window_2.set_title ("Event application: client window 2")
 			application_window_3.set_title ("Event application: client window 3")
@@ -91,17 +99,17 @@ feature {NONE} -- Implementation
 			application_window_3_not_void: application_window_3 /= Void
 		end
 
-	start_actions is
+	start_actions
 			-- Start the appropriate actions.
 		local
 			info_dialog: EV_INFORMATION_DIALOG
-			temperature_action_1: PROCEDURE [APPLICATION_WINDOW, TUPLE [INTEGER]]
-			humidity_action_1: PROCEDURE [APPLICATION_WINDOW, TUPLE [INTEGER]]
-			humidity_action_2: PROCEDURE [APPLICATION_WINDOW, TUPLE [INTEGER]]
-			pressure_action_2: PROCEDURE [APPLICATION_WINDOW, TUPLE [INTEGER]]
-			temperature_action_3: PROCEDURE [APPLICATION_WINDOW, TUPLE [INTEGER]]
-			humidity_action_3: PROCEDURE [APPLICATION_WINDOW, TUPLE [INTEGER]]
-			pressure_action_3: PROCEDURE [APPLICATION_WINDOW, TUPLE [INTEGER]]
+			temperature_action_1: PROCEDURE [TUPLE [INTEGER]]
+			humidity_action_1: PROCEDURE [ TUPLE [INTEGER]]
+			humidity_action_2: PROCEDURE [ TUPLE [INTEGER]]
+			pressure_action_2: PROCEDURE [ TUPLE [INTEGER]]
+			temperature_action_3: PROCEDURE [ TUPLE [INTEGER]]
+			humidity_action_3: PROCEDURE [TUPLE [INTEGER]]
+			pressure_action_3: PROCEDURE [ TUPLE [INTEGER]]
 		do
 			Sensor.temperature_event.wipe_out
 			Sensor.humidity_event.wipe_out
@@ -112,7 +120,7 @@ feature {NONE} -- Implementation
 			Sensor.pressure_event.restore_subscription
 
 			create info_dialog.make_with_text ("Client window 1 subscribed to temperature and humidity%NClient window 2 subscribed to humidity and pressure%NClient window 3 subscribed to temperature, humidity and pressure%N%NTo proceed please press OK button!")
-			info_dialog.show_modal_to_window (Current)			
+			info_dialog.show_modal_to_window (Current)
 
 				-- subscribe to temperature and humidity in application_window_1
 			temperature_action_1 := agent application_window_1.display_temperature (?)
@@ -150,15 +158,15 @@ feature {NONE} -- Implementation
 			reset_widgets
 			Sensor.temperature_event.suspend_subscription
 			Sensor.humidity_event.suspend_subscription
-			Sensor.pressure_event.suspend_subscription	
+			Sensor.pressure_event.suspend_subscription
 			change_values
 		end
 
-	change_values is
+	change_values
 			-- Change values of `Sensor' object.
 		local
 			i: INTEGER
-			j: INTEGER	
+			j: INTEGER
 			k: INTEGER
 		do
 			from
@@ -178,12 +186,14 @@ feature {NONE} -- Implementation
 				i := i + 1
 				j := j + 1
 				k := k + 1
-				Application.process_events
+				if attached Application as app then
+					app.process_events
+				end
 				wait
 			end
 		end
 
-	wait is
+	wait
 			-- Wait for `Iterations' before proceeding
 		local
 			i: INTEGER
@@ -197,7 +207,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	reset_widgets is
+	reset_widgets
 			-- Reset contents of all widgets.
 		do
 			application_window_1.reset_widget
@@ -205,15 +215,18 @@ feature {NONE} -- Implementation
 			application_window_3.reset_widget
 		end
 
-	destroy_application is
+	destroy_application
 			-- Destroy the application.
 		do
-			Application.destroy
-		end	
+			if attached Application as app  then
+				app.destroy
+			end
+
+		end
 
 feature {NONE} -- Contract checking
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN 
 			-- Is main window in default state?
 		do
 			Result := True
@@ -221,7 +234,7 @@ feature {NONE} -- Contract checking
 			ist_in_default_sate: Result = True
 		end
 
-feature {NONE} -- Implementation / widgets 
+feature {NONE} -- Implementation / widgets
 
 	enclosing_box: EV_FIXED
 			-- Invisible Primitives Container
@@ -240,15 +253,15 @@ feature {NONE} -- Implementation / widgets
 
 feature {NONE} -- Implementation / Constants
 
-	Application: EV_APPLICATION is
+	Application: detachable EV_APPLICATION
 			-- Application
 		once
 			Result :=(create {EV_ENVIRONMENT}).application
-		ensure 
+		ensure
 			application_created: Result /= Void
 		end
 
-	Sensor: SENSOR is
+	Sensor: SENSOR
 			-- Publisher
 		once
 			create Result.make
@@ -256,16 +269,16 @@ feature {NONE} -- Implementation / Constants
 			sensor_created: Result /= Void
 		end
 
-	Iterations: INTEGER is 2000000
+	Iterations: INTEGER =2000000
 			-- Iterations
 
-	Window_title: STRING is "Event application: main window"
+	Window_title: STRING = "Event application: main window"
 			-- Title of the window
 
-	Window_width: INTEGER is 400
+	Window_width: INTEGER = 700
 			-- Width of the window
 
-	Window_height: INTEGER is 300
+	Window_height: INTEGER = 500
 			-- Height of the window
 
 end

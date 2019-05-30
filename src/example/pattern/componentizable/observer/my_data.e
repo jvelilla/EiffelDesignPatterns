@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,14 +20,14 @@ inherit
 
 feature -- Observer pattern
 
-	add is
+	add
 		        -- Add Current to data to be observed.
 		do
 		        -- Do something.
 		        notify_observers
 		end
 
-	remove is
+	remove 
 		        -- Remove Current from data to be observed.
 		do
 		        -- Do something.

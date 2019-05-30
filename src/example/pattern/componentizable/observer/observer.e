@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,7 +16,7 @@ deferred class OBSERVER
 
 feature -- Observer pattern
 
-	update is
+	update 
 			-- Update observer according to the state of
 			-- subject data.
 		deferred

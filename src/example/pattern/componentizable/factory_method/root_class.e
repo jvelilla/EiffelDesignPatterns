@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,7 +20,7 @@ create
 
 feature -- Initialization
 
-	make is
+	make 
 			-- Create an instance of `MY_APPLICATION'
 			-- and call `do_something' on it,
 			-- which uses a factory method internally

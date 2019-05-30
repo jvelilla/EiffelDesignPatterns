@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -21,22 +21,34 @@ class EVENT_TYPE [EVENT_DATA -> TUPLE create default_create end]
 
 inherit
 
-	LINKED_LIST [PROCEDURE [ANY, EVENT_DATA]]
+	LINKED_LIST [PROCEDURE [EVENT_DATA]]
 		redefine
-			default_create
+			default_create,
+			new_chain
 		end
+
 
 feature {NONE} -- Initialization
 
-	default_create is 
+	default_create
 		do
 			make
 			compare_objects
 		end
 
+	new_chain: like Current
+			-- A newly created instance of the same type.
+			-- This feature may be redefined in descendants so as to
+			-- produce an adequately allocated and initialized object.
+		obsolete "Use explicit creation instead. See also explanations for `duplicate`. [2018-11-30]"
+		do
+			create Result
+		end
+
+
 feature -- Element change
 
-	subscribe (an_action: PROCEDURE [ANY, EVENT_DATA]) is
+	subscribe (an_action: PROCEDURE [EVENT_DATA])
 			-- Add `an_action' to the subscription list.
 		require
 			an_action_not_void: an_action /= Void
@@ -48,12 +60,12 @@ feature -- Element change
 			index_at_same_position: index = old index
 		end
 
-	unsubscribe (an_action: PROCEDURE [ANY, EVENT_DATA]) is
+	unsubscribe (an_action: PROCEDURE [EVENT_DATA])
 			-- Remove `an_action' from the subscription list.
 		require
 			an_action_not_void: an_action /= Void
 			an_action_already_subscribed: has (an_action)
-		local 
+		local
 			pos: INTEGER
 		do
 			pos := index
@@ -68,13 +80,13 @@ feature -- Element change
 
 feature -- Publication
 
-	publish (arguments: EVENT_DATA) is
+	publish (arguments: EVENT_DATA)
 			-- Publish all not suspended actions from the subscription list.
 		require
 			arguments_not_void: arguments /= Void
 		do
 			if not is_suspended then
-				do_all (agent {PROCEDURE [ANY, EVENT_DATA]}.call (arguments))
+				do_all (agent {PROCEDURE [EVENT_DATA]}.call (arguments))
 			end
 		end
 
@@ -86,8 +98,8 @@ feature -- Status report
 
 feature -- Status settings
 
-	suspend_subscription is
-			-- Ignore the call of all actions from the subscription list, 
+	suspend_subscription
+			-- Ignore the call of all actions from the subscription list,
 			-- until feature restore_subscription is called.
 		do
 			is_suspended := True
@@ -95,8 +107,8 @@ feature -- Status settings
 			subscription_suspended: is_suspended
 		end
 
-	restore_subscription is
-			-- Consider again the call of all actions from the subscription list, 
+	restore_subscription 
+			-- Consider again the call of all actions from the subscription list,
 			-- until feature suspend_subscription is called.
 		do
 			is_suspended := False

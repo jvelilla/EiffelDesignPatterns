@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,14 +15,14 @@ deferred class COMPONENT [G]
 
 feature -- Basic Operation
 
-	do_something is
+	do_something
 			-- Do something.
 		deferred
 		end
-			
+
 feature -- Status report
 
-	is_composite: BOOLEAN is
+	is_composite: BOOLEAN
 			-- Is component a composite?
 		do
 			Result := False
@@ -30,12 +30,12 @@ feature -- Status report
 
 feature -- Access
 
-	parent: COMPOSITE [G]
+	parent: detachable COMPOSITE [G]
 			-- Parent component, which must be a composite
-			
+
 feature {COMPOSITE} -- Status setting
 
-	set_parent (a_parent: like parent) is
+	set_parent (a_parent: like parent)
 			-- Set `parent' to `a_parent'.
 		do
 			parent := a_parent
@@ -45,6 +45,6 @@ feature {COMPOSITE} -- Status setting
 
 invariant
 
-	parent_consistent: parent /= Void implies parent.has (Current)
+	parent_consistent: attached parent as l_parent implies l_parent.has (Current)
 
 end

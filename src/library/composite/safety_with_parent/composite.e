@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -27,17 +27,17 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize component parts.
 		do
 			create parts.make
 		end
 
-	make_from_components (some_components: like parts) is
+	make_from_components (some_components: like parts)
 			-- Set `parts' to `some_components'.
 		require
 			some_components_not_void: some_components /= Void
-			no_void_component: not some_components.has (Void)
+--			no_void_component: not some_components.has (Void)
 		do
 			parts := some_components
 		ensure
@@ -46,7 +46,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_composite: BOOLEAN is
+	is_composite: BOOLEAN
 			-- Is component a composite?
 		do
 			Result := True
@@ -54,7 +54,7 @@ feature -- Status report
 
 feature -- Basic operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			debug
@@ -68,7 +68,7 @@ feature -- Basic operation
 
 feature -- Access
 
-	item: COMPONENT [G] is
+	item: COMPONENT [G]
 			-- Current part of composite
 		do
 			Result := parts.item
@@ -77,7 +77,7 @@ feature -- Access
 			component_not_void: Result /= Void
 		end
 
-	i_th, infix "@" (i: INTEGER): like item is
+	i_th alias "@" (i: INTEGER): like item
 			-- `i'-th part
 		require
 			index_valid: i > 0 and i <= count
@@ -88,7 +88,7 @@ feature -- Access
 			component_not_void: Result /= Void
 		end
 
-	first: like item is
+	first: like item
 			-- First component part
 		require
 			not_empty: not is_empty
@@ -99,7 +99,7 @@ feature -- Access
 			component_not_void: Result /= Void
 		end
 
-	last: like item is
+	last: like item
 			-- Last component part
 		require
 			not_empty: not is_empty
@@ -112,7 +112,7 @@ feature -- Access
 
 feature -- Status report
 
-	has (a_part: like item): BOOLEAN is
+	has (a_part: like item): BOOLEAN
 			-- Does composite contain `a_part'?
 		require
 			a_part_not_void: a_part /= Void
@@ -122,7 +122,7 @@ feature -- Status report
 			definition: Result = parts.has (a_part)
 		end
 
-	is_empty: BOOLEAN is
+	is_empty: BOOLEAN
 			-- Does component contain no part?
 		do
 			Result := parts.is_empty
@@ -130,7 +130,7 @@ feature -- Status report
 			definition: Result = (count = 0)
 		end
 
-	off: BOOLEAN is
+	off: BOOLEAN
 			-- Is there no component at current position?
 		do
 			Result := parts.off
@@ -138,7 +138,7 @@ feature -- Status report
 			definition: Result = (after or before)
 		end
 
-	after: BOOLEAN is
+	after: BOOLEAN
 			-- Is there no valid position to the right of current one?
 		do
 			Result := parts.after
@@ -146,7 +146,7 @@ feature -- Status report
 			definition: Result = parts.after
 		end
 
-	before: BOOLEAN is
+	before: BOOLEAN
 			-- Is there no valid position to the left of current one?
 		do
 			Result := parts.before
@@ -156,7 +156,7 @@ feature -- Status report
 
 feature -- Measurement
 
-	count: INTEGER is
+	count: INTEGER
 			-- Number of component parts
 		do
 			Result := parts.count
@@ -166,7 +166,7 @@ feature -- Measurement
 
 feature -- Element change
 
-	add (a_part: like item) is
+	add (a_part: like item)
 			-- Add `a_part' to component `parts'.
 		require
 			a_part_not_void: a_part /= Void
@@ -186,7 +186,7 @@ feature -- Element change
 
 feature -- Removal
 
-	remove (a_part: like item) is
+	remove (a_part: like item)
 			-- Remove `a_part' from component `parts'.
 		require
 			a_part_not_void: a_part /= Void
@@ -207,14 +207,14 @@ feature -- Removal
 
 feature -- Cursor movement
 
-	start is
+	start
 			-- Move cursor to first component part.
 			-- Go `after' if no such part.
 		do
 			parts.start
 		end
 
-	forth is
+	forth
 			-- Move cursor to the next component.
 			-- Go `after' if no such part.
 		require
@@ -223,14 +223,14 @@ feature -- Cursor movement
 			parts.forth
 		end
 
-	finish is
+	finish
 			-- Move cursor to last component.
 			-- Go `before' if no such part.
 		do
 			parts.finish
 		end
 
-	back is
+	back
 			-- Move cursor to the previous component.
 			-- Go `before' if no such part.
 		require
@@ -248,6 +248,6 @@ invariant
 
 	is_composite: is_composite
 	parts_not_void: parts /= Void
-	no_void_part: not parts.has (Void)
+--	no_void_part: not parts.has (Void)
 
 end

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ inherit
 
 feature {NONE} -- Initialization
 
-	make (a_code: like code) is
+	make (a_code: like code)
 			-- Set `code' to `a_code'.
 		require
 			a_code_is_valid: is_valid_code (a_code)
@@ -36,21 +36,21 @@ feature -- Access
 
 feature -- Status report
 
-	is_valid: BOOLEAN is
+	is_valid: BOOLEAN
 			-- Is current valid?
 		do
 			Result := is_valid_code (code)
 		ensure
 			definition: Result = is_valid_code (code)
 		end
-		
-	is_valid_code (a_code: INTEGER): BOOLEAN is
+
+	is_valid_code (a_code: INTEGER): BOOLEAN 
 			-- Is `a_code' a valid code?
 		do
-			Result := (a_code = default_code or 
+			Result := (a_code = default_code or
 					(a_code >= minimum_code and a_code <= maximum_code))
 		ensure
-			definition: Result = (a_code = default_code or 
+			definition: Result = (a_code = default_code or
 					(a_code >= minimum_code and a_code <= maximum_code))
 		end
 

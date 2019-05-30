@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -24,7 +24,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Create `colleague_1' and `colleague_2'.
 		do
 			create colleague_1.make (Current)
@@ -41,7 +41,7 @@ feature -- Access
 
 feature -- Basic operations
 
-	update_colleagues (a_colleague: COLLEAGUE) is
+	update_colleagues (a_colleague: COLLEAGUE)
 			-- Update colleagues because `a_colleague' changed.
 		do
 			debug

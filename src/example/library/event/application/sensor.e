@@ -1,12 +1,12 @@
-indexing
+note
 
 	description:
 		"[
 			Physical sensor device measuring the temperature,
 			humidity, and pressure in a closed system (container)
 		]"
-	
-	note: "Publisher"
+
+	description: "Publisher"
 	author: "Volkan Arslan, Karine Arnout"
 	copyright: "Copyright (c) 2002-2004, ETH Zurich, Switzerland"
 	license: "Eiffel Forum License v2 (see License.txt)"
@@ -14,14 +14,14 @@ indexing
 	revision: "$Revision: 1.1"
 
 class SENSOR
-	
+
 create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Create all necessary event objects.
 		do
 			create temperature_event
@@ -42,7 +42,7 @@ feature -- Access
 
 feature -- Element change
 
-	set_temperature (a_temperature: like temperature) is
+	set_temperature (a_temperature: like temperature)
 			-- Set `a_temperature' to `temperature'.
 			-- Publish the value change of `temperature'.
 		require
@@ -54,7 +54,7 @@ feature -- Element change
 			temperature_set: temperature = a_temperature
 		end
 
-	set_humidity (a_humidity: like humidity) is
+	set_humidity (a_humidity: like humidity)
 			-- Set `a_humidity' to `humidity'.
 			-- Publish the value change of `humidity'.
 		require
@@ -66,7 +66,7 @@ feature -- Element change
 			humidity_set: humidity = a_humidity
 		end
 
-	set_pressure (a_pressure: like pressure) is
+	set_pressure (a_pressure: like pressure) 
 			-- Set `a_pressure' to `pressure'.
 			-- Publish the value change of `pressure'.
 		require

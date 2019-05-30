@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,8 +20,8 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
-			-- Create a mediator and 
+	make 
+			-- Create a mediator and
 			-- change some of its colleagues.
 		local
 			a_mediator: MY_MEDIATOR
@@ -36,7 +36,7 @@ feature {NONE} -- Initialization
 				io.put_new_line
 				io.put_string ("Change something in colleague 2 of mediator:%N")
 			end
-			a_mediator.colleague_2.change_2 
+			a_mediator.colleague_2.change_2
 		end
 
 end

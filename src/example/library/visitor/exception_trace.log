@@ -1,0 +1,117 @@
+
+visitor_example: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+ARRAY               make @2                has_default:                 
+<000002653F06F068>                         Precondition violated.        Fail
+-------------------------------------------------------------------------------
+VISITOR             make @5                                             
+<000002653F06E678>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+APPLICATION         make @4                                             
+<000002653F06E588>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+APPLICATION         root's creation                                     
+<000002653F06E588>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+visitor_example: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+ARRAY               make @2                has_default:                 
+<00000202FB824068>                         Precondition violated.        Fail
+-------------------------------------------------------------------------------
+VISITOR             make @5                                             
+<00000202FB823678>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+APPLICATION         make @4                                             
+<00000202FB823588>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+APPLICATION         root's creation                                     
+<00000202FB823588>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+visitor_example: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+ARRAY               clear_all @1           has_default:                 
+<0000021EFDCF5128>                         Precondition violated.        Fail
+-------------------------------------------------------------------------------
+VISITOR             fill_cache @1                                       
+<0000021EFDCF4698>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+VISITOR             extend @4                                           
+<0000021EFDCF4698>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+APPLICATION         make @5                                             
+<0000021EFDCF45A8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+APPLICATION         root's creation                                     
+<0000021EFDCF45A8>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+
+visitor_example: PANIC: Unexpected harmful signal (Segmentation violation) ...
+
+visitor_example: system execution failed.
+Following is the set of recorded exceptions.
+NB: The raised panic may have induced completely inconsistent information:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+APPLICATION         root's creation        Unexpected harmful signal (Segmentation violation):
+<000001E24596B5A8>                         Eiffel run-time panic.        Bye
+-------------------------------------------------------------------------------
+
+visitor_example: dumping core to generate debugging information...
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_A] but got TUPLE [!ELEMENT]
+Catcall detected in {PROCEDURE}.call for arg#1: expected separate TUPLE [!ELEMENT_B] but got TUPLE [!ELEMENT]

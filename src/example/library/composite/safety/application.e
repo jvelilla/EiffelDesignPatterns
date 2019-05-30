@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -25,7 +25,6 @@ feature {NONE} -- Initialization
 			some_components: LINKED_LIST [COMPONENT [LEAF]]
 			a_composite: COMPOSITE [LEAF]
 			a_component: COMPONENT [LEAF]
-			another_composite: COMPOSITE [LEAF]
 		do
 			create some_components.make
 			some_components.extend (create {LEAF})
@@ -43,11 +42,9 @@ feature {NONE} -- Initialization
 				a_component := some_components.item
 				a_component.do_something
 				if a_component.is_composite then
-					another_composite ?= a_component
-					check
-						another_composite_not_void: another_composite /= Void
+					if attached {COMPOSITE [LEAF]} a_component as l_component  then
+						l_component.add (create {LEAF})
 					end
-					another_composite.add (create {LEAF})
 				end
 				some_components.forth
 			end
