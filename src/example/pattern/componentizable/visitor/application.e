@@ -20,7 +20,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Use visitors.
 		local
 			element_a: ELEMENT_A

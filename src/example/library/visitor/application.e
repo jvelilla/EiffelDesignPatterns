@@ -39,7 +39,7 @@ feature {NONE} -- Initialization
 			create visitor_1.make
 			visitor_1.extend (agent {ELEMENT_A}.do_something_a)
 			visitor_1.extend (agent {ELEMENT_B}.do_something_b)
-			visitor_1.extend (agent {ELEMENT_C}.do_something_C)
+			visitor_1.extend (agent {ELEMENT_C}.do_something_c)
 			visitor_1.visit (element_a)
 			visitor_1.visit (element_b)
 			visitor_1.visit (element_c)
