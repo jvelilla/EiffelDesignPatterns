@@ -24,12 +24,14 @@ feature {NONE} -- Initialization
 
 			element_a: ELEMENT_A
 			element_b: ELEMENT_B
+			element_c: ELEMENT_C
 			visitor_1: VISITOR [like element]
 			visitor_2: VISITOR [like element]
 		do
 			create element
 			create element_a.make ("Characteristic A")
 			create element_b
+			create element_c
 
 			debug
 				io.put_string ("Visitor 1:%N")
@@ -37,8 +39,10 @@ feature {NONE} -- Initialization
 			create visitor_1.make
 			visitor_1.extend (agent {ELEMENT_A}.do_something_a)
 			visitor_1.extend (agent {ELEMENT_B}.do_something_b)
+			visitor_1.extend (agent {ELEMENT_C}.do_something_C)
 			visitor_1.visit (element_a)
 			visitor_1.visit (element_b)
+			visitor_1.visit (element_c)
 
 			debug
 				io.put_new_line

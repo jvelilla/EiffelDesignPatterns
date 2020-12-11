@@ -26,7 +26,7 @@ feature {NONE} -- Initialization
 			create sorter.make (Initial_capacity)
 			create type_ids.make (Initial_capacity)
 			create expanded_items.make
-			create actions_cache2.make (initial_capacity)
+			create actions_cache.make (initial_capacity)
 			catch_all_agent := agent catch_all
 		end
 
@@ -36,23 +36,21 @@ feature -- Visitor
 			-- Visit `an_element'. (Select the appropriate action
 			-- depending on `an_element'.)
 		require
-			an_element_not_void: an_element /= Void
+			element_not_void: an_element /= Void
 		local
 			internal: INTERNAL
 			type_id: INTEGER
-			args: TUPLE [G]
 			i: INTEGER
 			l_actions_cache: ARRAY [PROCEDURE [TUPLE [G]]]
 			l_name: STRING
 		do
-			args := [an_element]
-
 			create internal
-			if attached an_element as l_element  then
-				create l_name.make_from_separate (l_element.generator)
+			if an_element /= Void then
+				create l_name.make_from_separate (an_element.generator)
 				type_id := internal.dynamic_type_from_string (l_name)
 			end
-			l_actions_cache := actions_cache2.to_array
+
+			l_actions_cache := actions_cache.to_array
 
 			if l_actions_cache.valid_index (type_id) and then l_actions_cache.item (type_id) /= Void then
 				l_actions_cache.item (type_id).call (an_element)
@@ -67,10 +65,10 @@ feature -- Visitor
 
 				if i >= 1 and i <= actions.count then
 					actions.item (i).call (an_element)
-					actions_cache2.force (actions.item (i))
+					actions_cache.force (actions.item (i))
 				else
 					catch_all (an_element)
-					actions_cache2.force (catch_all_agent)
+					actions_cache.force (catch_all_agent)
 				end
 			end
 		end
@@ -98,7 +96,6 @@ feature -- Element change
 			-- Append actions in `some_actions' to the end of the `actions' list.
 		require
 			some_actions_not_void: some_actions /= Void
---			no_void_action: not some_actions.has ([])
 		local
 			i: INTEGER
 		do
@@ -123,7 +120,7 @@ feature {NONE} -- Implementation (Access
 	expanded_items: DS_LINKED_LIST [PROCEDURE [TUPLE [G]]]
 			-- Actions applied to expanded types
 
-	actions_cache2: ARRAYED_LIST [PROCEDURE [TUPLE [G]]]
+	actions_cache: ARRAYED_LIST [PROCEDURE [TUPLE [G]]]
 			-- Cache with actions indexed by type id
 
 
@@ -175,13 +172,12 @@ feature {NONE} -- Implementation (Topological sort)
 							-- Calculate the relations between `an_action'
 							-- and the actions already in `type_ids'
 							-- and add these new relations to the `sorter'.
-						from type_ids.start until type_ids.after loop
-							if internal.type_conforms_to (type_id, type_ids.item_for_iteration) then
-								sorter.put_relation (type_ids.key_for_iteration, an_action)
-							elseif internal.type_conforms_to (type_ids.item_for_iteration, type_id) then
-								sorter.put_relation (an_action, type_ids.key_for_iteration)
+						across type_ids as ic loop
+							if internal.type_conforms_to (type_id, ic.item) then
+								sorter.put_relation (ic.key, an_action)
+							elseif internal.type_conforms_to (ic.item, type_id) then
+								sorter.put_relation (an_action, ic.key)
 							end
-							type_ids.forth
 						end
 
 							-- Add `an_action' associated with `type_id' to `type_ids'.
@@ -203,12 +199,10 @@ feature {NONE} -- Implementation (Topological sort)
 				if attached sorter.sorted_items as l_sorted then
 					actions := l_sorted
 						-- Add action applied to an expanded type if any.
-					from expanded_items.start until expanded_items.after loop
-						actions.force_last (expanded_items.item_for_iteration)
-						expanded_items.forth
+					across expanded_items as ic loop
+						actions.force_last (ic.item)
 					end
 				end
-
 			else
 				debug
 					io.put_string ("The topological sort ended with cycles. There must be a hole in the Eiffel type system.%N")
@@ -224,24 +218,21 @@ feature {NONE} -- Implementation (Cache)
 			lower: INTEGER
 			upper: INTEGER
 		do
-			actions_cache2.wipe_out
+			actions_cache.wipe_out
 
-			lower := actions_cache2.lower
-			upper := actions_cache2.upper
-			from type_ids.start until type_ids.after loop
-				if type_ids.item_for_iteration < lower then
-					lower := type_ids.item_for_iteration
+			lower := actions_cache.lower
+			upper := actions_cache.upper
+			across type_ids as ic  loop
+				if ic.item < lower then
+					lower := ic.item
 				end
-				if type_ids.item_for_iteration > upper then
-					upper := type_ids.item_for_iteration
+				if ic.item > upper then
+					upper := ic.item
 				end
-				type_ids.forth
 			end
---			actions_cache.conservative_resize (lower, upper)
 
-			from type_ids.start until type_ids.after loop
-				actions_cache2.put_i_th (type_ids.key_for_iteration, type_ids.item_for_iteration)
-				type_ids.forth
+			across type_ids as ic loop
+				actions_cache.put_i_th (ic.key, ic.item)
 			end
 		end
 
@@ -262,7 +253,7 @@ invariant
 --	no_void_type_id: not type_ids.has (Void)
 	expanded_items_not_void: expanded_items /= Void
 --	no_void_expanded_item_not_void: not expanded_items.has (Void)
-	actions_cache2_not_void: actions_cache2 /= Void
+	actions_cache2_not_void: actions_cache /= Void
 	catch_all_agent_not_void: catch_all_agent /= Void
 
 end

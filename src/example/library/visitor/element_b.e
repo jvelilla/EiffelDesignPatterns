@@ -18,7 +18,7 @@ inherit
 
 feature -- Basic operation
 
-	do_something_b is
+	do_something_b 
 			-- Do something.
 		do
 			debug

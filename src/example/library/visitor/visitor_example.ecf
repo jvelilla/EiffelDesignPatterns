@@ -14,8 +14,8 @@
 		</option>
 		<setting name="dead_code_removal" value="feature"/>
 		<capability>
-			<catcall_detection support="none" use="none"/>
-			<void_safety use="all"/>
+			<!--catcall_detection support="none" use="none"/-->
+			<void_safety support="all" use="all"/>
 		</capability>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="visitor" location="..\..\..\library\visitor\visitor.ecf" use_application_options="true"/>
