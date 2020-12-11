@@ -32,7 +32,7 @@ feature {NONE} -- Initialization
 
 feature -- Visitor
 
-	visit (an_element: G)
+	visit (an_element: attached G)
 			-- Visit `an_element'. (Select the appropriate action
 			-- depending on `an_element'.)
 		require
@@ -45,10 +45,8 @@ feature -- Visitor
 			l_name: STRING
 		do
 			create internal
-			if an_element /= Void then
-				create l_name.make_from_separate (an_element.generator)
-				type_id := internal.dynamic_type_from_string (l_name)
-			end
+			create l_name.make_from_separate (an_element.generator)
+			type_id := internal.dynamic_type_from_string (l_name)
 
 			l_actions_cache := actions_cache.to_array
 
@@ -76,7 +74,7 @@ feature -- Visitor
 feature -- Access
 
 	actions: DS_ARRAYED_LIST [PROCEDURE [TUPLE [G]]]
-			-- Actions to be performed depending on the element
+			-- Actions to be performed depending on the element.
 
 feature -- Element change
 
@@ -112,13 +110,13 @@ feature {NONE} -- Implementation (Access
 	sorter: DS_HASH_TOPOLOGICAL_SORTER [PROCEDURE [TUPLE [G]]]
 			-- Topological sorter;
 			-- The relation used for topological sort is the conformance
-			-- of the dynamic type of the agent operands
+			-- of the dynamic type of the agent operands.
 
 	type_ids: DS_HASH_TABLE [INTEGER, PROCEDURE [TUPLE [G]]]
-			-- Hash table of type ids indexed by actions
+			-- Hash table of type ids indexed by actions.
 
 	expanded_items: DS_LINKED_LIST [PROCEDURE [TUPLE [G]]]
-			-- Actions applied to expanded types
+			-- Actions applied to expanded types.
 
 	actions_cache: ARRAYED_LIST [PROCEDURE [TUPLE [G]]]
 			-- Cache with actions indexed by type id
@@ -127,7 +125,7 @@ feature {NONE} -- Implementation (Access
 feature {NONE} -- Implementation (Constants)
 
 	Initial_capacity: INTEGER = 10
-			-- Initial capacity of `actions', `sorter', and `type_ids'
+			-- Initial capacity of `actions', `sorter', and `type_ids'.
 
 feature {NONE} -- Implementation (Topological sort)
 
@@ -237,7 +235,7 @@ feature {NONE} -- Implementation (Cache)
 		end
 
 	catch_all (an_element: G)
-			-- Routine called when no action is found for `an_element'
+			-- Routine called when no action is found for `an_element'.
 		do
 		end
 
