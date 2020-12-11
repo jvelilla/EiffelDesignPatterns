@@ -23,7 +23,7 @@ inherit
 
 feature {NONE} -- Initialization
 
-	default_create is
+	default_create
 			-- Create `observers'.
 		do
 			create observers.make
@@ -54,18 +54,17 @@ feature -- Observer pattern
 			one_less: observers.count = old observers.count - 1
 		end
 
-	notify_observers 
+	notify_observers
 			-- Notify all observers.
 			-- (Call update on each observer.)
 		do
-			from observers.start until observers.after loop
-				observers.item.update
-				observers.forth
+			across observers as ic loop
+				ic.item.update
 			end
 		end
 
 	observers: LINKED_LIST [OBSERVER]
-			-- List of observers
+			-- List of observers.
 
 invariant
 

@@ -24,26 +24,26 @@ inherit
 	LINKED_LIST [PROCEDURE [EVENT_DATA]]
 		redefine
 			default_create,
-			new_chain
+			make
 		end
 
+create
+	default_create,
+	make
 
 feature {NONE} -- Initialization
+
+	make
+		do
+			Precursor
+			compare_objects
+		end
 
 	default_create
 		do
 			make
-			compare_objects
 		end
 
-	new_chain: like Current
-			-- A newly created instance of the same type.
-			-- This feature may be redefined in descendants so as to
-			-- produce an adequately allocated and initialized object.
-		obsolete "Use explicit creation instead. See also explanations for `duplicate`. [2018-11-30]"
-		do
-			create Result
-		end
 
 
 feature -- Element change
@@ -107,7 +107,7 @@ feature -- Status settings
 			subscription_suspended: is_suspended
 		end
 
-	restore_subscription 
+	restore_subscription
 			-- Consider again the call of all actions from the subscription list,
 			-- until feature suspend_subscription is called.
 		do

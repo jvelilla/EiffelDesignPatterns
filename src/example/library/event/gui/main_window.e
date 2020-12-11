@@ -226,7 +226,7 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Contract checking
 
-	is_in_default_state: BOOLEAN 
+	is_in_default_state: BOOLEAN
 			-- Is main window in default state?
 		do
 			Result := True

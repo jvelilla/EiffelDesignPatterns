@@ -58,10 +58,11 @@ feature -- Display update
 	display_temperature (a_temperature: INTEGER)
 			-- Update the text of `temperature_value_label' with `a_temperature'.
 		do
-			if a_temperature /= 0  then
-				temperature_value_label.set_text (a_temperature.out)
-			else
+
+			if a_temperature = 0  then
 				temperature_value_label.set_text (Dash)
+			else
+				temperature_value_label.set_text (a_temperature.out)
 			end
 		ensure
 			no_temperature_displayed: a_temperature = 0 implies temperature_value_label.text.is_equal (Dash)
@@ -71,10 +72,10 @@ feature -- Display update
 	display_humidity (a_humidity: INTEGER)
 			-- Update the text of `humidity_value_label' with `a_humidity'.
 		do
-			if a_humidity /= 0 then
-				humidity_value_label.set_text (a_humidity.out)
-			else
+			if a_humidity = 0 then
 				humidity_value_label.set_text ("-")
+			else
+				humidity_value_label.set_text (a_humidity.out)
 			end
 		ensure
 			no_humidity_displayed: a_humidity = 0 implies humidity_value_label.text.is_equal (Dash)
@@ -84,10 +85,10 @@ feature -- Display update
 	display_pressure (a_pressure: INTEGER)
 			-- Update the text of `pressure_value_label' with `a_pressure'.
 		do
-			if a_pressure /= 0 then
-				pressure_value_label.set_text (a_pressure.out)
-			else
+			if a_pressure = 0 then
 				pressure_value_label.set_text ("-")
+			else
+				pressure_value_label.set_text (a_pressure.out)
 			end
 		ensure
 			no_pressure_displayed: a_pressure = 0 implies pressure_value_label.text.is_equal (Dash)
