@@ -66,7 +66,7 @@ feature -- Element change
 			humidity_set: humidity = a_humidity
 		end
 
-	set_pressure (a_pressure: like pressure) 
+	set_pressure (a_pressure: like pressure)
 			-- Set `a_pressure' to `pressure'.
 			-- Publish the value change of `pressure'.
 		require
@@ -80,13 +80,13 @@ feature -- Element change
 
 feature -- Events
 
-	temperature_event: EVENT_TYPE [TUPLE [INTEGER]]
+	temperature_event: EVENT_TYPE [INTEGER]
 			-- Event associated with `temperature'.
 
-	humidity_event: EVENT_TYPE [TUPLE [INTEGER]]
+	humidity_event: EVENT_TYPE [INTEGER]
 			-- Event associated with `humidity'.
 
-	pressure_event: EVENT_TYPE [TUPLE [INTEGER]]
+	pressure_event: EVENT_TYPE [INTEGER]
 			-- Event associated with `pressure'.
 
 invariant

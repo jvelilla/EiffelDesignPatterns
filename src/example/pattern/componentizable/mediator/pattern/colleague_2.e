@@ -29,7 +29,7 @@ feature -- Basic operations
 		do
 			debug
 				io.put_string ("Change something in ")
-				io.put_string (generating_type)
+				io.put_string_32 (generating_type.name_32.to_string_32)
 				io.put_string (".%N")
 			end
 			-- Do something that changes Current's state.
@@ -41,7 +41,7 @@ feature -- Basic operations
 		do
 			debug
 				io.put_string ("Do something in ")
-				io.put_string (generating_type)
+				io.put_string_32 (generating_type.name_32.to_string_32)
 				io.put_string (".%N")
 			end
 			-- Do something.

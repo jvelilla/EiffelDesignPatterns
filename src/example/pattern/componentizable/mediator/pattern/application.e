@@ -20,7 +20,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make 
+	make
 			-- Create a mediator and
 			-- change some of its colleagues.
 		local
@@ -28,13 +28,13 @@ feature {NONE} -- Initialization
 		do
 			create a_mediator.make
 			debug
-				io.put_string ("Change something in colleague 1 of mediator:%N")
+				io.put_string_32 ("Change something in colleague 1 of mediator:%N")
 			end
 			a_mediator.colleague_1.change_1
 
 			debug
 				io.put_new_line
-				io.put_string ("Change something in colleague 2 of mediator:%N")
+				io.put_string_32 ("Change something in colleague 2 of mediator:%N")
 			end
 			a_mediator.colleague_2.change_2
 		end
