@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -24,33 +24,33 @@ inherit
 
 	ANY
 
-create 
+create
 
 	make
 
-feature -- Initialization
+feature {NONE} -- Initialization
 
-	make (an_id: INTEGER) is
+	make (an_id: INTEGER)
 			-- Create a product depending on `an_id'.
 		require
 			id_valid: is_valid_product_family_id (an_id)
 		do
 			inspect an_id
-			when product_family_1_id then 
+			when product_family_1_id then
 				create {FACTORY_1} factory
-			when product_family_2_id then 
+			when product_family_2_id then
 				create {FACTORY_2} factory
 			end
 			product_a := factory.new_product_a
-			debug 
+			debug
 				io.put_string ("A new product of type ")
-				io.put_string (product_a.generating_type)
+				io.put_string_32 (product_a.generating_type.name_32.to_string_32)
 				io.put_string (" has been created.%N%N")
 			end
 			product_b := factory.new_product_b
-			debug 
+			debug
 				io.put_string ("A new product of type ")
-				io.put_string (product_b.generating_type)
+				io.put_string_32 (product_b.generating_type.name_32.to_string_32)
 				io.put_string (" has been created.%N%N")
 			end
 		end

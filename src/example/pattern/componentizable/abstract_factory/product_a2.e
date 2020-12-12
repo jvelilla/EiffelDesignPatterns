@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,4 +18,4 @@ inherit
 
 	PRODUCT_A
 
-end 
+end

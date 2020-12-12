@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -22,13 +22,13 @@ inherit
 
 feature -- Factory methods
 
-	new_product_a: PRODUCT_A2 is
+	new_product_a: PRODUCT_A2
 			-- New product of type `PRODUCT_A2'
 		do
 			create Result
 		end
 
-	new_product_b: PRODUCT_B2 is
+	new_product_b: PRODUCT_B2
 			-- New product of type `PRODUCT_B2'
 		do
 			create Result

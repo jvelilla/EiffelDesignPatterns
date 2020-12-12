@@ -8,7 +8,7 @@
 			<exclude>/\.git$</exclude>
 			<exclude>/\.svn$</exclude>
 		</file_rule>
-		<option warning="warning" manifest_array_type="mismatch_warning">
+		<option warning="warning" manifest_array_type="mismatch_warning" is_attached_by_default="true">
 			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
 		</option>
 		<capability>

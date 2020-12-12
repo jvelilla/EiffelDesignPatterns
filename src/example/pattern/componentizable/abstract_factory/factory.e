@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,14 +16,14 @@ deferred class FACTORY
 
 feature -- Factory methods
 
-	new_product_a: PRODUCT_A is
+	new_product_a: PRODUCT_A
 			-- New product of type `PRODUCT_A'
 		deferred
 		ensure
 			new_product_a_not_void: Result /= Void
 		end
 
-	new_product_b: PRODUCT_B is
+	new_product_b: PRODUCT_B
 			-- New product of type `PRODUCT_B'
 		deferred
 		ensure

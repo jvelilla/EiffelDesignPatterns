@@ -20,13 +20,10 @@ inherit
 			{ANY} is_valid_product_family_id
 		end
 
-	ANY
-
 create
-
 	make
 
-feature -- Initialization
+feature {NONE} -- Initialization
 
 	make (an_id: INTEGER)
 			-- Create a product depending on `an_id'.
@@ -45,7 +42,7 @@ feature -- Initialization
 			if attached product_a as l_prod_a then
 				debug
 					io.put_string ("A new product of type ")
-					io.put_string (l_prod_a.generating_type)
+					io.put_string_32 (l_prod_a.generating_type.name_32)
 					io.put_string (" has been created.%N%N")
 				end
 			end
@@ -53,7 +50,7 @@ feature -- Initialization
 			if attached product_b as l_prod_b then
 				debug
 					io.put_string ("A new product of type ")
-					io.put_string (l_prod_b.generating_type)
+					io.put_string_32 (l_prod_b.generating_type.name_32.to_string_32)
 					io.put_string (" has been created.%N%N")
 				end
 			end

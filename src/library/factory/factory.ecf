@@ -10,7 +10,7 @@
 			<concurrency support="scoop"/>
 			<void_safety support="all" use="all"/>
 		</capability>
-		<library name="base" location="$ISE_LIBRARY\library\base\base-safe.ecf"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<cluster name="factory" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/.svn$</exclude>

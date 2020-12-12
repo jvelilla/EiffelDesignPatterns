@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-20-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-20-0 http://www.eiffel.com/developers/xml/configuration-1-20-0.xsd" name="abstract_factory_example" >
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="abstract_factory_example" uuid="3E43F6FD-99E5-409D-ACD0-F7B2691FB3C9">
 	<target name="abstract_factory_example">
 		<root class="APPLICATION" feature="make"/>
 		<file_rule>
@@ -8,12 +8,12 @@
 			<exclude>/\.git$</exclude>
 			<exclude>/\.svn$</exclude>
 		</file_rule>
-		<option warning="true" manifest_array_type="mismatch_warning">
+		<option warning="warning" manifest_array_type="mismatch_warning">
 			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
 		</option>
 		<setting name="dead_code_removal" value="feature"/>
 		<capability>
-			<void_safety use="all"/>
+			<void_safety support="all" use="all"/>
 		</capability>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<cluster name="abstract_factory_example" location=".\" recursive="true"/>

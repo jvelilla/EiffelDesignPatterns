@@ -39,32 +39,36 @@ feature -- Status report
 
 feature -- Factory functions
 
-	new: detachable G
-			-- New instance of type `G'
+	new: G
+			-- New instance of type `G'.
 		require
 			valid_args: valid_args ([])
 		do
 			factory_function.call ([])
-			Result := factory_function.last_result
+			check attached factory_function.last_result as l_result then
+				Result := l_result
+			end
 		ensure
 			new_not_void: Result /= Void
 		end
 
-	new_with_args (args: TUPLE): detachable G
-			-- New instance of type `G' initialized with `args'
+	new_with_args (args: TUPLE): G
+			-- New instance of type `G' initialized with `args'.
 		require
 			args_valid: valid_args (args)
 		do
 			factory_function.call (args)
-			Result := factory_function.last_result
+			check attached factory_function.last_result  as l_result then
+				Result := l_result
+			end
 		ensure
 			new_not_void: Result /= Void
 		end
 
 feature -- Access
 
-	factory_function: FUNCTION [ANY, TUPLE [], G]
-			-- Factory function creating new instances of type `G'
+	factory_function: FUNCTION [ANY, TUPLE, G]
+			-- Factory function creating new instances of type `G'.
 
 invariant
 

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -12,7 +12,7 @@ indexing
 	date: "$Date: 2004/03/15 $"
 	revision: "$Revision: 1.0 $"
 
-class 
+class
 
 	APPLICATION
 
@@ -25,7 +25,7 @@ inherit
 
 	ANY
 
-create 
+create
 
 	make
 
