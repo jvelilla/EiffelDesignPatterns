@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jvelilla/EiffelDesignPatterns.svg?branch=master)](https://travis-ci.org/jvelilla/EiffelDesignPatterns)
+
 Original source http://se.inf.ethz.ch/old/people/arnout/patterns/
 From Patterns to Components
 
