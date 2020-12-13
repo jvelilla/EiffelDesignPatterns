@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -27,7 +27,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize component parts.
 		do
 			create parts.make
@@ -35,7 +35,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_composite: BOOLEAN is
+	is_composite: BOOLEAN
 			-- Is component a composite?
 		do
 			Result := True
@@ -43,20 +43,13 @@ feature -- Status report
 
 feature -- Basic operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			debug
 				io.put_string ("Do something on a composite.%N")
 			end
-			from
-				parts.start
-			until
-				parts.after
-			loop
-				parts.item.do_something
-				parts.forth
-			end
+			across parts as ic loop ic.item.do_something end
 		end
 
 feature {NONE} -- Implementation
@@ -68,6 +61,6 @@ invariant
 
 	is_composite: is_composite
 	parts_not_void: parts /= Void
-	no_void_part: not parts.has (Void)
+--	no_void_part: not parts.has (Void)
 
 end

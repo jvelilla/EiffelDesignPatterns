@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -27,7 +27,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize component parts.
 		do
 			create parts.make
@@ -35,7 +35,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_composite: BOOLEAN is
+	is_composite: BOOLEAN
 			-- Is component a composite?
 		do
 			Result := True
@@ -43,25 +43,18 @@ feature -- Status report
 
 feature -- Basic operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			debug
 				io.put_string ("Do something on a composite.%N")
 			end
-			from
-				parts.start
-			until
-				parts.after
-			loop
-				parts.item.do_something
-				parts.forth
-			end
+			across parts as ic loop ic.item.do_something end
 		end
 
 feature -- Access
 
-	i_th, infix "@" (i: INTEGER): COMPONENT is
+	i_th alias "@" (i: INTEGER): COMPONENT
 			-- `i'-th part
 		require
 			index_valid: i > 0 and i <= count
@@ -74,7 +67,7 @@ feature -- Access
 
 feature -- Measurement
 
-	count: INTEGER is
+	count: INTEGER
 			-- Number of component parts
 		do
 			Result := parts.count
@@ -84,7 +77,7 @@ feature -- Measurement
 
 feature -- Element change
 
-	add (a_part: like i_th) is
+	add (a_part: like i_th)
 			-- Add `a_part' to component `parts'.
 		require
 			a_part_not_void: a_part /= Void
@@ -92,7 +85,7 @@ feature -- Element change
 		do
 			debug
 				io.put_string ("Add a part to composite.%N")
-			end			
+			end
 			parts.extend (a_part)
 		ensure
 			one_more: parts.count = old parts.count + 1
@@ -101,7 +94,7 @@ feature -- Element change
 
 feature -- Removal
 
-	remove (a_part: like i_th) is
+	remove (a_part: like i_th)
 			-- Remove `a_part' from component `parts'.
 		require
 			a_part_not_void: a_part /= Void
@@ -119,7 +112,7 @@ feature -- Removal
 
 feature -- Contract support
 
-	has (a_part: like i_th): BOOLEAN is
+	has (a_part: like i_th): BOOLEAN
 			-- Does composite contain `a_part'?
 		require
 			a_part_not_void: a_part /= Void
@@ -138,6 +131,6 @@ invariant
 
 	is_composite: is_composite
 	parts_not_void: parts /= Void
-	no_void_part: not parts.has (Void)
+--	no_void_part: not parts.has (Void)
 
 end

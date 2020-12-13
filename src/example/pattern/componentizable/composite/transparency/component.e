@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,14 +16,14 @@ deferred class COMPONENT
 
 feature -- Basic operation
 
-	do_something is
+	do_something
 			-- Do something.
 		deferred
 		end
 
 feature -- Status report
 
-	is_composite: BOOLEAN is
+	is_composite: BOOLEAN
 			-- Is component a composite?
 		do
 			Result := False
@@ -31,7 +31,7 @@ feature -- Status report
 
 feature -- Access
 
-	i_th, infix "@" (i: INTEGER): COMPONENT is
+	i_th alias "@" (i: INTEGER): COMPONENT
 			-- `i'-th part
 		require
 			is_composite: is_composite
@@ -45,7 +45,7 @@ feature -- Access
 
 feature -- Measurement
 
-	count: INTEGER is
+	count: INTEGER
 			-- Number of component parts
 		require
 			is_composite: is_composite
@@ -57,7 +57,7 @@ feature -- Measurement
 
 feature -- Element change
 
-	add (a_part: like i_th) is
+	add (a_part: like i_th)
 			-- Add `a_part' to component `parts'.
 		require
 			is_composite: is_composite
@@ -75,7 +75,7 @@ feature -- Element change
 
 feature -- Removal
 
-	remove (a_part: like i_th) is
+	remove (a_part: like i_th)
 			-- Remove `a_part' from component `parts'.
 		require
 			is_composite: is_composite
@@ -94,7 +94,7 @@ feature -- Removal
 
 feature -- Contract support
 
-	has (a_part: like i_th): BOOLEAN is
+	has (a_part: like i_th): BOOLEAN
 			-- Does composite contain `a_part'?
 		require
 			is_composite: is_composite
@@ -107,7 +107,7 @@ feature -- Contract support
 
 feature {NONE} -- Implementation
 
-	parts: LINKED_LIST [like i_th] is
+	parts: LINKED_LIST [like i_th] 
 			-- Component parts
 			-- (which are themselves components)
 		deferred
@@ -115,7 +115,7 @@ feature {NONE} -- Implementation
 
 invariant
 
-	parts_consistent: 
-		is_composite implies (parts /= Void and then not parts.has (Void))
+	parts_consistent:
+--		is_composite implies (parts /= Void and then not parts.has (Void))
 
 end

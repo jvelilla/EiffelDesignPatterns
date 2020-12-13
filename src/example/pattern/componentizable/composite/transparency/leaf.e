@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,7 +20,7 @@ inherit
 		export
 			{NONE} all
 
-			{ANY} 
+			{ANY}
 				do_something,
 				is_composite
 		end
@@ -29,7 +29,7 @@ inherit
 
 feature -- Basic Operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			-- Do something.
@@ -40,15 +40,15 @@ feature -- Basic Operation
 
 feature {NONE} -- Implementation
 
-	parts: LINKED_LIST [like i_th] is
-			-- Component parts (Void because a leaf is not a composite)
+	parts: LINKED_LIST [like i_th]
+			-- Component parts empty because a leaf is not a composite
 		do
-			Result := Void
+			create Result.make
 		end
 
 invariant
 
 	is_leaf: not is_composite
-	void_parts: parts = Void
+	empty_parts: parts.is_empty
 
 end
