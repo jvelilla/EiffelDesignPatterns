@@ -18,7 +18,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Illustrate how to create and use
 			-- composite components.
 		local

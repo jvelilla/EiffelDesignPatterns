@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-20-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-20-0 http://www.eiffel.com/developers/xml/configuration-1-20-0.xsd" name="composite_safety_with_parent_example">
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="composite_safety_with_parent_example" uuid="1D7BAEC8-6C6B-441F-9F16-11843DD9F841">
 	<target name="composite_safety_with_parent_example">
 		<root class="APPLICATION" feature="make"/>
 		<file_rule>
@@ -8,11 +8,14 @@
 			<exclude>/\.git$</exclude>
 			<exclude>/\.svn$</exclude>
 		</file_rule>
-		<option debug="true" warning="true" manifest_array_type="mismatch_warning">
+		<option debug="true" warning="warning" manifest_array_type="mismatch_warning">
 			<debug name="__unnamed_debug__" enabled="true"/>
 			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
 		</option>
 		<setting name="dead_code_removal" value="feature"/>
+		<capability>
+			<void_safety support="all" use="all"/>
+		</capability>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="composite" location="..\..\..\..\library\composite\safety_with_parent\composite_safety_with_parent.ecf" use_application_options="true"/>
 		<cluster name="composite_safety_with_parent_example" location=".\" recursive="true"/>

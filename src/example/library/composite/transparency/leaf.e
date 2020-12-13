@@ -23,8 +23,6 @@ inherit
 				is_composite
 		end
 
-	ANY
-
 feature -- Basic Operation
 
 	do_something

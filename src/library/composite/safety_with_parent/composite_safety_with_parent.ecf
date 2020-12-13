@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-20-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-20-0 http://www.eiffel.com/developers/xml/configuration-1-20-0.xsd" name="composite_safety_with_parent" uuid="5399B5E6-6752-4537-9AF6-967E65388A18" library_target="composite_safety_with_parent">
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="composite_safety_with_parent" uuid="5399B5E6-6752-4537-9AF6-967E65388A18" library_target="composite_safety_with_parent">
 	<target name="composite_safety_with_parent">
 		<root all_classes="true"/>
 		<file_rule>
@@ -8,11 +8,12 @@
 			<exclude>/\.git$</exclude>
 			<exclude>/\.svn$</exclude>
 		</file_rule>
-		<option warning="true" manifest_array_type="mismatch_warning">
+		<option warning="warning" manifest_array_type="mismatch_warning">
 			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
 		</option>
 		<capability>
 			<catcall_detection support="none" use="none"/>
+			<void_safety support="all" use="all"/>
 		</capability>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<cluster name="composite_safety_with_parent" location=".\" recursive="true"/>

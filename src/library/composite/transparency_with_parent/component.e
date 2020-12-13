@@ -154,15 +154,12 @@ feature -- Element change
 			a_part_not_void: a_part /= Void
 			not_part: not has (a_part)
 			a_part_orphan: a_part.parent = Void
-		local
-			a_composite: like parent
 		do
 			debug
 				io.put_string ("Adding a part to a composite.%N")
 			end
 			parts.extend (a_part)
-			a_composite ?= Current
-			if a_composite /= Void then
+			if attached {like parent} Current as a_composite then
 				a_part.set_parent (a_composite)
 			end
 		ensure

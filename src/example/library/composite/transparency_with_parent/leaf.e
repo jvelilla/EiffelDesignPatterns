@@ -29,7 +29,7 @@ inherit
 
 feature -- Basic Operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			-- Do something.
@@ -40,7 +40,7 @@ feature -- Basic Operation
 
 feature {NONE} -- Implementation
 
-	parts: LINKED_LIST [like item] is
+	parts: LINKED_LIST [like item] 
 			-- Component parts (Empty because a leaf is not a composite)
 		do
 			create Result.make

@@ -228,7 +228,7 @@ feature {NONE} -- Implementation
 
 invariant
 
---	parts_consistent:
---		is_composite implies (parts /= Void and then not parts.has (Void))
+	parts_consistent:
+		--is_composite implies (parts /= Void and then not parts.has (Void))
 
 end

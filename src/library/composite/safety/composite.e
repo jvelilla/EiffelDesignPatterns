@@ -178,7 +178,7 @@ feature -- Element change
 			parts.extend (a_part)
 		ensure
 			one_more: parts.count = old parts.count + 1
---			has_part: has (a_part)
+			has_part: has (a_part)
 		end
 
 feature -- Removal

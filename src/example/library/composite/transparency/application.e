@@ -18,7 +18,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Illustrate how to create and use
 			-- composite components.
 		local
@@ -34,17 +34,12 @@ feature {NONE} -- Initialization
 			a_composite.add (create {LEAF})
 			some_components.extend (a_composite)
 
-			from
-				some_components.start
-			until
-				some_components.after
-			loop
-				a_component := some_components.item
+			across some_components as ic loop
+				a_component := ic.item
 				a_component.do_something
 				if a_component.is_composite then
 					a_component.add (create {LEAF})
 				end
-				some_components.forth
 			end
 		end
 
