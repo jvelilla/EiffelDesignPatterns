@@ -18,9 +18,9 @@ create
 
 	make
 
-feature -- Initialization
+feature {NONE} -- Initialization
 
-	make 
+	make
 			-- Create an instance of `MY_APPLICATION'
 			-- and call `do_something' on it,
 			-- which uses a factory method internally
