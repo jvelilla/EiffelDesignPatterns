@@ -44,7 +44,7 @@ feature -- Access
 			external_characteristic_not_void: Result /= Void
 		end
 
-	procedure: PROCEDURE [ANY, TUPLE [FLYWEIGHT [G], FLYWEIGHT_CONTEXT [G]]]
+	procedure: detachable PROCEDURE [TUPLE [FLYWEIGHT [G], FLYWEIGHT_CONTEXT [G]]]
 			-- Procedure called by `do_something' for shared flyweights
 
 feature -- Element change
@@ -64,7 +64,7 @@ feature -- Element change
 
 feature -- Output
 
-	do_something (a_context: FLYWEIGHT_CONTEXT [G]) 
+	do_something (a_context: detachable FLYWEIGHT_CONTEXT [G])
 			-- Draw flyweight according to `a_context'.
 		require
 			a_context_not_void: a_context /= Void

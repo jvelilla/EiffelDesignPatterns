@@ -44,11 +44,11 @@ feature -- Status report
 			definition: Result = is_valid_code (code)
 		end
 
-	is_valid_code (a_code: INTEGER): BOOLEAN 
+	is_valid_code (a_code: INTEGER): BOOLEAN
 			-- Is `a_code' a valid code?
 		do
-			Result := (a_code = default_code or
-					(a_code >= minimum_code and a_code <= maximum_code))
+			Result := a_code = default_code or
+					(a_code >= minimum_code and a_code <= maximum_code)
 		ensure
 			definition: Result = (a_code = default_code or
 					(a_code >= minimum_code and a_code <= maximum_code))

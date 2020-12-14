@@ -28,7 +28,7 @@ create
 	make,
 	make_from_procedure
 
-feature -- Initialization
+feature {NONE} -- Initialization
 
 	make (a_characteristic: like characteristic)
 			-- Set `characteristic' to `a_characteristic'.
@@ -60,8 +60,16 @@ feature -- Access
 	characteristic: H
 			-- Internal property of the flyweight
 
-	procedure: PROCEDURE [ANY, TUPLE [like Current, FLYWEIGHT_CONTEXT [G]]]
+	procedure: detachable PROCEDURE [TUPLE [like Current, FLYWEIGHT_CONTEXT [G]]]
 			-- Procedure called by `draw'
+
+
+feature {FLYWEIGHT} -- Change Element
+
+	set_procedure (a_procedure: like procedure)
+		do
+			make_flyweight (a_procedure)
+		end
 
 feature -- Element change
 
@@ -79,14 +87,14 @@ feature -- Output
 	do_something (a_context: FLYWEIGHT_CONTEXT [G])
 			-- Call `procedure' if not Void otherwise do nothing.
 		do
-			if procedure /= Void then
-				procedure.call ([Current, a_context])
+			if attached procedure as l_procedure then
+				l_procedure.call (Current, a_context)
 			end
 		end
 
 feature {NONE} -- Basic operations
 
-	do_something_component 
+	do_something_component
 			-- Do nothing.
 			-- May be redefined in descendants.
 		do

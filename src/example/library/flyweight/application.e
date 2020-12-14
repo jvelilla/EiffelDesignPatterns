@@ -1,8 +1,8 @@
-indexing
+note
 
 	description:
 
-		"Application using the Flyweight library"
+	"Application using the Flyweight library"
 
 	author: "Karine Arnout"
 	copyright: "Copyright (c) 2002-2004, ETH Zurich, Switzerland"
@@ -27,7 +27,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Create flyweights and display them.
 			-- (Show typical use of the Flyweight library.)
 		local
@@ -39,11 +39,11 @@ feature {NONE} -- Initialization
 		do
 			create a_composite_flyweight.make (agent do_something)
 
-			create some_shared_flyweights.make (1, 4)
-			some_shared_flyweights.put (create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (2), 1)
-			some_shared_flyweights.put (create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (36), 2)
-			some_shared_flyweights.put (create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (5), 3)
-			some_shared_flyweights.put (create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (25), 4)
+				--create some_shared_flyweights.make (1, 4)
+			create some_shared_flyweights.make_from_array (<<create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (2),
+															create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (36),
+															create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (5),
+															create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (25)>>)
 			a_composite_flyweight.add_flyweights (some_shared_flyweights)
 
 			create red_context.make (create {EXTERNAL_PROPERTY}.make (red))
@@ -52,9 +52,8 @@ feature {NONE} -- Initialization
 			end
 			a_composite_flyweight.do_something (red_context)
 
-			create some_other_shared_flyweights.make (1, 2)
-			some_other_shared_flyweights.put (create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (18), 1)
-			some_other_shared_flyweights.put (create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (17), 2)
+				--create some_other_shared_flyweights.make (1, 2)
+			create some_other_shared_flyweights.make_from_array (<<create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (18),create {SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]}.make (17)>>)
 			a_composite_flyweight.insert_flyweights (some_other_shared_flyweights, 2)
 
 			debug
@@ -77,18 +76,18 @@ feature {NONE} -- Initialization
 
 feature -- Output
 
-	do_something (a_shared_flyweight: SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER]; 
-		a_context: FLYWEIGHT_CONTEXT [EXTERNAL_PROPERTY]) is
+	do_something (a_shared_flyweight: SHARED_FLYWEIGHT [EXTERNAL_PROPERTY, INTEGER];
+		a_context: FLYWEIGHT_CONTEXT [EXTERNAL_PROPERTY])
 			-- Draw `a_shared_flyweight' according to `a_context'.
 		require
 			a_shared_flyweight_not_void: a_shared_flyweight /= Void
 			a_context_not_void: a_context /= Void
-		do 
+		do
 			inspect a_shared_flyweight.external_characteristic (a_context).code
 			when beige then
 				io.put_string ("Bolt of diameter: ")
 				io.put_integer (a_shared_flyweight.characteristic)
-				io.put_string ("; color: beige%N") 
+				io.put_string ("; color: beige%N")
 			when black then
 				io.put_string ("Bolt of diameter: ")
 				io.put_integer (a_shared_flyweight.characteristic)

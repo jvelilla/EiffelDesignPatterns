@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -29,7 +29,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Create flyweights and display them.
 		local
 			a_composite_flyweight: COMPOSITE_FLYWEIGHT
@@ -40,11 +40,11 @@ feature {NONE} -- Initialization
 		do
 			create a_composite_flyweight.make
 
-			create some_shared_flyweights.make (1, 4)
-			some_shared_flyweights.put (create {SHARED_FLYWEIGHT}.make (2), 1)
-			some_shared_flyweights.put (create {SHARED_FLYWEIGHT}.make (36), 2)
-			some_shared_flyweights.put (create {SHARED_FLYWEIGHT}.make (5), 3)
-			some_shared_flyweights.put (create {SHARED_FLYWEIGHT}.make (25), 4)
+			create some_shared_flyweights.make_filled (create {SHARED_FLYWEIGHT}.make ({EXTERNAL_PROPERTY_CONSTANTS}.default_code), 1, 4)
+			some_shared_flyweights.force (create {SHARED_FLYWEIGHT}.make (2), 1)
+			some_shared_flyweights.force (create {SHARED_FLYWEIGHT}.make (36), 2)
+			some_shared_flyweights.force (create {SHARED_FLYWEIGHT}.make (5), 3)
+			some_shared_flyweights.force (create {SHARED_FLYWEIGHT}.make (25), 4)
 			a_composite_flyweight.add_flyweights (some_shared_flyweights)
 
 			create red_context.make (create {EXTERNAL_PROPERTY}.make (red))
@@ -53,9 +53,9 @@ feature {NONE} -- Initialization
 			end
 			a_composite_flyweight.draw (red_context)
 
-			create some_other_shared_flyweights.make (1, 2)
-			some_other_shared_flyweights.put (create {SHARED_FLYWEIGHT}.make (18), 1)
-			some_other_shared_flyweights.put (create {SHARED_FLYWEIGHT}.make (17), 2)
+			create some_other_shared_flyweights.make_filled (create {SHARED_FLYWEIGHT}.make ({EXTERNAL_PROPERTY_CONSTANTS}.default_code), 1, 2)
+			some_other_shared_flyweights.force (create {SHARED_FLYWEIGHT}.make (18), 1)
+			some_other_shared_flyweights.force (create {SHARED_FLYWEIGHT}.make (17), 2)
 			a_composite_flyweight.insert_flyweights (some_other_shared_flyweights, 2)
 
 			debug

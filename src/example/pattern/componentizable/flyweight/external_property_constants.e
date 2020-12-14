@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,7 +16,15 @@ class EXTERNAL_PROPERTY_CONSTANTS
 
 feature -- Access
 
-	Beige, Black, Blue, Default_code, Green, Grey, Red, White, Yellow: INTEGER is unique
+	Beige: INTEGER = 1
+	Black: INTEGER = 2
+	Blue: INTEGER = 3
+	Default_code: INTEGER = 4
+	Green: INTEGER = 5
+	Grey: INTEGER = 6
+	Red : INTEGER = 7
+	White: INTEGER = 8
+	Yellow: INTEGER = 9
 			-- Possible external properties for a flyweight
 
 end

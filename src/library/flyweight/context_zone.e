@@ -19,7 +19,7 @@ create {FLYWEIGHT_CONTEXT}
 
 feature {FLYWEIGHT_CONTEXT} -- Initialization
 
-	make (a_characteristic: like external_characteristic; a_size: like size) 
+	make (a_characteristic: like external_characteristic; a_size: like size)
 			-- Set `external_characteristic' to `a_characteristic'.
 			-- Set `size' to `a_size'.
 		require
@@ -43,7 +43,7 @@ feature -- Access
 
 feature {ANY} -- Element change
 
-	resize (a_delta: like size) is
+	resize (a_delta: like size) 
 			-- Add `a_delta' to `size'.
 		require
 			adjusted_size_is_positive: size + a_delta >= 0

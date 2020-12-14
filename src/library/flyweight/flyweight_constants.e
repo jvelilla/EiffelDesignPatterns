@@ -15,17 +15,17 @@ deferred class FLYWEIGHT_CONSTANTS
 
 feature -- Access
 
-	Default_code: INTEGER is 1
+	Default_code: INTEGER = 1
 			-- Code of default item for a flyweight
 
 feature -- Contract support
 
-	Minimum_code: INTEGER is
+	Minimum_code: INTEGER
 			-- Minimum value of item code for a flyweight
 		deferred
 		end
 
-	Maximum_code: INTEGER is
+	Maximum_code: INTEGER 
 			-- Maximum value of item code for a flyweight
 		deferred
 		end

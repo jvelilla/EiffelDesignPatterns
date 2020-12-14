@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -29,7 +29,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_code: like code) is
+	make (a_code: like code)
 			-- Set `code' to `a_code'.
 		require
 			a_code_is_valid: a_code >= beige and a_code <= yellow
@@ -46,7 +46,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_valid: BOOLEAN is
+	is_valid: BOOLEAN
 			-- Is color valid?
 		do
 			Result := (code >= beige and code <= yellow)

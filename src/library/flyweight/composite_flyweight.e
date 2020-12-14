@@ -42,9 +42,9 @@ create
 
 	make
 
-feature -- Initialization
+feature {NONE} -- Initialization
 
-	make (a_procedure: like procedure) is
+	make (a_procedure: attached like procedure)
 			-- Set `procedure' to `a_procedure'.
 			-- Initialize context and pool of instantiated flyweights.
 		do
@@ -54,24 +54,26 @@ feature -- Initialization
 			create flyweight_pool.make (flyweight_pool_count)
 		ensure then
 			context_external_characteristic_set:
-				context.external_characteristic.code = feature {FLYWEIGHT_CONSTANTS}.default_code
+				context.external_characteristic.code = {FLYWEIGHT_CONSTANTS}.default_code
 		end
 
 feature -- Access
 
-	procedure: PROCEDURE [ANY, TUPLE [like item, FLYWEIGHT_CONTEXT [G]]]
+	procedure: detachable PROCEDURE [ TUPLE [like item, FLYWEIGHT_CONTEXT [G]]]
 			-- Procedure to be called on each shared flyweight
 
-	item: SHARED_FLYWEIGHT [G, H] is
+	item: SHARED_FLYWEIGHT [G, H]
 			-- Current item
 		do
-			Result ?= Precursor {COMPOSITE}
+			check attached {SHARED_FLYWEIGHT [G, H]} Precursor {COMPOSITE} as l_result then
+				Result := l_result
+			end
 		end
 
 feature -- Element change
 
 	set_external_characteristic (a_characteristic: like external_characteristic;
-								a_context: FLYWEIGHT_CONTEXT [G]) is
+								a_context: FLYWEIGHT_CONTEXT [G])
 			-- Set external characteristic of `a_context' to `a_characteristic'
 			-- (i.e. for all flyweights of the composite).
 		do
@@ -81,7 +83,7 @@ feature -- Element change
 		end
 
 	set_external_characteristic_range (a_characteristic: like external_characteristic;
-										lower, upper: INTEGER) is
+										lower, upper: INTEGER)
 			-- Set external characteristic of current context to `a_characteristic'
 			-- for `lower' to `upper' flyweights.
 		require
@@ -93,7 +95,7 @@ feature -- Element change
 			context.set_external_characteristic (a_characteristic, upper - lower + 1)
 		end
 
-	set_context (a_context: like context) is
+	set_context (a_context: like context)
 			-- Set `context' to `a_context'.
 		require
 			a_context_not_void: a_context /= Void
@@ -103,24 +105,27 @@ feature -- Element change
 			context_set: context = a_context
 		end
 
-	add_flyweights (some_flyweights: ARRAY [like item]) is
+	add_flyweights (some_flyweights: ARRAY [like item])
 			-- Extend current composite with `some_flyweights'.
 		require
 			some_flyweights_not_void: some_flyweights /= Void
-			no_void_flyweight: not some_flyweights.has (Void)
+--			no_void_flyweight: not some_flyweights.has (Void)
 			some_flyweights_not_empty: not some_flyweights.is_empty
 		local
 			i: INTEGER
+			l_flyweights: like item
 		do
 			from i := 1 until i > some_flyweights.count loop
-				add_flyweight (some_flyweights @ i)
+				l_flyweights := some_flyweights @ i
+				l_flyweights.set_procedure (procedure)
+				add_flyweight (l_flyweights)
 				i := i + 1
 			end
 		ensure
 			flyweight_count_increased: flyweights.count = old flyweights.count + some_flyweights.count
 		end
 
-	add_flyweight (a_flyweight: like item) is
+	add_flyweight (a_flyweight: like item)
 			-- Add `a_flyweight' to composite and update current context.
 			--|Extend `flyweights'.
 		do
@@ -132,12 +137,12 @@ feature -- Element change
 			flyweights.extend (flyweight_factory.new_with_args ([a_flyweight.characteristic, procedure]))
 		end
 
-	insert_flyweights (some_flyweights: ARRAY [like item]; an_index: INTEGER) is
+	insert_flyweights (some_flyweights: ARRAY [like item]; an_index: INTEGER)
 			-- Insert `some_flyweights' in current composite flyweight
 			-- starting from `an_index'.
 		require
 			some_flyweights_not_void: some_flyweights /= Void
-			no_void_flyweight: not some_flyweights.has (Void)
+--			no_void_flyweight: not some_flyweights.has (Void)
 			some_flyweights_not_empty: not some_flyweights.is_empty
 			an_index_is_positive: an_index >= 0
 		local
@@ -167,7 +172,7 @@ feature -- Element change
 
 feature -- Removal
 
-	remove_flyweight (a_flyweight: like item) is
+	remove_flyweight (a_flyweight: like item)
 			-- Remove `a_flyweight' from composite and update current context.
 			--|Extend `flyweights'.
 		do
@@ -180,7 +185,7 @@ feature -- Removal
 
 feature -- Output
 
-	do_something (a_context: FLYWEIGHT_CONTEXT [G]) is
+	do_something (a_context: detachable FLYWEIGHT_CONTEXT [G])
 			-- Draw current according to `a_context'.
 		require else
 			a_context_may_be_void: a_context = Void and then context /= Void
@@ -216,7 +221,7 @@ feature -- Access
 
 feature {NONE} -- Constant
 
-	Flyweight_pool_count: INTEGER is 128
+	Flyweight_pool_count: INTEGER = 128
 			-- Number of flyweights that can be created
 
 feature {NONE} -- Implementation
@@ -224,7 +229,7 @@ feature {NONE} -- Implementation
 	flyweights: LINKED_LIST [like item]
 			-- Parts of composite flyweight
 
-	flyweight_factory: FACTORY [like item] is
+	flyweight_factory: FACTORY [like item]
 			-- Factory of bolts
 		do
 			create Result.make (agent new_flyweight)
@@ -232,31 +237,33 @@ feature {NONE} -- Implementation
 			flyweight_factory_created: Result /= Void
 		end
 
-	new_flyweight (a_characteristic: H; a_procedure: like procedure): like item is
+	new_flyweight (a_characteristic: H; a_procedure: like procedure): like item
 			-- New flyweight with characteristic `a_characteristic'
 		require
 			a_characteristic_not_void: a_characteristic /= Void
 			a_procedure_not_void: a_procedure /= Void
+		local
+			l_result: like item
 		do
-			if not flyweight_pool.has (a_characteristic) then
-				create Result.make_from_procedure (a_characteristic, a_procedure)
-				flyweight_pool.put (Result, a_characteristic)
-			else
-				Result := flyweight_pool @ a_characteristic
+			l_result := flyweight_pool @ a_characteristic
+			if l_result = Void then
+				create l_result.make_from_procedure (a_characteristic, a_procedure)
+				flyweight_pool.put (l_result, a_characteristic)
 			end
+			Result := l_result
 		ensure
 			flyweight_not_void: Result /= Void
 			flyweight_characteristic_set: Result.characteristic = a_characteristic
 		end
 
-	default_external_characteristic: G is
+	default_external_characteristic: G
 			-- Default external characteristic
 			--|Should be effected as a once function.
 		do
-			create Result.make (feature {FLYWEIGHT_CONSTANTS}.default_code)
+			create Result.make ({FLYWEIGHT_CONSTANTS}.default_code)
 		ensure
 			default_external_characteristic_not_void: Result /= Void
-			definition: Result.code = feature {FLYWEIGHT_CONSTANTS}.default_code
+			definition: Result.code = {FLYWEIGHT_CONSTANTS}.default_code
 		end
 
 	flyweight_pool: HASH_TABLE [like item, H]

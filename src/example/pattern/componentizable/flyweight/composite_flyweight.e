@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -45,32 +45,34 @@ create
 
 	make
 
-feature -- Initialization
+feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize context and pool of instantiated flyweights.
 		do
 			Precursor {COMPOSITE}
 			create context.make (default_external_characteristic)
-			create flyweight_pool.make (1, flyweight_pool_count)
+			create flyweight_pool.make (flyweight_pool_count)
 		ensure then
-			context_external_characteristic_set: 
+			context_external_characteristic_set:
 				context.external_characteristic = default_external_characteristic
 		end
 
 feature -- Access
 
-	item: SHARED_FLYWEIGHT is
+	item: SHARED_FLYWEIGHT
 			-- Current item
 		do
-			Result ?= Precursor {COMPOSITE}
+			check attached {SHARED_FLYWEIGHT} Precursor {COMPOSITE} as l_result then
+				Result := l_result
+			end
 		end
 
 feature -- Element change
 
 	set_external_characteristic (a_characteristic: like external_characteristic;
-									a_context: FLYWEIGHT_CONTEXT) is
-			-- Set external characteristic of `a_context' to `a_characteristic' 
+									a_context: FLYWEIGHT_CONTEXT)
+			-- Set external characteristic of `a_context' to `a_characteristic'
 			-- (i.e. for all flyweights of the composite).
 		do
 			Precursor {FLYWEIGHT} (a_characteristic, a_context)
@@ -79,7 +81,7 @@ feature -- Element change
 		end
 
 	set_external_characteristic_range (a_characteristic: like external_characteristic;
-										lower, upper: INTEGER) is
+										lower, upper: INTEGER)
 			-- Set external characteristic of current context to `a_characteristic'
 			-- for `lower' to `upper' flyweights.
 		require
@@ -91,7 +93,7 @@ feature -- Element change
 			context.set_external_characteristic (a_characteristic, upper - lower + 1)
 		end
 
-	set_context (a_context: like context) is
+	set_context (a_context: like context)
 			-- Set `context' to `a_context'.
 		require
 			a_context_not_void: a_context /= Void
@@ -101,11 +103,11 @@ feature -- Element change
 			context_set: context = a_context
 		end
 
-	add_flyweights (some_flyweights: ARRAY [like item]) is
+	add_flyweights (some_flyweights: ARRAY [like item])
 			-- Extend current composite with `some_flyweights'.
 		require
 			some_flyweights_not_void: some_flyweights /= Void
-			no_void_flyweight: not some_flyweights.has (Void)
+--			no_void_flyweight: not some_flyweights.has (Void)
 			some_flyweights_not_empty: not some_flyweights.is_empty
 		local
 			i: INTEGER
@@ -122,7 +124,7 @@ feature -- Element change
 			flyweight_count_increased: flyweights.count = old flyweights.count + some_flyweights.count
 		end
 
-	add_flyweight (a_flyweight: like item) is
+	add_flyweight (a_flyweight: like item)
 			-- Add `a_flyweight' to composite and update current context.
 			--|Extend `flyweights'.
 		do
@@ -134,12 +136,12 @@ feature -- Element change
 			flyweights.extend (flyweight_factory.new_with_args ([a_flyweight.characteristic]))
 		end
 
-	insert_flyweights (some_flyweights: ARRAY [like item]; an_index: INTEGER) is
+	insert_flyweights (some_flyweights: ARRAY [like item]; an_index: INTEGER)
 			-- Insert `some_flyweights' in current composite flyweight
 			-- starting from `an_index'.
-		require 
+		require
 			some_flyweights_not_void: some_flyweights /= Void
-			no_void_flyweight: not some_flyweights.has (Void)
+--			no_void_flyweight: not some_flyweights.has (Void)
 			some_flyweights_not_empty: not some_flyweights.is_empty
 			an_index_is_positive: an_index >= 0
 		local
@@ -169,7 +171,7 @@ feature -- Element change
 
 feature -- Removal
 
-	remove_flyweight (a_flyweight: like item) is
+	remove_flyweight (a_flyweight: like item)
 			-- Remove `a_flyweight' from composite and update current context.
 		do
 			flyweights.search (a_flyweight)
@@ -181,7 +183,7 @@ feature -- Removal
 
 feature -- Output
 
-	draw (a_context: FLYWEIGHT_CONTEXT) is
+	draw (a_context: detachable FLYWEIGHT_CONTEXT)
 			-- Draw current according to `a_context'.
 		require else
 			a_context_may_be_void: a_context = Void and then context /= Void
@@ -217,12 +219,12 @@ feature -- Access
 
 feature {NONE} -- Constant
 
-	Flyweight_pool_count: INTEGER is 128
+	Flyweight_pool_count: INTEGER = 128
 			-- Number of flyweights that can be created
 
 feature {NONE} -- Implementation
 
-	flyweight_factory: FACTORY [SHARED_FLYWEIGHT] is
+	flyweight_factory: FACTORY [SHARED_FLYWEIGHT]
 			-- Factory of flyweight
 		once
 			create Result.make (agent new_flyweight)
@@ -230,24 +232,27 @@ feature {NONE} -- Implementation
 			flyweight_factory_created: Result /= Void
 		end
 
-	new_flyweight (a_characteristic: INTEGER): like item is
+	new_flyweight (a_characteristic: INTEGER): like item
 			-- New flyweight with diameter `a_diameter'
 		require
-			a_characteristic_above_minimum: a_characteristic >= feature {SHARED_FLYWEIGHT}.minimum_characteristic
-			a_characteristic_under_maximum: a_characteristic <= feature {SHARED_FLYWEIGHT}.maximum_characteristic
+			a_characteristic_above_minimum: a_characteristic >= {SHARED_FLYWEIGHT}.minimum_characteristic
+			a_characteristic_under_maximum: a_characteristic <= {SHARED_FLYWEIGHT}.maximum_characteristic
+		local
+			l_result: like item
 		do
-			if (flyweight_pool @ a_characteristic) = Void then
-				create Result.make (a_characteristic)
-				flyweight_pool.put (Result, a_characteristic)
-			else
-				Result := flyweight_pool @ a_characteristic
+
+			l_result := flyweight_pool @ a_characteristic
+			if l_result = Void then
+				create l_result.make (a_characteristic)
+				flyweight_pool.put (l_result, a_characteristic)
 			end
+			Result := l_result
 		ensure
 			flyweight_not_void: Result /= Void
 			flyweight_diameter_set: Result.characteristic = a_characteristic
 		end
 
-	default_external_characteristic: EXTERNAL_PROPERTY is
+	default_external_characteristic: EXTERNAL_PROPERTY
 			-- Default external_characteristic
 		once
 			create Result.make (default_code)
@@ -255,13 +260,13 @@ feature {NONE} -- Implementation
 			default_external_characteristic_not_void: Result /= Void
 		end
 
-	flyweight_pool: ARRAY [like item]
+	flyweight_pool: HASH_TABLE [like item, INTEGER]
 			-- Pool of instantiated flyweights
 
 invariant
 
 	context_not_void: context /= Void
 	flyweight_pool_not_void: flyweight_pool /= Void
-	consistent_flyweight_pool: flyweight_pool.count = flyweight_pool_count
+--	consistent_flyweight_pool: flyweight_pool.capacity - 1 = flyweight_pool_count
 
 end

@@ -91,19 +91,14 @@ feature -- Element change
 	size: INTEGER
 			-- Total size of the context (in number of flyweights)
 		do
-			from
-				external_characteristic_zones.start
-			until
-				external_characteristic_zones.after
-			loop
-				Result := Result + external_characteristic_zones.item.size
-				external_characteristic_zones.forth
+			across external_characteristic_zones as ic loop
+				Result := Result + ic.item.size
 			end
 		end
 
 feature -- Traversal
 
-	start is
+	start
 			-- Start a traversal.
 			--|Start `external_characteristic_zones'.
 			--|Set `index' to 1.
@@ -115,7 +110,7 @@ feature -- Traversal
 			index_equals_one: index = 1
 		end
 
-	forth is
+	forth
 			-- Advance to the next flyweight.
 		do
 			move (1)
@@ -164,7 +159,7 @@ feature {NONE} -- Implementation
 	index: INTEGER
 			-- Position in external_characteristic zone during traversals
 
-	new_zone (a_characteristic: G; a_size: INTEGER): CONTEXT_ZONE [G] 
+	new_zone (a_characteristic: G; a_size: INTEGER): CONTEXT_ZONE [G]
 			-- New external characteristic zone with `a_characteristic' and size `a_size'
 		require
 			a_characteristic_not_void: a_characteristic /= Void
@@ -176,7 +171,7 @@ feature {NONE} -- Implementation
 invariant
 
 	external_characteristic_zones_not_void: external_characteristic_zones /= Void
-	no_void_external_characteristic_zone: not external_characteristic_zones.has (Void)
+--	no_void_external_characteristic_zone: not external_characteristic_zones.has (Void)
 	external_characteristic_zones_not_empty: not external_characteristic_zones.is_empty
 	index_positive: index >= 0
 

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,7 +20,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_characteristic: like external_characteristic) is
+	make (a_characteristic: like external_characteristic)
 			-- Create a zone with `a_characteristic'.
 		require
 			a_characteristic_not_void: a_characteristic /= Void
@@ -34,17 +34,17 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	external_characteristic: EXTERNAL_PROPERTY is
+	external_characteristic: EXTERNAL_PROPERTY
 			-- External characteristic of current zone
 		do
-			Result := external_characteristic_zones.item.external_characteristic 
+			Result := external_characteristic_zones.item.external_characteristic
 		ensure
 			definition: Result = external_characteristic_zones.item.external_characteristic
 		end
 
 feature -- Element change
 
-	insert (a_number: INTEGER) is
+	insert (a_number: INTEGER)
 			-- Insert `a_number' of flyweights at the current place in the composite.
 		require
 			a_number_strictly_positive: a_number > 0
@@ -54,14 +54,14 @@ feature -- Element change
 			inserted: external_characteristic_zones.item.size = old external_characteristic_zones.item.size + a_number
 		end
 
-	set_external_characteristic (a_characteristic: like external_characteristic; a_number: INTEGER) is
+	set_external_characteristic (a_characteristic: like external_characteristic; a_number: INTEGER)
 			-- Change the external characteristic for `a_number' of flyweights
 			-- from current position in the context.
 		require
 			a_characteristic_not_void: a_characteristic /= Void
 			a_number_strictly_positive: a_number > 0
 		local
-			right_size: INTEGER 
+			right_size: INTEGER
 			old_external_characteristic: EXTERNAL_PROPERTY
 		do
 					-- Space left at the right of the new zone
@@ -87,22 +87,17 @@ feature -- Element change
 			start
 		end
 
-	size: INTEGER is
+	size: INTEGER
 			-- Total size of the context in number of flyweights
 		do
-			from
-				external_characteristic_zones.start
-			until
-				external_characteristic_zones.after
-			loop
-				Result := Result + external_characteristic_zones.item.size
-				external_characteristic_zones.forth
+			across external_characteristic_zones as ic loop
+				Result := Result + ic.item.size
 			end
 		end
 
 feature -- Traversal
 
-	start is
+	start
 			-- Start a traversal.
 			--|Set `zone_number' to 1.
 			--|Set `index' to 1.
@@ -111,16 +106,16 @@ feature -- Traversal
 			index := 1
 		ensure
 			zone_number_equals_one: zone_number = 1
-			index_equals_one: index = 1 
+			index_equals_one: index = 1
 		end
 
-	forth is
+	forth
 			-- Advance to the next flyweight.
 		do
 			move (1)
 		end
 
-	move (a_step: INTEGER) is
+	move (a_step: INTEGER)
 			-- Move index `a_step' times.
 		require else
 			a_step_positive: a_step >= 0
@@ -129,9 +124,9 @@ feature -- Traversal
 				index := index + a_step
 			until
 				zone_number = external_characteristic_zones.count
-				or else index <= external_characteristic_zones.item.size 
+				or else index <= external_characteristic_zones.item.size
 			loop
-				index := index - external_characteristic_zones.item.size 
+				index := index - external_characteristic_zones.item.size
 				set_zone_number (zone_number + 1)
 			end
 		end
@@ -141,7 +136,7 @@ feature {NONE} -- Implementation
 	external_characteristic_zones: LINKED_LIST [CONTEXT_ZONE]
 			-- Zones of same external characteristic in the composite
 
-	zone_number: INTEGER is
+	zone_number: INTEGER
 			-- Number of the current zone in `external_characteristic_zones'
 		do
 			Result := external_characteristic_zones.index
@@ -149,7 +144,7 @@ feature {NONE} -- Implementation
 			definition: Result = external_characteristic_zones.index
 		end
 
-	set_zone_number (a_zone_number: like zone_number) is
+	set_zone_number (a_zone_number: like zone_number)
 			-- Set zone number with `a_zone_number'.
 		require
 			a_zone_number_is_valid: external_characteristic_zones.valid_index (a_zone_number)
@@ -162,7 +157,7 @@ feature {NONE} -- Implementation
 	index: INTEGER
 			-- Position in external_characteristic zone during traversals
 
-	new_zone (a_characteristic: like external_characteristic; a_size: INTEGER): CONTEXT_ZONE is
+	new_zone (a_characteristic: like external_characteristic; a_size: INTEGER): CONTEXT_ZONE
 			-- New external_characteristic zone with `a_characteristic' and size `a_size'
 		require
 			a_characteristic_not_void: a_characteristic /= Void
@@ -174,7 +169,7 @@ feature {NONE} -- Implementation
 invariant
 
 	external_characteristic_zones_not_void: external_characteristic_zones /= Void
-	no_void_external_characteristic_zone: not external_characteristic_zones.has (Void)
+--	no_void_external_characteristic_zone: not external_characteristic_zones.has (Void)
 	external_characteristic_zones_not_empty: not external_characteristic_zones.is_empty
 	index_positive: index >= 0
 

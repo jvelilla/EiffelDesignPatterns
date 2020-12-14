@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -20,33 +20,33 @@ inherit
 
 feature -- External property codes
 
-	Beige: INTEGER is 2
+	Beige: INTEGER = 2
 			-- Beige color
 
-	Black: INTEGER is 3
+	Black: INTEGER = 3
 			-- Black color
 
-	Blue: INTEGER is 4
+	Blue: INTEGER = 4
 			-- Blue color
 
-	Green: INTEGER is 5
+	Green: INTEGER = 5
 			-- Green color
 
-	Grey: INTEGER is 6
+	Grey: INTEGER = 6
 			-- Grey color
 
-	Red: INTEGER is 7
+	Red: INTEGER = 7
 			-- Red color
 
-	White: INTEGER is 8
+	White: INTEGER = 8
 			-- White color
 
-	Yellow: INTEGER is 9
+	Yellow: INTEGER = 9
 			-- Yellow color
 
 feature -- Contract support
 
-	Minimum_code: INTEGER is 
+	Minimum_code: INTEGER
 			-- Minimum external property code for an instance of MY_SHARED_FLYWEIGHT
 		once
 			Result := beige
@@ -54,7 +54,7 @@ feature -- Contract support
 			beige_code: Result = beige
 		end
 
-	Maximum_code: INTEGER is
+	Maximum_code: INTEGER
 			-- Maximum external property code for an instance of MY_SHARED_FLYWEIGHT
 		once
 			Result := yellow

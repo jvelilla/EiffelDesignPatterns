@@ -31,6 +31,7 @@ feature {NONE} -- Initialization
 			-- Initialize component parts.
 		do
 			create parts.make
+			parts.compare_objects
 		end
 
 	make_from_components (some_components: like parts)

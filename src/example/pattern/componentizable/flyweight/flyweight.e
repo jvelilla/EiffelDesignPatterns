@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,7 +20,7 @@ inherit
 
 feature -- Access
 
-	external_characteristic (a_context: FLYWEIGHT_CONTEXT): EXTERNAL_PROPERTY is
+	external_characteristic (a_context: FLYWEIGHT_CONTEXT): EXTERNAL_PROPERTY
 			-- External characteristic of flyweight in `a_context'
 		require
 			a_context_not_void: a_context /= Void
@@ -33,7 +33,7 @@ feature -- Access
 feature -- Element change
 
 	set_external_characteristic (a_characteristic: like external_characteristic;
-									a_context: FLYWEIGHT_CONTEXT) is
+									a_context: FLYWEIGHT_CONTEXT) 
 			-- Set external characteristic of `a_context' to `a_characteristic'.
 		require
 			a_characteristic_not_void: a_characteristic /= Void
@@ -47,7 +47,7 @@ feature -- Element change
 
 feature -- Output
 
-	draw (a_context: FLYWEIGHT_CONTEXT) is
+	draw (a_context: detachable FLYWEIGHT_CONTEXT)
 			-- Draw flyweight according to `a_context'.
 		require
 			a_context_not_void: a_context /= Void
@@ -56,7 +56,7 @@ feature -- Output
 
 feature -- Basic operation
 
-	do_something is
+	do_something
 			-- Do nothing.
 			-- May be redefined in descendants.
 		do
