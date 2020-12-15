@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -35,7 +35,7 @@ feature -- Status report
 
 feature {NONE} -- Implementation
 
-	do_handle is
+	do_handle 
 			-- Handle request.
 			-- (Not useful because `can_handle'
 			-- will never be satisfied.)

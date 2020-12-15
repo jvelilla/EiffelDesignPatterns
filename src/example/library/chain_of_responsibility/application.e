@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -12,13 +12,13 @@ indexing
 
 class APPLICATION
 
-create 
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Create a chain of responsibility and handle a request.
 		local
 			handler_1, handler_2: INTERMEDIATE_HANDLER [REQUEST]

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -24,22 +24,22 @@ create
 
 feature -- Status report
 
-	can_handle (a_request: G): BOOLEAN is
+	can_handle (a_request: G): BOOLEAN
 			-- Can current handle `a_request'?
 		do
-			Result := (a_request /= Void)
+			Result := a_request /= Void
 		ensure then
 			a_request_not_void: Result implies a_request /= Void
 		end
 
 feature {NONE} -- Implementation
 
-	do_handle (a_request: G) is
+	do_handle (a_request: G) 
 			-- Handle `a_request'.
 		do
 			debug
 				io.put_string ("Handle request (")
-				io.put_string (generating_type)
+				io.put_string_32 (generating_type.name_32)
 				io.put_string (").%N")
 			end
 			-- Do something.

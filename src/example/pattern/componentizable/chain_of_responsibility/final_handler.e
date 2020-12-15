@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -26,7 +26,7 @@ create
 
 feature -- Status report
 
-	can_handle: BOOLEAN is
+	can_handle: BOOLEAN
 			-- Can current handle the request?
 		once
 			Result := True
@@ -36,12 +36,12 @@ feature -- Status report
 
 feature {NONE} -- Implementation
 
-	do_handle is
+	do_handle 
 			-- Handle request.
 		do
 			debug
 				io.put_string ("Handle request (")
-				io.put_string (generating_type)
+				io.put_string_32 (generating_type.name_32)
 				io.put_string (").%N")
 			end
 			-- Do something.
