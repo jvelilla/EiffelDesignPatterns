@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -23,13 +23,13 @@ inherit
 
 	ANY
 
-create 
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Create a command and execute it.
 			-- Usee the undo/redo mechanism.
 		local

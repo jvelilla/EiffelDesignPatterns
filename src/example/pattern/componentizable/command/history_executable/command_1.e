@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -24,7 +24,7 @@ create
 
 feature {HISTORY} -- Command pattern
 
-	execute (args: TUPLE) is
+	execute (args: TUPLE)
 			-- Execute command with `args'.
 		do
 			debug
@@ -34,7 +34,7 @@ feature {HISTORY} -- Command pattern
 
 feature {HISTORY} -- Undo
 
-	undo (args: TUPLE) is
+	undo (args: TUPLE)
 			-- Undo last action.
 		do
 			debug
@@ -44,7 +44,7 @@ feature {HISTORY} -- Undo
 
 feature {HISTORY} -- Redo
 
-	redo (args: TUPLE) is
+	redo (args: TUPLE) 
 			-- Redo last undone action.
 		do
 			debug

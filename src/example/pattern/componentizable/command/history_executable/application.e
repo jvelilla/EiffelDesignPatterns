@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -14,13 +14,13 @@ indexing
 
 class APPLICATION
 
-create 
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Create a command and execute it.
 			-- Usee the undo/redo mechanism.
 		local
@@ -56,7 +56,7 @@ feature {NONE} -- Initialization
 
 feature {NONE} -- Implementation
 
-	history: HISTORY is
+	history: HISTORY 
 			-- History of executed commands
 		once
 			create Result.make

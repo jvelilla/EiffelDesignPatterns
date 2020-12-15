@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -25,7 +25,7 @@ inherit
 
 feature {NONE} -- Initialization
 
-	make (a_value: like is_once_command) is
+	make (a_value: like is_once_command)
 			-- Set `is_once_command' to `a_value'.
 		do
 			is_once_command := a_value
@@ -40,18 +40,18 @@ feature -- Status report
 
 feature -- Command pattern
 
-	execute (args: TUPLE) is
+	execute (args: TUPLE)
 			-- Execute command with `args'.
 		require
 			args_not_void: args /= Void
 		deferred
 		end
 
-	register_to_history (args: TUPLE) is
+	register_to_history (args: TUPLE)
 			-- Register command with `args' to the shared history.
 		do
 			if is_once_command and then history.has (Current) then
-				history.extend (clone (Current), args)
+				history.extend (Current.twin, args)
 			else
 				history.extend (Current, args)
 			end
@@ -59,7 +59,7 @@ feature -- Command pattern
 
 feature {HISTORY} -- Undo
 
-	undo (args: TUPLE) is
+	undo (args: TUPLE)
 			-- Undo last action.
 		require
 			args_not_void: args /= Void
@@ -68,7 +68,7 @@ feature {HISTORY} -- Undo
 
 feature {HISTORY} -- Redo
 
-	redo (args: TUPLE) is
+	redo (args: TUPLE)
 			-- Redo last undone action.
 		require
 			args_not_void: args /= Void
