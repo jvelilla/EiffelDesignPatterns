@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -20,8 +20,6 @@ inherit
 	COMPONENT [COMMAND]
 		rename
 			do_something as execute
-		redefine
-			execute
 		end
 
 create
@@ -31,7 +29,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (an_action: like action; a_value: like is_once_command) is
+	make (an_action: like action; a_value: like is_once_command)
 			-- Set `action' to `an_action'.
 			-- Set `is_once_command' to `a_value'.
 		require
@@ -44,8 +42,8 @@ feature {NONE} -- Initialization
 			is_once_command_set: is_once_command = a_value
 		end
 
-	make_with_undo (an_action: like action; 
-		an_undo_action: like undo_action; a_value: like is_once_command) is
+	make_with_undo (an_action: like action;
+		an_undo_action: like undo_action; a_value: like is_once_command)
 			-- Set `action' to `an_action'.
 			-- Set `undo_action' to `an_undo_action'.
 			-- Set `is_once_command' to `a_value'.
@@ -64,11 +62,11 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	action: PROCEDURE [ANY, TUPLE]
+	action: PROCEDURE [TUPLE]
 			-- Action to be executed
 
-	undo_action: PROCEDURE [ANY, TUPLE]
-			-- Action to be executed to undo 
+	undo_action: detachable PROCEDURE [TUPLE]
+			-- Action to be executed to undo
 			-- the effects of calling `action'
 
 feature -- Status report
@@ -76,7 +74,7 @@ feature -- Status report
 	is_once_command: BOOLEAN
 			-- Can this command be executed only once?
 
-	valid_args (args: TUPLE): BOOLEAN is
+	valid_args (args: TUPLE): BOOLEAN
 			-- Are `args' valid arguments for `execute_with_args' and `redo'?
 		do
 			Result := action.valid_operands ([args])
@@ -84,7 +82,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_undo_action (an_action: like undo_action) is
+	set_undo_action (an_action: like undo_action)
 			-- Set `undo_action' to `an_action'.
 		do
 			undo_action := an_action
@@ -94,8 +92,8 @@ feature -- Status setting
 
 feature {HISTORY} -- Command pattern
 
-	execute is
-			-- Call `action' 
+	execute
+			-- Call `action'
 			-- with an empty tuple as arguments.
 		do
 			if action.valid_operands ([[]]) then
@@ -103,36 +101,38 @@ feature {HISTORY} -- Command pattern
 			end
 		end
 
-	execute_with_args (args: TUPLE) is
+	execute_with_args (args: TUPLE)
 			-- Call `action' with `args'.
 		require
 			args_not_void: args /= Void
-			valid_args: valid_args ([args])
+			valid_args: valid_args (args)
 		do
 			action.call ([args])
 		end
 
 feature {HISTORY} -- Undo
 
-	undo (args: TUPLE) is
+	undo (args: TUPLE)
 			-- Undo last action.
 			-- (Call `undo_action' with `args').
 		require
 			undo_action_not_void: undo_action /= Void
 			args_not_void: args /= Void
-			valid_args: undo_action.valid_operands ([args])
+			valid_args: attached undo_action as l_undo_action implies l_undo_action.valid_operands ([args])
 		do
-			undo_action.call ([args])
+			check attached  undo_action as l_undo_action then
+				l_undo_action.call ([args])
+			end
 		end
 
 feature {HISTORY} -- Redo
 
-	redo (args: TUPLE) is
+	redo (args: TUPLE)
 			-- Redo last undone action.
 			-- (Call `action' with `args'.)
 		require
 			args_not_void: args /= Void
-			valid_args: valid_args ([args])
+			valid_args: valid_args (args)
 		do
 			action.call ([args])
 		end

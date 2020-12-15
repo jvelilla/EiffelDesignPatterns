@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -12,13 +12,13 @@ indexing
 
 class APPLICATION
 
-create 
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Create a command and execute it.
 			-- Use the undo/redo mechanism.
 		local
@@ -57,7 +57,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic operations
 
-	do_something (args: TUPLE) is
+	do_something (args: TUPLE) 
 			-- Do something with `args'.
 		do
 			-- Do something.
@@ -66,7 +66,7 @@ feature -- Basic operations
 			end
 		end
 
-	undo_something (args: TUPLE) is
+	undo_something (args: TUPLE)
 			-- Undo what `do_something' does.
 		do
 			-- Undo what `do_something' does.

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize history.
 			--| Initialize `commands' and `arguments'.
 		do
@@ -29,31 +29,31 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	can_undo: BOOLEAN is
+	can_undo: BOOLEAN
 			-- Can last command be undone?
 		do
-			Result := (not commands.is_empty and not commands.off
-						and then commands.item.undo_action /= Void)
+			Result := not commands.is_empty and not commands.off
+						and then commands.item.undo_action /= Void
 		ensure
 			definition: Result = (not commands.is_empty and not commands.off
 								and then commands.item.undo_action /= Void)
 		end
 
-	can_redo: BOOLEAN is
+	can_redo: BOOLEAN
 			-- Can last command be executed again?
 		do
-			Result := (not commands.is_empty and then 
-						(commands.before or else 
-						commands.index <= commands.count - 1))
+			Result := not commands.is_empty and then
+						(commands.before or else
+						commands.index <= commands.count - 1)
 		ensure
-			definition: Result = (not commands.is_empty and then 
-									(commands.before or else 
+			definition: Result = (not commands.is_empty and then
+									(commands.before or else
 									commands.index <= commands.count - 1))
 		end
 
 feature -- Command pattern
 
-	execute (a_command: COMMAND; args: TUPLE) is
+	execute (a_command: COMMAND; args: TUPLE)
 			-- Execute `a_command'.
 		require
 			a_command_not_void: a_command /= Void
@@ -62,7 +62,7 @@ feature -- Command pattern
 			new_command: COMMAND
 		do
 			if a_command.is_once_command then
-				new_command := clone (a_command)
+				new_command := a_command.twin
 				new_command.execute_with_args (args)
 				extend (new_command, args)
 			else
@@ -80,8 +80,8 @@ feature -- Command pattern
 		end
 
 feature -- Undo/Redo
-			  
-	undo is
+
+	undo
 			-- Undo last command.
 			--| Move cursor of `commands' and `arguments'
 			--| one step backward.
@@ -99,7 +99,7 @@ feature -- Undo/Redo
 				arguments.index = old arguments.index - 1
 		end
 
-	redo is
+	redo
 			-- Redo next command.
 			--| Move cursor of `commands' and `arguments'
 			--| one step forward.
@@ -119,7 +119,7 @@ feature -- Undo/Redo
 
 feature -- Multiple Undo/Redo
 
-	undo_all is
+	undo_all
 			-- Undo all commands.
 			-- (Start at current position.)
 		require
@@ -134,7 +134,7 @@ feature -- Multiple Undo/Redo
 			arguments_before: arguments.before
 		end
 
-	redo_all is
+	redo_all
 			-- Redo all commands.
 			-- (Start at current position.)
 		require
@@ -160,7 +160,7 @@ feature {NONE} -- Implementation (Access)
 
 feature {NONE} -- Implementation (Element change)
 
-	extend (a_command: COMMAND; args: TUPLE) is
+	extend (a_command: COMMAND; args: TUPLE)
 			-- Extend `commands' with `a_command'
 			-- and `arguments' with `args'.
 		require
@@ -191,7 +191,7 @@ feature {NONE} -- Implementation (Element change)
 invariant
 
 	commands_not_void: commands /= Void
-	no_void_command: not commands.has (Void)
+--	no_void_command: not commands.has (Void)
 	arguments_not_void: arguments /= Void
 	consistent: commands.count = arguments.count
 	same_cursor_position: commands.index = arguments.index

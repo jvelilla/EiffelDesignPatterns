@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ class SHARED_HISTORY
 
 feature {NONE} -- Implementation
 
-	history: HISTORY is
+	history: HISTORY 
 			-- History of executed commands
 		once
 			create Result.make
