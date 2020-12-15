@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -20,7 +20,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_name: like name_c) is
+	make (a_name: like name_c) 
 			-- Set `name_c' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

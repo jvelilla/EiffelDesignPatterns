@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="builder" uuid="0BBC2940-1C48-4813-A0EF-B6711676F941" library_target="builder">
+	<target name="common" abstract="true">
+		<option warning="warning" is_attached_by_default="true" is_obsolete_routine_type="true" manifest_array_type="mismatch_warning">
+			<debug name="__unnamed_debug__" enabled="true"/>
+			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
+		</option>
+		<setting name="dead_code_removal" value="feature"/>
+		<capability>
+			<concurrency support="scoop"/>
+			<void_safety support="all" use="all"/>
+		</capability>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="factory" location="..\factory\factory.ecf"/>
+	</target>
+	<target name="two_part_builder" extends="common">
+		<root all_classes="true"/>
+		<cluster name="two_part_builder" location=".\" recursive="true">
+			<file_rule>
+				<exclude>/.svn$</exclude>
+				<exclude>/CVS$</exclude>
+				<exclude>/EIFGENs$</exclude>
+				<exclude>/three_part$</exclude>
+			</file_rule>
+		</cluster>
+	</target>
+	<target name="three_part_builder" extends="common">
+		<root all_classes="true"/>
+		<cluster name="three_part_builder" location=".\" recursive="true">
+			<file_rule>
+				<exclude>/.svn$</exclude>
+				<exclude>/CVS$</exclude>
+				<exclude>/EIFGENs$</exclude>
+				<exclude>/two_part$</exclude>
+			</file_rule>
+		</cluster>
+	</target>
+	<target name="builder" extends="two_part_builder">
+	</target>
+</system>

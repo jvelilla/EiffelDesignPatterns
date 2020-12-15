@@ -17,15 +17,15 @@ deferred class BUILDABLE
 
 feature -- Access
 
-	g: ANY
+	g: detachable ANY
 			-- First part of the product to be created
 
-	h: ANY
+	h: detachable ANY
 			-- Second part of the product to be created
 
 feature {TWO_PART_BUILDER} -- Status Setting
 
-	set_g (a_g: like g) 
+	set_g (a_g: like g)
 			-- Set `g' to `a_g'.
 		require
 			a_g_not_void: a_g /= Void

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,7 +18,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Build a new two-part product with a two-part builder.
 		local
 			my_builder: TWO_PART_BUILDER [TWO_PART_PRODUCT,
@@ -36,7 +36,7 @@ feature {NONE} -- Initialization
 
 feature -- Factory functions
 
-	new_product (a_name: STRING): TWO_PART_PRODUCT is
+	new_product (a_name: STRING): TWO_PART_PRODUCT
 			-- New object of type `TWO_PART_PRODUCT'
 			-- from `a_name'
 		require
@@ -54,7 +54,7 @@ feature -- Factory functions
 			name_set: Result.name = a_name
 		end
 
-	new_part_a (a_name: STRING): PART_A is
+	new_part_a (a_name: STRING): PART_A
 			-- New object of type `PART_A' from `a_name'
 		require
 			a_name_not_void: a_name /= Void
@@ -71,7 +71,7 @@ feature -- Factory functions
 			name_set: Result.name_a = a_name
 		end
 
-	new_part_b (a_name: STRING): PART_B is
+	new_part_b (a_name: STRING): PART_B
 			-- New object of type `PART_B' from `a_name'
 		require
 			a_name_not_void: a_name /= Void

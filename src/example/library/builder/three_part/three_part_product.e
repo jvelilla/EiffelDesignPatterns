@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -50,13 +50,13 @@ feature -- Access
 	name: STRING
 			-- Name of product part
 
-	part_a: PART_A
+	part_a: detachable PART_A
 			-- First part of product
-			
-	part_b: PART_B
+
+	part_b: detachable PART_B
 			-- Second part of product
 
-	part_c: PART_C
+	part_c: detachable PART_C
 			-- Third part of product
 
 invariant

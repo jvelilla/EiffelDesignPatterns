@@ -54,6 +54,7 @@ feature -- Access
 	last_product: detachable F
 			-- Product under construction
 
+
 feature -- Status report
 
 	is_ready: BOOLEAN
@@ -131,7 +132,7 @@ feature {NONE} -- Basic Operations
 			valid_args_g: factory_function_g.valid_operands (args_g)
 		do
 			if attached last_product as l_last_product and then
-			   attached g_factory.new_with_args (args_g) as l_new_g_factory then
+			   attached {ANY} g_factory.new_with_args (args_g) as l_new_g_factory then
 			   l_last_product.set_g (l_new_g_factory)
 			end
 		ensure
@@ -146,7 +147,7 @@ feature {NONE} -- Basic Operations
 			valid_args_h: factory_function_h.valid_operands (args_h)
 		do
 			if attached last_product as l_last_product and then
-			   attached h_factory.new_with_args (args_h) as l_new_h_factory then
+			   attached {ANY} h_factory.new_with_args (args_h) as l_new_h_factory then
 				l_last_product.set_h (l_new_h_factory)
 			end
 		ensure

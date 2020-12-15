@@ -97,7 +97,7 @@ feature -- Basic Operations
 		ensure then
 			g_not_void: attached last_product as l_last_product and then attached l_last_product.g
 			h_not_void: attached l_last_product.h
-			j_not_void: attached l_last_product.j 
+			j_not_void: attached l_last_product.j
 		end
 
 	build_with_args (args_f, args_g, args_h, args_j: TUPLE)
@@ -152,7 +152,7 @@ feature {NONE} -- Basic Operations
 			valid_args_g: factory_function_g.valid_operands (args_g)
 		do
 			if  attached last_product as l_last_product and then
-				attached g_factory.new_with_args (args_g) as l_g_new  then
+				attached {ANY} g_factory.new_with_args (args_g) as l_g_new  then
 				l_last_product.set_g (l_g_new)
 			end
 		ensure
@@ -167,7 +167,7 @@ feature {NONE} -- Basic Operations
 			valid_args_h: factory_function_h.valid_operands (args_h)
 		do
 			if  attached last_product as l_last_product and then
-				attached h_factory.new_with_args (args_h) as l_h_new then
+				attached {ANY} h_factory.new_with_args (args_h) as l_h_new then
 				l_last_product.set_h (l_h_new)
 			end
 		ensure
@@ -182,7 +182,7 @@ feature {NONE} -- Basic Operations
 			valid_args_j: factory_function_j.valid_operands (args_j)
 		do
 			if  attached last_product as l_last_product and then
-				attached j_factory.new_with_args (args_j) as l_j_new then
+				attached {ANY} j_factory.new_with_args (args_j) as l_j_new then
 				l_last_product.set_j (l_j_new)
 			end
 		ensure

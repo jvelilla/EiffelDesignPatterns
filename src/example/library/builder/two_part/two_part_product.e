@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -31,7 +31,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_name: like name) is
+	make (a_name: like name)
 			-- Set `name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -47,10 +47,10 @@ feature -- Access
 	name: STRING
 			-- Name of product part
 
-	part_a: PART_A
+	part_a: detachable PART_A
 			-- First part of product
-			
-	part_b: PART_B
+
+	part_b: detachable PART_B
 			-- Second part of product
 
 invariant
