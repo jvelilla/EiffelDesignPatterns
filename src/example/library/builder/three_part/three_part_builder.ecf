@@ -17,7 +17,7 @@
 			<void_safety support="all" use="all"/>
 		</capability>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
-		<library name="command" location="..\..\..\..\library\builder\builder_three_part.ecf" use_application_options="true"/>
+		<library name="builder_three_part" location="..\..\..\..\library\builder\builder_three_part.ecf" use_application_options="true"/>
 		<cluster name="builder_three_part_example" location=".\" recursive="true"/>
 	</target>
 </system>
