@@ -13,17 +13,17 @@ note
 	date: "$Date: 2004/03/15 $"
 	revision: "$Revision: 1.0 $"
 
-deferred class BUILDABLE
+deferred class BUILDABLE [G, H, J]
 
 feature -- Access
 
-	g: detachable ANY
+	g: detachable G
 			-- First part of the product to be created
 
-	h: detachable ANY
+	h: detachable H
 			-- Second part of the product to be created
 
-	j: detachable ANY
+	j: detachable J
 			-- Third part of the product to be created
 
 feature {THREE_PART_BUILDER} -- Status Setting

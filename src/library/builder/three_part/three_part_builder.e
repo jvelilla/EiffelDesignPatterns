@@ -16,7 +16,7 @@ note
 	date: "$Date: 2004/03/15 $"
 	revision: "$Revision: 1.0 $"
 
-class THREE_PART_BUILDER [F -> BUILDABLE, G, H, J]
+class THREE_PART_BUILDER [F -> BUILDABLE [G, H, J], G, H, J]
 
 inherit
 
@@ -152,7 +152,7 @@ feature {NONE} -- Basic Operations
 			valid_args_g: factory_function_g.valid_operands (args_g)
 		do
 			if  attached last_product as l_last_product and then
-				attached {ANY} g_factory.new_with_args (args_g) as l_g_new  then
+				attached g_factory.new_with_args (args_g) as l_g_new  then
 				l_last_product.set_g (l_g_new)
 			end
 		ensure
@@ -167,7 +167,7 @@ feature {NONE} -- Basic Operations
 			valid_args_h: factory_function_h.valid_operands (args_h)
 		do
 			if  attached last_product as l_last_product and then
-				attached {ANY} h_factory.new_with_args (args_h) as l_h_new then
+				attached h_factory.new_with_args (args_h) as l_h_new then
 				l_last_product.set_h (l_h_new)
 			end
 		ensure
@@ -182,7 +182,7 @@ feature {NONE} -- Basic Operations
 			valid_args_j: factory_function_j.valid_operands (args_j)
 		do
 			if  attached last_product as l_last_product and then
-				attached {ANY} j_factory.new_with_args (args_j) as l_j_new then
+				attached j_factory.new_with_args (args_j) as l_j_new then
 				l_last_product.set_j (l_j_new)
 			end
 		ensure

@@ -37,7 +37,7 @@ feature {NONE} -- Initialization
 
 feature -- Factory functions
 
-	new_part_a (a_name: STRING): PART_A is
+	new_part_a (a_name: STRING): PART_A
 			-- New object of type `PART_A' from `a_name'
 		require
 			a_name_not_void: a_name /= Void
@@ -54,7 +54,7 @@ feature -- Factory functions
 			name_set: Result.name_a = a_name
 		end
 
-	new_part_b (a_name: STRING): PART_B is
+	new_part_b (a_name: STRING): PART_B
 			-- New object of type `PART_B' from `a_name'
 		require
 			a_name_not_void: a_name /= Void
@@ -71,7 +71,7 @@ feature -- Factory functions
 			name_set: Result.name_b = a_name
 		end
 
-	new_part_c (a_name: STRING): PART_C is
+	new_part_c (a_name: STRING): PART_C
 			-- New object of type `PART_C' from `a_name'
 		require
 			a_name_not_void: a_name /= Void
@@ -88,7 +88,7 @@ feature -- Factory functions
 			name_set: Result.name_c = a_name
 		end
 
-	new_product (a_name: STRING): THREE_PART_PRODUCT is
+	new_product (a_name: STRING): THREE_PART_PRODUCT
 			-- New object of type `THREE_PART_PRODUCT'
 			-- from `a_name'
 		require

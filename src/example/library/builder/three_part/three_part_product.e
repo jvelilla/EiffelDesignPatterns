@@ -14,7 +14,7 @@ class THREE_PART_PRODUCT
 
 inherit
 
-	BUILDABLE
+	BUILDABLE [PART_A, PART_B, PART_C]
 		rename
 			g as part_a,
 			h as part_b,
@@ -34,7 +34,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_name: like name) is
+	make (a_name: like name) 
 			-- Set `name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

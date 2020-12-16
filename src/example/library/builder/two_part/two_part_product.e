@@ -14,7 +14,7 @@ class TWO_PART_PRODUCT
 
 inherit
 
-	BUILDABLE
+	 BUILDABLE [PART_A, PART_B]
 		rename
 			g as part_a,
 			h as part_b,
