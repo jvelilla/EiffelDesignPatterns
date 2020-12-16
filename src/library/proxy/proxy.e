@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -23,7 +23,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_characteristic: like characteristic) is
+	make (a_characteristic: like characteristic)
 			-- Initialize subject with `a_characteristic'.
 		do
 			cached_characteristic := a_characteristic
@@ -33,12 +33,16 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	characteristic: TUPLE is
+	characteristic: TUPLE
 			-- Characteristic of a subject
 		do
 			debug
 				io.put_string ("Characteristic of cached subject: ")
-				io.put_string ((cached_characteristic @ 1).out)
+				if attached (characteristic @ 1) as item then
+					separate item as s do
+						io.put_string ( (create {STRING}.make_from_separate (s.out)).out)
+					end
+			 	end
 				io.put_new_line
 			end
 			Result := cached_characteristic
@@ -48,25 +52,37 @@ feature -- Access
 
 feature -- Basic operations
 
-	request is
+	request
 			-- Request something on current subject.
 		do
 			debug
 				io.put_string ("Request on proxy subject with characteristic: ")
-				io.put_string ((characteristic @ 1).out)
+				if attached (characteristic @ 1) as item then
+					separate item as s do
+						io.put_string ( (create {STRING}.make_from_separate (s.out)).out)
+					end
+			 	end
 				io.put_new_line
 			end
 			subject.request
 		end
 
-	request_with_args (args: TUPLE) is
+	request_with_args (args: TUPLE)
 			-- Request something on current subject using `args'.
 		do
 			debug
 				io.put_string ("Request on proxy subject with characteristic: ")
-				io.put_string ((characteristic @ 1).out)
+				if attached (characteristic @ 1) as item then
+					 separate item as s do
+					 	io.put_string ( (create {STRING}.make_from_separate (s.out)).out)
+					 end
+ 				end
 				io.put_string ("; args: ")
-				io.put_string ((args @ 1).out)
+				if attached (args @ 1) as item then
+					separate item as s do
+						io.put_string ( (create {STRING}.make_from_separate (s.out)).out)
+					end
+			 	end
 				io.put_new_line
 			end
 			subject.request_with_args (args)
@@ -74,12 +90,16 @@ feature -- Basic operations
 
 feature -- Status setting
 
-	set_characteristic (a_characteristic: like characteristic) is
+	set_characteristic (a_characteristic: like characteristic)
 			-- Set `characteristic' to `a_characteristic'.
 		do
 			debug
 				io.put_string ("Set characteristic of proxy subject to: ")
-				io.put_string ((a_characteristic @ 1).out)
+				if attached (a_characteristic @ 1) as item then
+					 separate item as s do
+					 	io.put_string ( (create {STRING}.make_from_separate (s.out)).out)
+					 end
+				end
 				io.put_new_line
 			end
 			subject.set_characteristic (a_characteristic)
@@ -90,21 +110,25 @@ feature -- Status setting
 
 feature {NONE} -- Implementation
 
-	subject: G is
+	subject: G
 			-- Subject
+		local
+			l_result: like actual_subject
 		do
-			if actual_subject = Void then
-				create actual_subject.make (cached_characteristic)
-				cached_characteristic := actual_subject.characteristic
+			l_result := actual_subject
+			if l_result = Void then
+				create l_result.make (cached_characteristic)
+				cached_characteristic := l_result.characteristic
 			end
-			Result := actual_subject
+			actual_subject := l_result
+			Result := l_result
 		ensure
 			subject_not_void: Result /= Void
 			is_actual_subject: Result = actual_subject
 			cached_characteristic_not_void: cached_characteristic /= Void
 		end
 
-	actual_subject: G
+	actual_subject: detachable G
 			-- Actual subject
 			--|Loaded only when needed
 
@@ -114,7 +138,7 @@ feature {NONE} -- Implementation
 invariant
 
 	cached_characteristic_not_void: cached_characteristic /= Void
-	consistent: actual_subject /= Void implies 
-			cached_characteristic = actual_subject.characteristic
+	consistent: attached actual_subject as l_actual_subject implies
+			cached_characteristic = l_actual_subject.characteristic
 
 end

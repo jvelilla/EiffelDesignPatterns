@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,8 +18,8 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
-			-- 
+	make
+			--
 		local
 			subject_1: SUBJECT
 			subject_2: SUBJECT
@@ -34,9 +34,17 @@ feature {NONE} -- Initialization
 			subject_2.set_characteristic ([25])
 
 			debug
-				io.put_string (((subject_1.characteristic) @ 1).out)
+				if attached ((subject_1.characteristic) @ 1) as item then
+					separate item as s do
+						io.put_string ( (create {STRING}.make_from_separate (s.out)).out)
+					end
+			 	end
 				io.put_new_line
-				io.put_string (((subject_2.characteristic) @ 1).out)
+				if attached ((subject_2.characteristic) @ 1) as item then
+					separate item as s do
+						io.put_string ( (create {STRING}.make_from_separate (s.out)).out)
+					end
+			 	end
 				io.put_new_line
 			end
 		end

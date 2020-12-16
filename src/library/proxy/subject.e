@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -17,7 +17,7 @@ deferred class SUBJECT
 
 feature {NONE} -- Initialization
 
-	make (a_characteristic: like characteristic) is
+	make (a_characteristic: like characteristic)
 			-- Initialize subject with `a_characteristic'.
 		require
 			a_characteristic_not_void: a_characteristic /= Void
@@ -26,7 +26,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	characteristic: TUPLE is
+	characteristic: TUPLE
 			-- Characteristic of a subject
 		deferred
 		ensure
@@ -35,7 +35,7 @@ feature -- Access
 
 feature -- Status setting
 
-	set_characteristic (a_characteristic: like characteristic) is
+	set_characteristic (a_characteristic: like characteristic)
 			-- Set `characteristic' to `a_characteristic'.
 		require
 			a_characteristic_not_void: a_characteristic /= Void
@@ -46,14 +46,14 @@ feature -- Status setting
 
 feature -- Basic operations
 
-	request is
+	request
 			-- Request something on current subject.
 		require
 			characteristic_not_void: characteristic /= Void
 		deferred
 		end
 
-	request_with_args (args: TUPLE) is
+	request_with_args (args: TUPLE) 
 			-- Request something on current subject using `args'.
 		require
 			characteristic_not_void: characteristic /= Void
