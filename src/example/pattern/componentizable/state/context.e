@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,7 +20,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Create initial state.
 		do
 			create initial_state.make (Current)
@@ -33,7 +33,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic operations
 
-	do_something is
+	do_something
 			-- Do something depending on the state.
 		do
 			state.do_something
@@ -52,14 +52,14 @@ feature -- Access
 
 feature -- Status report
 
-	is_valid_state (a_state: like state): BOOLEAN is
+	is_valid_state (a_state: like state): BOOLEAN
 			-- Is `a_state' a valid state?
 		require
 			a_state_not_void: a_state /= Void
 		do
-			Result := ((a_state = initial_state)
+			Result := (a_state = initial_state)
 					or (a_state = intermediary_state)
-					or (a_state = final_state))
+					or (a_state = final_state)
 		ensure
 			definition: Result = ((a_state = initial_state)
 							or (a_state = intermediary_state)
@@ -73,7 +73,7 @@ feature {STATE} -- Access
 
 feature {STATE} -- Element change
 
-	set_state (a_state: like state) is
+	set_state (a_state: like state)
 			-- Set `state' to `a_state'.
 		require
 			a_state_not_void: a_state /= Void
@@ -82,7 +82,7 @@ feature {STATE} -- Element change
 			state := a_state
 		ensure
 			state_set: state = a_state
-		end 
+		end
 
 invariant
 

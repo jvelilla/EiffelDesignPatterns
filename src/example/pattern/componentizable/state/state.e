@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,7 +16,7 @@ deferred class STATE
 
 feature {NONE} -- Initialization
 
-	make (a_context: like context) is
+	make (a_context: like context)
 			-- Set `context' to `a_context'.
 		require
 			a_context_not_void: a_context /= Void
@@ -33,7 +33,7 @@ feature -- Access
 
 feature -- Basic operations
 
-	do_something is
+	do_something 
 			-- Do something depending on the state.
 		deferred
 		end

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -24,7 +24,7 @@ create
 
 feature -- Basic operations
 
-	do_something is
+	do_something 
 			-- Do something depending on the state.
 		do
 			-- Do something.

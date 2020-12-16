@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -14,14 +14,14 @@ indexing
 
 class APPLICATION
 
-create 
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
-			-- Do something depending on 
+	make
+			-- Do something depending on
 			-- the application context state.
 		local
 			context_1: CONTEXT
@@ -50,7 +50,6 @@ feature {NONE} -- Initialization
 			end
 			context_1.do_something
 			context_1.do_something
-
 		end
 
 end
