@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -39,12 +39,16 @@ feature -- Access
 
 feature -- Status setting
 
-	set_characteristic (a_characteristic: like characteristic) is
+	set_characteristic (a_characteristic: like characteristic)
 			-- Set `characteristic' to `a_characteristic'.
 		do
 			debug
 				io.put_string ("Set characteristic of real subject to: ")
-				io.put_string ((a_characteristic @ 1).out)
+				if attached ( a_characteristic @ 1) as item then
+					separate item as s do
+						io.put_string ((create {STRING}.make_from_separate (s.out)).out)
+					end
+				end
 				io.put_new_line
 			end
 			characteristic := a_characteristic
@@ -52,24 +56,36 @@ feature -- Status setting
 
 feature -- Basic operations
 
-	request is
+	request
 			-- Request something on current subject.
 		do
 			debug
 				io.put_string ("Request on real subject with characteristic: ")
-				io.put_string ((characteristic @ 1).out)
+				if attached ( characteristic @ 1) as item then
+					separate item as s do
+						io.put_string ((create {STRING}.make_from_separate (s.out)).out)
+					end
+				end
 				io.put_new_line
 			end
 		end
 
-	request_with_args (args: TUPLE) is
+	request_with_args (args: TUPLE)
 			-- Request something on current subject using `args'.
 		do
 			debug
 				io.put_string ("Request on real subject with characteristic: ")
-				io.put_string ((characteristic @ 1).out)
+				if attached ( characteristic @ 1) as item then
+					separate item as s do
+						io.put_string ((create {STRING}.make_from_separate (s.out)).out)
+					end
+				end
 				io.put_string ("; args: ")
-				io.put_string ((args @ 1).out)
+				if attached ( args @ 1) as item then
+					separate item as s do
+						io.put_string ((create {STRING}.make_from_separate (s.out)).out)
+					end
+				end
 				io.put_new_line
 			end
 		end
