@@ -1,5 +1,5 @@
-indexing
-	
+note
+
 	description:
 
 		"Notify the builder when a new product should be built."
@@ -20,7 +20,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_builder: like my_builder) is
+	make (a_builder: like my_builder)
 			-- Set `my_builder' to `a_builder'.
 		require
 			builder_not_void: a_builder /= Void
@@ -37,14 +37,14 @@ feature -- Access
 
 feature -- Basic Operations
 
-	build is
+	build
 			-- Call `my_builder' to construct a new product.
 		do
 			my_builder.build
 		ensure
 			product_not_void: my_builder.last_product /= Void
-			part_a_not_void: my_builder.last_product.part_a /= Void
-			part_b_not_void: my_builder.last_product.part_b /= Void
+			part_a_not_void: attached my_builder.last_product as l_product implies l_product.part_a /= Void
+			part_b_not_void: attached my_builder.last_product as l_product implies l_product.part_b /= Void
 		end
 
 invariant

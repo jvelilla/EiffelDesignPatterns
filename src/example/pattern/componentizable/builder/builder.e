@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,14 +16,14 @@ deferred class BUILDER
 
 feature -- Access
 
-	last_product: ANY is
+	last_product: detachable ANY
 			-- Product under construction
 		deferred
 		end
 
 feature -- Basic operations
 
-	build is
+	build 
 			-- Create and build `last_product'.
 		deferred
 		ensure
