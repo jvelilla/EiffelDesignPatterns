@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -14,13 +14,13 @@ indexing
 
 class APPLICATION
 
-create 
+create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Do something
 			-- using different strategies.
 		local

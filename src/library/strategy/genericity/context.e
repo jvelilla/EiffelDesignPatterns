@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_strategy: like strategy) is
+	make (a_strategy: like strategy)
 			-- Set `strategy' to `a_strategy'.
 		require
 			a_strategy_not_void: a_strategy /= Void
@@ -31,7 +31,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic operations
 
-	do_something is
+	do_something
 			-- Do something.
 			-- (Call algorithm corresponding to `strategy'.)
 		do
@@ -45,7 +45,7 @@ feature -- Access
 
 feature -- Element change
 
-	set_strategy (a_strategy: like strategy) is
+	set_strategy (a_strategy: like strategy) 
 			-- Set `strategy' to `a_strategy'.
 		require
 			a_strategy_not_void: a_strategy /= Void
@@ -53,7 +53,7 @@ feature -- Element change
 			strategy := a_strategy
 		ensure
 			strategy_set: strategy = a_strategy
-		end 
+		end
 
 invariant
 

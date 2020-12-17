@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_procedure: like strategy_procedure) is
+	make (a_procedure: like strategy_procedure)
 			-- Set `strategy_procedure' to `a_procedure'.
 		require
 			a_procedure_not_void: a_procedure /= Void
@@ -31,7 +31,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic operations
 
-	do_something is
+	do_something
 			-- Do something.
 			-- (Call algorithm corresponding to `strategy'.)
 		do
@@ -42,12 +42,12 @@ feature -- Basic operations
 
 feature -- Access
 
-	strategy_procedure: PROCEDURE [ANY, TUPLE]
+	strategy_procedure: PROCEDURE [TUPLE]
 			-- Strategy procedure to be called
 
 feature -- Element change
 
-	set_strategy_procedure (a_procedure: like strategy_procedure) is
+	set_strategy_procedure (a_procedure: like strategy_procedure)
 			-- Set `strategy_procedure' to `a_procedure'.
 		require
 			a_procedure_not_void: a_procedure /= Void
@@ -55,7 +55,7 @@ feature -- Element change
 			strategy_procedure := a_procedure
 		ensure
 			strategy_procedure_set: strategy_procedure = a_procedure
-		end 
+		end
 
 invariant
 

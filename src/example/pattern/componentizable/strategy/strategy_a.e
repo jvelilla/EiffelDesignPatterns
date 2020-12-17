@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,7 +20,7 @@ inherit
 
 feature -- Basic operations
 
-	do_something is
+	do_something 
 			-- Do something.
 		do
 			debug

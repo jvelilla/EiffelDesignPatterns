@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -16,7 +16,7 @@ deferred class STRATEGY
 
 feature -- Basic operations
 
-	do_something is
+	do_something 
 			-- Do something.
 		deferred
 		end
