@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -22,7 +22,7 @@ inherit
 
 feature -- Basic operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			debug
@@ -31,7 +31,7 @@ feature -- Basic operation
 			Precursor {APPLICATION_IMP}
 			-- Do something more.
 			debug
-				io.put_string (generating_type)
+				io.put_string_32 (generating_type.name_32)
 				io.put_string (" does something more.%N")
 			end
 		end

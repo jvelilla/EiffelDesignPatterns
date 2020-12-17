@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -10,7 +10,7 @@ indexing
 	license: "Eiffel Forum License v2 (see License.txt)"
 	date: "$Date: 2004/03/15 $"
 	revision: "$Revision: 1.0 $"
-	
+
 class APPLICATION_1
 
 inherit

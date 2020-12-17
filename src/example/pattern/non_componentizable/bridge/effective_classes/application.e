@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (an_implementation: like impl) is
+	make (an_implementation: like impl)
 			-- Set `impl' to `an_implementation'.
 		require
 			an_implementation_not_void: an_implementation /= Void
@@ -31,7 +31,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			impl.do_something

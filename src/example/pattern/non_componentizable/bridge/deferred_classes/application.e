@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -10,12 +10,12 @@ indexing
 	license: "Eiffel Forum License v2 (see License.txt)"
 	date: "$Date: 2004/03/15 $"
 	revision: "$Revision: 1.0 $"
-	
+
 deferred class APPLICATION
 
 feature {NONE} -- Initialization
 
-	make (an_implementation: like impl) is
+	make (an_implementation: like impl)
 			-- Set `impl' to `an_implementation'.
 		require
 			an_implementation_not_void: an_implementation /= Void
@@ -27,7 +27,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic operation
 
-	do_something is
+	do_something 
 			-- Do something.
 		do
 			impl.do_something

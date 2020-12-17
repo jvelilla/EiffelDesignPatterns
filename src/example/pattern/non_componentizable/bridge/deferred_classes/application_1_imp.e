@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -10,7 +10,7 @@ indexing
 	license: "Eiffel Forum License v2 (see License.txt)"
 	date: "$Date: 2004/03/15 $"
 	revision: "$Revision: 1.0 $"
-	
+
 class APPLICATION_1_IMP
 
 inherit
@@ -19,11 +19,11 @@ inherit
 
 feature -- Basic operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			debug
-				io.put_string (generating_type)
+				io.put_string_32 (generating_type.name_32)
 				io.put_string (" do something.%N")
 			end
 		end

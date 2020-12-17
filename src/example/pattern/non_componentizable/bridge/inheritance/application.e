@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -17,17 +17,16 @@ class APPLICATION
 
 inherit
 
-	--expanded APPLICATION_IMP
+	--inherit {NONE} APPLICATION_IMP
 	  APPLICATION_IMP
 		export
 			{NONE} all
 		end
 
-	-- ANY
 
 feature -- Basic operation
 
-	do_something is
+	do_something 
 			-- Do something.
 		do
 			do_something_imp

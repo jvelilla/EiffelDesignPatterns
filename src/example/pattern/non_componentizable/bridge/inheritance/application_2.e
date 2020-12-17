@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -22,7 +22,7 @@ inherit
 			do_something_imp
 		end
 
-	--expanded APPLICATION_2_IMP
+	--inherit {NONE} APPLICATION_2_IMP
 	APPLICATION_2_IMP
 		export
 			{NONE} all

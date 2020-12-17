@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -6,7 +6,7 @@ indexing
 			the Bridge pattern simulated with
 			non-conforming inheritance.
 		]"
-				
+
 	pattern: "Bridge"
 	author: "Karine Arnout"
 	copyright: "Copyright (c) 2002-2004, ETH Zurich, Switzerland"
@@ -22,7 +22,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Perform an operation.
 		local
 			application_1: APPLICATION_1

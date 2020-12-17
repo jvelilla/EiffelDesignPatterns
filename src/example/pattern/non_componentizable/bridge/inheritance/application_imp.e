@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -10,12 +10,12 @@ class APPLICATION_IMP
 
 feature -- Basic operation
 
-	do_something_imp is
+	do_something_imp
 			-- Do something.
 		do
 			-- Do something.
 			debug
-				io.put_string (generating_type)
+				io.put_string_32 (generating_type.name_32)
 				io.put_string (" does something.%N")
 			end
 		end
