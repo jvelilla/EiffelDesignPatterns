@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ deferred class COMPONENT
 
 feature -- Basic Operation
 
-	do_something is
+	do_something 
 			-- Do something.
 		deferred
 		end

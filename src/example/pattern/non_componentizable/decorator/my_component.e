@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ inherit
 
 feature -- Basic Operation
 
-	do_something is
+	do_something 
 			-- Do something.
 		do
 			-- Do something.

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -27,7 +27,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make_with_attribute (a_component: like component; an_attribute: like additional_attribute) is
+	make_with_attribute (a_component: like component; an_attribute: like additional_attribute)
 			-- Set `component' to `a_component'.
 			-- Set `additional_attribute' to `an_attribute'.
 		require
@@ -43,7 +43,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	additional_attribute: SOME_TYPE
+	additional_attribute: detachable SOME_TYPE
 			-- Additional attribute
 
 end

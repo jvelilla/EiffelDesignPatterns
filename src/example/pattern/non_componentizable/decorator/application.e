@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Illustrate how to create and use
 			-- decorated objects.
 		local
@@ -48,7 +48,7 @@ feature {NONE} -- Initialization
 
 feature {NONE} -- Implementation
 
-	use_component (a_component: COMPONENT) is
+	use_component (a_component: COMPONENT) 
 			-- Use `a_component'.
 		require
 			a_component_not_void: a_component /= Void

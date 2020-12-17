@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -29,7 +29,7 @@ create
 
 feature -- Basic Operation
 
-	do_something is
+	do_something
 			-- Do something.
 		do
 			Precursor {DECORATED_COMPONENT}
@@ -38,7 +38,7 @@ feature -- Basic Operation
 
 feature {NONE} -- Implementation
 
-	do_something_more is
+	do_something_more 
 			-- Do something more.
 		do
 			-- Do something more than just

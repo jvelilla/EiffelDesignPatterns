@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ inherit
 
 feature {NONE} -- Initialization
 
-	make (a_component: like component) is
+	make (a_component: like component)
 			-- Set `component' to `a_component'.
 		require
 			a_component_not_void: a_component /= Void
@@ -31,7 +31,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic Operation
 
-	do_something is
+	do_something 
 			-- Do something.
 		do
 			component.do_something
