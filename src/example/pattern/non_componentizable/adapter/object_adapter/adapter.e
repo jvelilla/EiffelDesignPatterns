@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -26,7 +26,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (an_adaptee: like adaptee) is
+	make (an_adaptee: like adaptee)
 			-- Set `adaptee' to `an_adaptee'.
 		require
 			an_adaptee_not_void: an_adaptee /= Void
@@ -43,7 +43,7 @@ feature -- Access
 
 feature -- Basic operations
 
-	f is
+	f 
 			-- Perform an operation.
 			-- Delegate work to `adaptee'.
 		do

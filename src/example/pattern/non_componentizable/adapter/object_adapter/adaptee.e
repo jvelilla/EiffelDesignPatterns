@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ class ADAPTEE
 
 feature -- Basic operations
 
-	g is
+	g 
 			-- Do something.
 		do
 			debug

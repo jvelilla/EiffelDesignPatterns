@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,8 +19,7 @@ inherit
 		undefine
 			f
 		end
-
-	--expanded ADAPTEE
+--inherit {NONE}
 	ADAPTEE
 		rename
 			g as f

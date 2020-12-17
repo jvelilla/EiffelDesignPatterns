@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ class TARGET
 
 feature -- Basic operations
 
-	f is
+	f 
 			-- Do something.
 		do
 			debug

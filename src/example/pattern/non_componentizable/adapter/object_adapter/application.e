@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Do something.
 			-- (Show a typical use of the Adapter pattern.)
 		local
@@ -38,7 +38,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic operations
 
-	do_something (a_target: TARGET) is
+	do_something (a_target: TARGET) 
 			-- Do something on `a_target'.
 		require
 			a_target_not_void: a_target /= Void
