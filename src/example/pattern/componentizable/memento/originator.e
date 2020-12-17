@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -32,15 +32,15 @@ feature -- Access
 	attribute_1: TYPE_1
 			-- Part of the originator's internal state
 
-	attribute_2: TYPE_2
+	attribute_2: detachable TYPE_2
 			-- Another part of the originator's internal state
 			-- (May be Void)
 
 	attribute_3: TYPE_3
-			-- Another attribute 
+			-- Another attribute
 			-- (not useful to characterize the originator's internal state)
 
-	new_memento: MEMENTO is
+	new_memento: MEMENTO
 			-- New memento from `attribute_1' and `attribute_2'
 		do
 			debug
@@ -55,7 +55,7 @@ feature -- Access
 
 feature -- Status setting
 
-	set_state_from_memento (a_memento: MEMENTO) is
+	set_state_from_memento (a_memento: MEMENTO) 
 			-- Set internal state from `a_memento', i.e.:
 			-- set `attribute_1' to `a_memento.attribute_1'
 			-- set `attribute_2' to `a_memento.attribute_2'.

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -21,7 +21,7 @@ create
 feature {NONE} -- Initialization
 
 	make (an_attribute_1: like attribute_1;
-		an_attribute_2: like attribute_2) is
+		an_attribute_2: like attribute_2)
 			-- Set `attribute_1' to `an_attribute_1'.
 			-- Set `attribute_2' to `an_attribute_2'.
 		require
@@ -39,13 +39,13 @@ feature {ORIGINATOR} -- Access
 	attribute_1: TYPE_1
 			-- Part of internal state of the Originator
 
-	attribute_2: TYPE_2
+	attribute_2: detachable TYPE_2
 			-- Second part of internal state of the Originator
 
 feature {ORIGINATOR} -- Element change
 
 	set_state (an_attribute_1: like attribute_1;
-		an_attribute_2: like attribute_2) is
+		an_attribute_2: like attribute_2) 
 			-- Set `attribute_1' to `an_attribute_1'.
 			-- Set `attribute_2' to `an_attribute_2'.
 		require

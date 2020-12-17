@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -20,8 +20,8 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
-			-- Request a memento to an originator 
+	make 
+			-- Request a memento to an originator
 			-- and give it back after a while.
 		local
 			an_originator: ORIGINATOR

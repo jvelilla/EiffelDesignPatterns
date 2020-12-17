@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -17,7 +17,7 @@ deferred class MEMORIZABLE
 
 feature -- Access
 
-	new_memento: TUPLE is
+	new_memento: TUPLE
 			-- New memento from internal state
 		deferred
 		ensure
@@ -27,7 +27,7 @@ feature -- Access
 
 feature -- Status setting
 
-	set_state_from_memento (a_memento: like new_memento) is
+	set_state_from_memento (a_memento: like new_memento)
 			-- Set internal state from `a_memento'.
 		require
 			a_memento_not_void: a_memento /= Void
@@ -37,7 +37,7 @@ feature -- Status setting
 
 feature -- Status report
 
-	is_valid (a_memento: like new_memento): BOOLEAN is
+	is_valid (a_memento: like new_memento): BOOLEAN 
 			-- Is `a_memento' a valid memento?
 		require
 			a_memento_not_void: a_memento /= Void

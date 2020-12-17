@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,8 +18,8 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
-			-- Request a memento to an originator 
+	make 
+			-- Request a memento to an originator
 			-- and give it back after a while.
 		local
 			an_originator: ORIGINATOR
@@ -38,7 +38,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	memento: TUPLE [TYPE_1, TYPE_2]
+	memento: TUPLE [item_1: TYPE_1; item_2: detachable TYPE_2]
 			-- Access to memento
-        
+
 end

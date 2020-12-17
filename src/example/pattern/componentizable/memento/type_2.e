@@ -1,6 +1,6 @@
-indexing
+note
 
-	description: 
+	description:
 
 		"Some type"
 
