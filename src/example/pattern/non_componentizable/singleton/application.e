@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -21,10 +21,12 @@ create
 
 	make
 
-feature -- Basic operation
+feature {NONE}-- Basic operation
 
-	make is
+	make
 			-- Use singleton.
+		local
+			s1, s2: ONCE_COUNTER
 		do
 			singleton.do_nothing
 			debug
@@ -37,6 +39,14 @@ feature -- Basic operation
 			debug
 				io.put_string ("Used singleton again.")
 			end
+
+			create s1.count
+			create s2.count
+			check s1 = s2 end
+			s1.set_stats (1)
+			check s2.stats = s1.stats end
+			s1.reset_stats
+			check s2.stats = s1.stats end
 		end
 
 end

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ class MY_SHARED_SINGLETON
 
 feature -- Access
 
-	singleton: MY_SINGLETON is
+	singleton: MY_SINGLETON
 			-- Singleton object
 		do
 			Result := singleton_cell.item
@@ -29,7 +29,7 @@ feature -- Access
 
 feature -- Status report
 
-	singleton_created: BOOLEAN is
+	singleton_created: BOOLEAN
 			-- Has singleton already been created?
 		do
 			Result := singleton_cell.item /= Void
@@ -37,7 +37,7 @@ feature -- Status report
 
 feature {NONE} -- Implementation
 
-	singleton_cell: CELL [MY_SINGLETON] is
+	singleton_cell: CELL [detachable MY_SINGLETON]
 			-- Cell containing the singleton if already created
 		once
 			create Result.put (Void)

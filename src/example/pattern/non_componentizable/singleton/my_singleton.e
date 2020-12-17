@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ class MY_SINGLETON
 
 inherit
 
-	MY_SHARED_SINGLETON 
+	MY_SHARED_SINGLETON
 
 create
 
@@ -23,7 +23,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Create a singleton object.
 		require
 			singleton_not_created: not singleton_created
