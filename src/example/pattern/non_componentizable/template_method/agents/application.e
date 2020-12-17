@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize `implementation_procedures'.
 		do
 			create implementation_procedures.make
@@ -27,26 +27,26 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	implementation_procedures: LINKED_LIST [PROCEDURE [ANY, TUPLE]]
+	implementation_procedures: LINKED_LIST [PROCEDURE [TUPLE]]
 			-- Procedures to be called (successively) by `do_something'
 
 feature -- Element change
 
-	extend (a_procedure: PROCEDURE [ANY, TUPLE]) is
+	extend (a_procedure: PROCEDURE [TUPLE])
 			-- Extend `implementation_procedures' with `a_procedure'.
 		require
 			a_procedure_not_void: a_procedure /= Void
 		do
 			implementation_procedures.extend (a_procedure)
 		ensure
-			one_more: implementation_procedures.count = 
+			one_more: implementation_procedures.count =
 						old implementation_procedures.count + 1
 			extended: implementation_procedures.last = a_procedure
 		end
 
 feature -- Template method
 
-	frozen do_something is
+	frozen do_something
 			-- Do something.
 		do
 			debug

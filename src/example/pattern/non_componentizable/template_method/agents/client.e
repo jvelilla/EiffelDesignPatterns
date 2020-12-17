@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Implementation
 
-	make is
+	make 
 			-- Create an application,
 			-- which uses a template method.
 		local
@@ -33,7 +33,7 @@ feature {NONE} -- Implementation
 
 feature {NONE} -- Implementation ("Hook" features)
 
-	do_something_imp_1 is
+	do_something_imp_1
 			-- Do something.
 		do
 			debug
@@ -42,7 +42,7 @@ feature {NONE} -- Implementation ("Hook" features)
 			-- Do something
 		end
 
-	do_something_imp_2 is
+	do_something_imp_2
 			-- Do something.
 		do
 			debug

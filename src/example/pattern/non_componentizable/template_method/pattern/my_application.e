@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,8 +19,8 @@ inherit
 
 feature -- Status report
 
-	ready: BOOLEAN is True
-			-- Are all conditions met for 
+	ready: BOOLEAN = True
+			-- Are all conditions met for
 			-- feature `do_something' to be called?
 
 	done: BOOLEAN
@@ -33,7 +33,7 @@ feature {NONE} -- Status report
 
 feature {NONE} -- Implementation ("Hook" features)
 
-	do_something_imp_1 is
+	do_something_imp_1
 			-- Do something.
 		do
 			debug
@@ -45,7 +45,7 @@ feature {NONE} -- Implementation ("Hook" features)
 			first_part_done := True
 		end
 
-	do_something_imp_2 is
+	do_something_imp_2 
 			-- Do something.
 		do
 			debug

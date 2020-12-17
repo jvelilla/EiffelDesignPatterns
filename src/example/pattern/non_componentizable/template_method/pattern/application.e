@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ deferred class APPLICATION
 
 feature -- Template method
 
-	frozen do_something is
+	frozen do_something
 			-- Do something.
 		require
 			ready: ready
@@ -33,27 +33,27 @@ feature -- Template method
 
 feature -- Status report
 
-	ready: BOOLEAN is
-			-- Are all conditions met for 
+	ready: BOOLEAN
+			-- Are all conditions met for
 			-- feature `do_something' to be called?
 		deferred
 		end
 
-	done: BOOLEAN is
+	done: BOOLEAN
 			-- Has `do_something' done its job?
 		deferred
 		end
 
 feature {NONE} -- Status report
 
-	first_part_done: BOOLEAN is
+	first_part_done: BOOLEAN
 			-- Has `do_something_imp_1' done its job?
 		deferred
 		end
 
 feature {NONE} -- Implementation ("Hook" features)
 
-	do_something_imp_1 is
+	do_something_imp_1
 			-- Do something.
 		require
 			ready: ready
@@ -62,7 +62,7 @@ feature {NONE} -- Implementation ("Hook" features)
 			first_part_done: first_part_done
 		end
 
-	do_something_imp_2 is
+	do_something_imp_2
 			-- Do something.
 		require
 			first_part_done: first_part_done
