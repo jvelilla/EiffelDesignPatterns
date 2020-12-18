@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ deferred class <DECORATOR_COMPONENT_CLASS_NAME>
 
 feature -- Basic Operation
 
-	<DECORATOR_FEATURE_NAME> is
+	<DECORATOR_FEATURE_NAME> 
 			-- Do something.
 		deferred
 		end

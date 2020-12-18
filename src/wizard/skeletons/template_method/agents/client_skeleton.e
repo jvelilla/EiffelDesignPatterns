@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Implementation
 
-	make is
+	make 
 			-- Create an application,
 			-- which uses a template method.
 		local

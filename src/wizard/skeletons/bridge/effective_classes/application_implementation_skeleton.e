@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,12 +15,12 @@ class <BRIDGE_IMPLEMENTATION_CLASS_NAME>
 
 feature -- Basic operation
 
-	<BRIDGE_IMPLEMENTATION_FEATURE_NAME> is
+	<BRIDGE_IMPLEMENTATION_FEATURE_NAME> 
 			-- Do something.
 		do
 			-- Do something.
 			debug
-				io.put_string (generating_type)
+				io.put_string_32 (generating_type.name_32)
 				io.put_string (" do something.%N")
 			end
 		end

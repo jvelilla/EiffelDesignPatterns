@@ -40,7 +40,7 @@ feature {NONE} -- Implementation (Code generation)
 			some_changes.extend ([project_directory_placeholder, project_directory])
 			some_changes.extend ([template_method_client_class_name_placeholder, pattern_info.client_class_name.as_upper])
 
-			generate_code (project_directory + template_method_with_agents_ace_name + ".ace" , pattern_delivery_directory + template_method_with_agents_ace_file_name, some_changes)
+			generate_code (project_directory + template_method_with_agents_ace_name + ".ecf" , pattern_delivery_directory + template_method_with_agents_ace_file_name, some_changes)
 		end
 
 	generate_root_class

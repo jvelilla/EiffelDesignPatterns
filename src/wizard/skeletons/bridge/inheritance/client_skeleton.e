@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -22,7 +22,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Perform an operation.
 		local
 			<BRIDGE_CLIENT_LOCAL_VARIABLES>

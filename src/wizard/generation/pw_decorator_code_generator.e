@@ -38,7 +38,7 @@ feature {NONE} -- Implementation (Code generation)
 		do
 			create some_changes.make
 			some_changes.extend ([project_directory_placeholder, project_directory])
-			generate_code (project_directory + decorator_ace_name + ".ace" , pattern_delivery_directory + decorator_ace_file_name, some_changes)
+			generate_code (project_directory + decorator_ace_name + ".ecf" , pattern_delivery_directory + decorator_ace_file_name, some_changes)
 		end
 
 	generate_root_class
@@ -85,7 +85,7 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + pattern_info.component_class_name.as_lower + ".e", pattern_delivery_directory + decorator_component_class_file_name, some_changes)
 		end
 
-	generate_effective_component_class 
+	generate_effective_component_class
 			-- Generate effective component class.
 		require
 			pattern_info_not_void: pattern_info /= Void

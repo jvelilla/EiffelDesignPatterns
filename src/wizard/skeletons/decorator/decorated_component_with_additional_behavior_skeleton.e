@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -29,7 +29,7 @@ create
 
 feature -- Basic Operation
 
-	<DECORATOR_FEATURE_NAME> is
+	<DECORATOR_FEATURE_NAME> 
 			-- Do something.
 		do
 			Precursor {<DECORATOR_DECORATED_COMPONENT_CLASS_NAME>}
@@ -38,7 +38,7 @@ feature -- Basic Operation
 
 feature {NONE} -- Implementation
 
-	<DECORATOR_ADDITIONAL_FEATURE_NAME> is
+	<DECORATOR_ADDITIONAL_FEATURE_NAME> 
 			-- Do something more.
 		do
 			-- Do something more than just

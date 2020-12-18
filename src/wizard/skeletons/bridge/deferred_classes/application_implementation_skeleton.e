@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ deferred class <BRIDGE_IMPLEMENTATION_CLASS_NAME>
 
 feature -- Basic operation
 
-	<BRIDGE_IMPLEMENTATION_FEATURE_NAME> is
+	<BRIDGE_IMPLEMENTATION_FEATURE_NAME> 
 			-- Do something.
 		deferred
 		end

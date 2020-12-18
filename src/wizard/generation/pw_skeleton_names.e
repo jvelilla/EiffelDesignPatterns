@@ -79,14 +79,14 @@ feature -- Placeholder names (Bridge with deferred classes)
 
 feature -- File names (Singleton pattern)
 
-	singleton_ace_file_name: STRING_32 = "\src\wizard\skeletons\singleton\singleton_skeleton.ace"
+	singleton_ace_file_name: STRING_32 = "\src\wizard\skeletons\singleton\singleton_skeleton.ecf"
 	singleton_root_class_file_name: STRING_32 = "\src\wizard\skeletons\singleton\application_skeleton.e"
 	singleton_class_file_name: STRING_32 = "\src\wizard\skeletons\singleton\singleton_skeleton.e"
 	singleton_access_point_class_file_name: STRING_32 = "\src\wizard\skeletons\singleton\singleton_access_point_skeleton.e"
 
 feature -- File names (Decorator pattern)
 
-	decorator_ace_file_name: STRING_32 = "\src\wizard\skeletons\decorator\decorator_skeleton.ace"
+	decorator_ace_file_name: STRING_32 = "\src\wizard\skeletons\decorator\decorator_skeleton.ecf"
 	decorator_root_class_file_name: STRING_32 = "\src\wizard\skeletons\decorator\application_skeleton.e"
 	decorator_component_class_file_name: STRING_32 = "\src\wizard\skeletons\decorator\component_skeleton.e"
 	decorator_effective_component_class_file_name: STRING_32 = "\src\wizard\skeletons\decorator\effective_component_skeleton.e"
@@ -111,20 +111,20 @@ feature -- File names (Adapter pattern)
 
 feature -- File names (Template method pattern)
 
-	template_method_ace_file_name: STRING_32 = "\src\wizard\skeletons\template_method\pattern\template_method_pattern_skeleton.ace"
+	template_method_ace_file_name: STRING_32 = "\src\wizard\skeletons\template_method\pattern\template_method_pattern_skeleton.ecf"
 	template_method_root_class_file_name: STRING_32 = "\src\wizard\skeletons\template_method\pattern\client_skeleton.e"
 	template_method_class_file_name: STRING_32 = "\src\wizard\skeletons\template_method\pattern\application_skeleton.e"
 	template_method_effective_class_file_name: STRING_32 = "\src\wizard\skeletons\template_method\pattern\effective_application_skeleton.e"
 
 feature -- File names (Template method with agents pattern)
 
-	template_method_with_agents_ace_file_name: STRING_32 = "\src\wizard\skeletons\template_method\agents\template_method_with_agents_skeleton.ace"
+	template_method_with_agents_ace_file_name: STRING_32 = "\src\wizard\skeletons\template_method\agents\template_method_with_agents_skeleton.ecf"
 	template_method_with_agents_root_class_file_name: STRING_32 = "\src\wizard\skeletons\template_method\agents\client_skeleton.e"
 	template_method_with_agents_class_file_name: STRING_32 = "\src\wizard\skeletons\template_method\agents\application_skeleton.e"
 
 feature -- File names (Bridge with deferred classes)
 
-	bridge_ace_file_name: STRING_32 = "\src\wizard\skeletons\bridge\deferred_classes\bridge_with_deferred_classes_skeleton.ace"
+	bridge_ace_file_name: STRING_32 = "\src\wizard\skeletons\bridge\deferred_classes\bridge_with_deferred_classes_skeleton.ecf"
 	bridge_root_class_file_name: STRING_32 = "\src\wizard\skeletons\bridge\deferred_classes\client_skeleton.e"
 	bridge_class_file_name: STRING_32 = "\src\wizard\skeletons\bridge\deferred_classes\application_skeleton.e"
 	bridge_descendant_class_file_name: STRING_32 = "\src\wizard\skeletons\bridge\deferred_classes\descendant_application_skeleton.e"
@@ -133,7 +133,7 @@ feature -- File names (Bridge with deferred classes)
 
 feature -- File names (Bridge with effective classes)
 
-	bridge_with_effective_classes_ace_file_name: STRING_32 = "\src\wizard\skeletons\bridge\effective_classes\bridge_with_effective_classes_skeleton.ace"
+	bridge_with_effective_classes_ace_file_name: STRING_32 = "\src\wizard\skeletons\bridge\effective_classes\bridge_with_effective_classes_skeleton.ecf"
 	bridge_with_effective_classes_root_class_file_name: STRING_32 = "\src\wizard\skeletons\bridge\effective_classes\client_skeleton.e"
 	bridge_with_effective_classes_class_file_name: STRING_32 = "\src\wizard\skeletons\bridge\effective_classes\application_skeleton.e"
 	bridge_with_effective_classes_descendant_class_file_name: STRING_32 = "\src\wizard\skeletons\bridge\effective_classes\descendant_application_skeleton.e"
@@ -142,7 +142,7 @@ feature -- File names (Bridge with effective classes)
 
 feature -- File names (Bridge with inheritance)
 
-	bridge_with_inheritance_ace_file_name: STRING_32 = "\src\wizard\skeletons\bridge\inheritance\bridge_with_inheritance_skeleton.ace"
+	bridge_with_inheritance_ace_file_name: STRING_32 = "\src\wizard\skeletons\bridge\inheritance\bridge_with_inheritance_skeleton.ecf"
 	bridge_with_inheritance_root_class_file_name: STRING_32 = "\src\wizard\skeletons\bridge\inheritance\client_skeleton.e"
 	bridge_with_inheritance_class_file_name: STRING_32 = "\src\wizard\skeletons\bridge\inheritance\application_skeleton.e"
 	bridge_with_inheritance_descendant_class_file_name: STRING_32 = "\src\wizard\skeletons\bridge\inheritance\descendant_application_skeleton.e"
@@ -153,22 +153,22 @@ feature -- Code (Template method pattern)
 
 	feature_number_placeholder: STRING_32 = "<FEATURE_NUMBER>"
 	implementation_feature_name_placeholder: STRING_32 = "<IMPLEMENTATION_FEATURE_NAME>"
-	part_done_code_skeleton: STRING_32 = "part_<FEATURE_NUMBER>_done: BOOLEAN is%N%T%T%T-- Has `<IMPLEMENTATION_FEATURE_NAME>' done its job?%N%T%Tdeferred%N%T%Tend"
-	implementation_feature_code_skeleton_header: STRING_32 = "is%N%T%T%T-- Do something.%N%T%Trequire%N%T%T%T"
+	part_done_code_skeleton: STRING_32 = "part_<FEATURE_NUMBER>_done: BOOLEAN %N%T%T%T-- Has `<IMPLEMENTATION_FEATURE_NAME>' done its job?%N%T%Tdeferred%N%T%Tend"
+	implementation_feature_code_skeleton_header: STRING_32 = "%N%T%T%T-- Do something.%N%T%Trequire%N%T%T%T"
 	implementation_feature_first_precondition: STRING_32 = "ready: ready"
 	implementation_feature_body: STRING_32 = "%N%T%Tdeferred%N%T%Tensure%N%T%T%T"
 	implementation_feature_assertion_skeleton: STRING_32 = "part_<FEATURE_NUMBER>_done: part_<FEATURE_NUMBER>_done"
 	implementation_feature_end: STRING_32 = "%N%T%Tend"
 	implementation_feature_last_postcondition: STRING_32 = "done: done"
 	effective_part_done_skeleton: STRING_32 = "part_<FEATURE_NUMBER>_done: BOOLEAN%N%T%T%T-- Has `<IMPLEMENTATION_FEATURE_NAME>' done its job?"
-	effective_implementation_feature_code_skeleton_first: STRING_32 = " is%N%T%T%T-- Do something.%N%T%Tdo%N%T%T%Tdebug%N%T%T%T%Tio.put_string (%"Do something -- part <FEATURE_NUMBER> -- in %")%N%T%T%T%Tio.put_string (generating_type)%N%T%T%T%Tio.put_string (%".%%N%")%N%T%T%Tend%N%T%T%T-- Do something.%N%T%T%T"
+	effective_implementation_feature_code_skeleton_first: STRING_32 = "%N%T%T%T-- Do something.%N%T%Tdo%N%T%T%Tdebug%N%T%T%T%Tio.put_string (%"Do something -- part <FEATURE_NUMBER> -- in %")%N%T%T%T%Tio.put_string (generating_type)%N%T%T%T%Tio.put_string (%".%%N%")%N%T%T%Tend%N%T%T%T-- Do something.%N%T%T%T"
 	effective_implementation_feature_assignment_target_skeleton: STRING_32 = "part_<FEATURE_NUMBER>_done"
 	effective_implementation_feature_assignment_target_end: STRING_32 = "done"
 	effective_implementation_feature_code_skeleton_end: STRING_32 = " := True%N%T%Tend"
 
 feature -- Code (Template method with agents pattern)
 
-	implementation_feature_code_skeleton: STRING_32 = " is%N%T%T%T-- Do something.%N%T%Tdo%N%T%T%Tdebug%N%T%T%T%Tio.put_string (%"Do something -- part <FEATURE_NUMBER>.%%N%")%N%T%T%Tend%N%T%T%T-- Do something.%N%T%Tend"
+	implementation_feature_code_skeleton: STRING_32 = " %N%T%T%T-- Do something.%N%T%Tdo%N%T%T%Tdebug%N%T%T%T%Tio.put_string (%"Do something -- part <FEATURE_NUMBER>.%%N%")%N%T%T%Tend%N%T%T%T-- Do something.%N%T%Tend"
 	implementation_feature_name_skeleton: STRING_32 = "an_application.extend (agent <IMPLEMENTATION_FEATURE_NAME>)"
 
 feature -- Code (Bridge pattern)

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -24,7 +24,7 @@ inherit
 
 feature -- Basic operation
 
-	<BRIDGE_IMPLEMENTATION_FEATURE_NAME> is
+	<BRIDGE_IMPLEMENTATION_FEATURE_NAME> 
 			-- Do something.
 		do
 			debug

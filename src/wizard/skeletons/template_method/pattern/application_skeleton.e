@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,14 +15,14 @@ deferred class <TEMPLATE_METHOD_APPLICATION_CLASS_NAME>
 
 feature -- Template method
 
-	frozen <TEMPLATE_METHOD_NAME> is
+	frozen <TEMPLATE_METHOD_NAME> 
 			-- Do something.
 		require
 			ready: ready
 		do
 			debug
 				io.put_string ("Do something -- Template method -- in ")
-				io.put_string (generating_type)
+				io.put_string_32 (generating_type.name_32)
 				io.put_string (".%N")
 			end
 			<TEMPLATE_METHOD_IMPLEMENTATION_FEATURES_NAME>
@@ -32,13 +32,13 @@ feature -- Template method
 
 feature -- Status report
 
-	ready: BOOLEAN is
+	ready: BOOLEAN 
 			-- Are all conditions met for 
 			-- feature `do_something' to be called?
 		deferred
 		end
 
-	done: BOOLEAN is
+	done: BOOLEAN 
 			-- Has `do_something' done its job?
 		deferred
 		end

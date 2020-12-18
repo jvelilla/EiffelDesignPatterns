@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -23,7 +23,7 @@ create
 
 feature -- Basic operation
 
-	make is
+	make 
 			-- Use singleton.
 		do
 			<SINGLETON_ACCESS_FEATURE_NAME>.do_nothing

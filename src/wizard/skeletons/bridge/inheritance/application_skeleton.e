@@ -1,5 +1,4 @@
-indexing
-
+note
 	description:
 		"[
 			Application using non-conforming inheritance
@@ -27,7 +26,7 @@ inherit
 
 feature -- Basic operation
 
-	<BRIDGE_FEATURE_NAME> is
+	<BRIDGE_FEATURE_NAME> 
 			-- Do something.
 		do
 			<BRIDGE_IMPLEMENTATION_FEATURE_NAME>

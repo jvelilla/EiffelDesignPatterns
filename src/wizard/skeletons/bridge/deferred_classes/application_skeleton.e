@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ deferred class <BRIDGE_CLASS_NAME>
 
 feature {NONE} -- Initialization
 
-	<BRIDGE_CREATION_PROCEDURE_NAME> (an_implementation: like impl) is
+	<BRIDGE_CREATION_PROCEDURE_NAME> (an_implementation: like impl) 
 			-- Set `impl' to `an_implementation'.
 		require
 			an_implementation_not_void: an_implementation /= Void
@@ -27,7 +27,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic operation
 
-	<BRIDGE_FEATURE_NAME> is
+	<BRIDGE_FEATURE_NAME> 
 			-- Do something.
 		do
 			impl.<BRIDGE_IMPLEMENTATION_FEATURE_NAME>

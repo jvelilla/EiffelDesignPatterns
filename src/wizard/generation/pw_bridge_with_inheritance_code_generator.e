@@ -38,7 +38,7 @@ feature {NONE} -- Implementation (Code generation)
 		do
 			create some_changes.make
 			some_changes.extend ([project_directory_placeholder, project_directory])
-			generate_code (project_directory + bridge_with_inheritance_ace_name + ".ace" , pattern_delivery_directory + bridge_with_inheritance_ace_file_name, some_changes)
+			generate_code (project_directory + bridge_with_inheritance_ace_name + ".ecf" , pattern_delivery_directory + bridge_with_inheritance_ace_file_name, some_changes)
 		end
 
 	generate_root_class

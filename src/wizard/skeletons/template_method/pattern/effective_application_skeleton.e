@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ inherit
 
 feature -- Status report
 
-	ready: BOOLEAN is True
+	ready: BOOLEAN = True
 			-- Are all conditions met for 
 			-- feature `do_something' to be called?
 

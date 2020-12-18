@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -27,7 +27,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make_with_attribute (a_component: like component; an_attribute: like <DECORATOR_ADDITIONAL_ATTRIBUTE_NAME>) is
+	make_with_attribute (a_component: like component; an_attribute: like <DECORATOR_ADDITIONAL_ATTRIBUTE_NAME>) 
 			-- Set `component' to `a_component'.
 			-- Set `additional_attribute' to `an_attribute'.
 		require

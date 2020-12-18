@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ inherit
 
 feature -- Basic Operation
 
-	<DECORATOR_FEATURE_NAME> is
+	<DECORATOR_FEATURE_NAME> 
 			-- Do something.
 		do
 			-- Do something.

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ class <SINGLETON_ACCESS_POINT_CLASS_NAME>
 
 feature -- Access
 
-	<SINGLETON_ACCESS_FEATURE_NAME>: <SINGLETON_CLASS_NAME> is
+	<SINGLETON_ACCESS_FEATURE_NAME>: <SINGLETON_CLASS_NAME> 
 			-- Singleton object
 		do
 			Result := singleton_cell.item
@@ -29,7 +29,7 @@ feature -- Access
 
 feature -- Status report
 
-	singleton_created: BOOLEAN is
+	singleton_created: BOOLEAN 
 			-- Has singleton already been created?
 		do
 			Result := singleton_cell.item /= Void
@@ -37,7 +37,7 @@ feature -- Status report
 
 feature {NONE} -- Implementation
 
-	singleton_cell: CELL [<SINGLETON_CLASS_NAME>] is
+	singleton_cell: CELL [<SINGLETON_CLASS_NAME>]
 			-- Cell containing the singleton if already created
 		once
 			create Result.put (Void)

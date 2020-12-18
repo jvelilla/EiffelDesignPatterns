@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature {NONE} -- Initialization
 
-	<TEMPLATE_METHOD_CREATION_PROCEDURE_NAME> is
+	<TEMPLATE_METHOD_CREATION_PROCEDURE_NAME> 
 			-- Initialize `implementation_procedures'.
 		do
 			create implementation_procedures.make
@@ -27,12 +27,12 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	implementation_procedures: LINKED_LIST [PROCEDURE [ANY, TUPLE]]
+	implementation_procedures: LINKED_LIST [PROCEDURE [TUPLE]]
 			-- Procedures to be called (successively) by `do_something'
 
 feature -- Element change
 
-	extend (a_procedure: PROCEDURE [ANY, TUPLE]) is
+	extend (a_procedure: PROCEDURE [TUPLE])
 			-- Extend `implementation_procedures' with `a_procedure'.
 		require
 			a_procedure_not_void: a_procedure /= Void
@@ -46,7 +46,7 @@ feature -- Element change
 
 feature -- Template method
 
-	frozen <TEMPLATE_METHOD_NAME> is
+	frozen <TEMPLATE_METHOD_NAME> 
 			-- Do something.
 		do
 			debug

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ inherit
 
 feature {NONE} -- Initialization
 
-	<DECORATOR_DECORATED_COMPONENT_CREATION_PROCEDURE_NAME> (a_component: like component) is
+	<DECORATOR_DECORATED_COMPONENT_CREATION_PROCEDURE_NAME> (a_component: like component) 
 			-- Set `component' to `a_component'.
 		require
 			a_component_not_void: a_component /= Void
@@ -31,7 +31,7 @@ feature {NONE} -- Initialization
 
 feature -- Basic Operation
 
-	<DECORATOR_FEATURE_NAME> is
+	<DECORATOR_FEATURE_NAME> 
 			-- Do something.
 		do
 			component.<DECORATOR_FEATURE_NAME>

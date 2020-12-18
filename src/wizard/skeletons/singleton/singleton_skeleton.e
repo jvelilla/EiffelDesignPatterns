@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -23,7 +23,7 @@ create
 
 feature {NONE} -- Initialization
 
-	<SINGLETON_CREATION_PROCEDURE_NAME> is
+	<SINGLETON_CREATION_PROCEDURE_NAME>
 			-- Create a singleton object.
 		require
 			singleton_not_created: not singleton_created
