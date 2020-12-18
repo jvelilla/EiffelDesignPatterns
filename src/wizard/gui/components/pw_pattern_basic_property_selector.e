@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -29,7 +29,7 @@ inherit
 		undefine
 			default_create, copy
 		end
-   
+
 create
 
 	make,
@@ -37,7 +37,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (label_1: like feature_1_label_text; label_2: like feature_2_label_text) is
+	make (label_1: like feature_1_label_text; label_2: like feature_2_label_text)
 			-- Set `feature_1_label_text' to `label_1' and `feature_2_label_text' to `label_2'.
 		require
 			label_1_not_empty_if_not_void: label_1 /= Void implies not label_1.is_empty
@@ -47,11 +47,11 @@ feature {NONE} -- Initialization
 			feature_2_label_text := label_2
 			default_create
 		ensure
-			feature_1_label_text_set: feature_1_label_text = label_1 
+			feature_1_label_text_set: feature_1_label_text = label_1
 			feature_2_label_text_set: feature_2_label_text = label_2
 		end
 
-	make_with_info_and_text (label_1: like feature_1_label_text; label_2: like feature_2_label_text; a_text: like text) is
+	make_with_info_and_text (label_1: like feature_1_label_text; label_2: like feature_2_label_text; a_text: like text)
 			-- Set `feature_1_label_text' to `label_1' and `feature_2_label_text' to `label_2'.
 			-- Set `text' to `a_text'.
 		require
@@ -64,14 +64,14 @@ feature {NONE} -- Initialization
 			feature_2_label_text := label_2
 			make_with_text (a_text)
 		ensure
-			feature_1_label_text_set: feature_1_label_text = label_1 
+			feature_1_label_text_set: feature_1_label_text = label_1
 			feature_2_label_text_set: feature_2_label_text = label_2
 			text_cloned: text.is_equal (a_text) and text /= a_text
 		end
 
-	initialize is
+	initialize
 			-- Initialize GUI components and build the frame.
-		do 
+		do
 			Precursor {EV_FRAME}
 			create class_name_selector.make (class_name_label_text)
 			if feature_1_label_text /= Void then
@@ -84,21 +84,21 @@ feature {NONE} -- Initialization
 			build
 		end
 
-	build is
+	build
 			-- Build the frame.
 		local
 			vbox: EV_VERTICAL_BOX
 			c: EV_CELL
 		do
-			set_minimum_width (window_width - 4 * margin)
+			set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 4 * margin))
 			create vbox
 
 				-- Class name selector
-			class_name_selector.set_minimum_width (window_width - 6 * margin) 
+			class_name_selector.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 6 * margin))
 			vbox.extend (class_name_selector)
 			vbox.disable_item_expand (class_name_selector)
 			create c
-			c.set_minimum_height (margin)
+			c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			vbox.extend (c)
 			vbox.disable_item_expand (c)
 
@@ -107,7 +107,7 @@ feature {NONE} -- Initialization
 				vbox.extend (feature_1_name_selector)
 				vbox.disable_item_expand (feature_1_name_selector)
 				create c
-				c.set_minimum_height (margin)
+				c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 				vbox.extend (c)
 				vbox.disable_item_expand (c)
 			end
@@ -117,7 +117,7 @@ feature {NONE} -- Initialization
 				vbox.extend (feature_2_name_selector)
 				vbox.disable_item_expand (feature_2_name_selector)
 				create c
-				c.set_minimum_height (margin)
+				c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 				vbox.extend (c)
 				vbox.disable_item_expand (c)
 			end
@@ -128,14 +128,14 @@ feature {NONE} -- Initialization
 feature -- Access
 
 	feature_1_label_text: STRING
-			-- Text of label appearing in the name selector for the first feature 
+			-- Text of label appearing in the name selector for the first feature
 
 	feature_2_label_text: STRING
-			-- Text of label appearing in the name selector for the second feature 
+			-- Text of label appearing in the name selector for the second feature
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is basic pattern property selector in default state?
 		do
 			Result := (
@@ -146,7 +146,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_default_class_name (a_name: STRING) is
+	set_default_class_name (a_name: STRING)
 			-- Set default class name of `class_name_selector' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -155,7 +155,7 @@ feature -- Status setting
 			class_name_selector.set_default_name (a_name)
 		end
 
-	set_default_feature_1_name (a_name: STRING) is
+	set_default_feature_1_name (a_name: STRING)
 			-- Set default name of `feature_1_name_selector' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -164,7 +164,7 @@ feature -- Status setting
 			feature_1_name_selector.set_default_name (a_name)
 		end
 
-	set_default_feature_2_name (a_name: STRING) is
+	set_default_feature_2_name (a_name: STRING)
 			-- Set default name of `feature_2_name_selector' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -35,14 +35,14 @@ inherit
 		undefine
 			is_equal, default_create, copy
 		end
-   
+
 create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make (a_name: like pattern_name; a_file_name: like class_diagram_file_name) is
+	make (a_name: like pattern_name; a_file_name: like class_diagram_file_name)
 			-- Set `pattern_name' to `a_name' and `class_diagram_file_name' to `a_file_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -59,23 +59,23 @@ feature {NONE} -- Initialization
 			class_diagram_file_name: class_diagram_file_name = a_file_name
 		end
 
-	initialize is
+	initialize
 			-- Initialize `pattern_name_label' and `class_diagram_button'
 			-- and build horizontal box.
-		do 
+		do
 			Precursor {EV_HORIZONTAL_BOX}
 			create pattern_name_label.make_with_text ("Pattern: " + pattern_name)
 			create class_diagram_button.make_with_text_and_action (class_diagram_button_text, agent show_class_diagram)
 			build
 		end
 
-	build is
+	build
 			-- Build horizontal box.
 		local
 			c: EV_CELL
 		do
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			extend (c)
 			disable_item_expand (c)
 
@@ -86,13 +86,13 @@ feature {NONE} -- Initialization
 			extend (create {EV_CELL})
 
 			class_diagram_button.align_text_center
-			class_diagram_button.set_minimum_width (button_width)
-			class_diagram_button.set_minimum_height (button_height)
+			class_diagram_button.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (button_width))
+			class_diagram_button.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (button_height))
 			extend (class_diagram_button)
 			disable_item_expand (class_diagram_button)
 
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			extend (c)
 			disable_item_expand (c)
 		end
@@ -103,12 +103,12 @@ feature -- Access
 			-- Pattern name
 
 	class_diagram_file_name: STRING
-			-- File name of class diagram corresponding to 
+			-- File name of class diagram corresponding to
 			-- pattern with name `pattern_name'
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is pattern descriptor in default state?
 		do
 			Result := (
@@ -121,12 +121,12 @@ feature -- Status report
 
 feature -- Event handling
 
-	show_class_diagram is
-			-- Show the class diagram of a typical application 
+	show_class_diagram
+			-- Show the class diagram of a typical application
 			-- using the design pattern.
 			-- (Action performed when the user clicks `class_diagram_button')
 		local
-			class_diagram_dialog: PW_CLASS_DIAGRAM_DIALOG 
+			class_diagram_dialog: PW_CLASS_DIAGRAM_DIALOG
 		do
 			create class_diagram_dialog.make (pattern_name, class_diagram_file_name)
 		end

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -26,7 +26,7 @@ inherit
 		undefine
 			default_create, copy
 		end
-   
+
 create
 
 	default_create,
@@ -34,9 +34,9 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize is
+	initialize
 			-- Initialize GUI components and build frame.
-		do 
+		do
 			Precursor {EV_FRAME}
 			create directory_selector
 			create description_label.make_with_text (project_location_selector_description)
@@ -44,7 +44,7 @@ feature {NONE} -- Initialization
 			build
 		end
 
-	build is
+	build
 			-- Build frame.
 		local
 			vbox: EV_VERTICAL_BOX
@@ -58,23 +58,23 @@ feature {NONE} -- Initialization
 				(create {DIRECTORY}.make (project_default_location)).create_dir
 			end
 			directory_selector.set_default_location (project_default_location)
-			directory_selector.set_minimum_width (window_width - 3 * margin)
-			directory_selector.set_minimum_height (project_location_selector_height - location_description_height - 2 * margin)
+			directory_selector.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 3 * margin))
+			directory_selector.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (project_location_selector_height - location_description_height - 2 * margin))
 			vbox.extend (directory_selector)
 			vbox.disable_item_expand (directory_selector)
 
 			create hbox
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			description_label.align_text_left
-			description_label.set_minimum_width (window_width - button_width - 5 * margin)
-			description_label.set_minimum_height (location_description_height)
+			description_label.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - button_width - 5 * margin))
+			description_label.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (location_description_height))
 			hbox.extend (description_label)
 			hbox.disable_item_expand (description_label)
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ((margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			vbox.extend (hbox)

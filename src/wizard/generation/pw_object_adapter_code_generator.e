@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -31,20 +31,20 @@ feature -- Access
 
 feature {NONE} -- Implementation (Code generation)
 
-	generate_ace_file is
+	generate_ace_file
 			-- Generate Ace file.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([project_directory_placeholder, project_directory])
 			generate_code (project_directory + object_adapter_ace_name + ".ace" , pattern_delivery_directory + object_adapter_ace_file_name, some_changes)
 		end
 
-	generate_root_class is
+	generate_root_class
 			-- Generate root class.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([adapter_target_class_name_placeholder, pattern_info.target_class_name.as_upper])
@@ -56,10 +56,10 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + default_root_class_name.as_lower + ".e", pattern_delivery_directory + object_adapter_root_class_file_name, some_changes)
 		end
 
-	generate_target_class is
+	generate_target_class
 			-- Generate target class.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([adapter_target_class_name_placeholder, pattern_info.target_class_name.as_upper])
@@ -68,10 +68,10 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + pattern_info.target_class_name.as_lower + ".e", pattern_delivery_directory + object_adapter_target_class_file_name, some_changes)
 		end
 
-	generate_adaptee_class is
+	generate_adaptee_class
 			-- Generate adaptee class.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([adapter_adaptee_class_name_placeholder, pattern_info.adaptee_class_name.as_upper])
@@ -80,10 +80,10 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + pattern_info.adaptee_class_name.as_lower + ".e", pattern_delivery_directory + object_adapter_adaptee_class_file_name, some_changes)
 		end
 
-	generate_adapter_class is
+	generate_adapter_class
 			-- Generate adapter class.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([adapter_class_name_placeholder, pattern_info.adapter_class_name.as_upper])

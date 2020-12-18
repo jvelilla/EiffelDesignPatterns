@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -26,14 +26,14 @@ inherit
 		undefine
 			is_equal, default_create, copy
 		end
-   
+
 create
 
 	make
 
 feature {NONE} -- Initialization
 
-	make (a_label_name: like label_name) is
+	make (a_label_name: like label_name)
 			-- Set `label_name' to `a_label_name'.
 		require
 			a_label_name_not_void: a_label_name /= Void
@@ -43,22 +43,22 @@ feature {NONE} -- Initialization
 			default_create
 		end
 
-	initialize is
+	initialize
 			-- Initialize `name_label' and `name_text_field' and build the horizontal box.
-		do 
+		do
 			Precursor {EV_HORIZONTAL_BOX}
 			create name_label.make_with_text (label_name)
 			create name_text_field
 			build
 		end
 
-	build is
+	build 
 			-- Build horizontal box.
 		local
 			c: EV_CELL
 		do
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			extend (c)
 			disable_item_expand (c)
 
@@ -67,13 +67,13 @@ feature {NONE} -- Initialization
 
 			extend (create {EV_CELL})
 
-			name_text_field.set_minimum_width (text_field_width)
-			name_text_field.set_minimum_height (text_field_height)
+			name_text_field.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (text_field_width))
+			name_text_field.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (text_field_height))
 			extend (name_text_field)
 			disable_item_expand (name_text_field)
 
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			extend (c)
 			disable_item_expand (c)
 		end

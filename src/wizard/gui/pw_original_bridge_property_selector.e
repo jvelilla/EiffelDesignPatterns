@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -55,7 +55,7 @@ feature -- Access
 		do
 			Result := application_frame.feature_2_name_selector.name_text
 		ensure
-			application_feature_name_not_void: Result /= Void 
+			application_feature_name_not_void: Result /= Void
 			definition: Result.is_equal (application_frame.feature_2_name_selector.name_text)
 		end
 

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -109,7 +109,7 @@ feature {NONE} -- Initialization
 			create h_separator
 			vbox.extend (h_separator)
 			vbox.disable_item_expand (h_separator)
-			
+
 			create vb
 			create c
 			c.set_minimum_height (margin)

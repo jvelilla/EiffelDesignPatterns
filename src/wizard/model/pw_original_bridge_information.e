@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -25,12 +25,12 @@ create
 
 feature -- Access
 
-	application_creation_procedure_name: STRING
+	application_creation_procedure_name: STRING_32
 			-- Name of the creation procedure of the application class
 
 feature -- Status report
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN
 			-- Is bridge information complete
 			-- (i.e. ready for code generation)?
 		do
@@ -41,7 +41,7 @@ feature -- Status report
 
 feature -- Element change
 
-	set_application_creation_procedure_name (a_name: like application_creation_procedure_name) is
+	set_application_creation_procedure_name (a_name: like application_creation_procedure_name)
 			-- Set `application_creation_procedure_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

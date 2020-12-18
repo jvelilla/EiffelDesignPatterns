@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -22,21 +22,21 @@ create
 
 feature -- Access
 
-	class_name: STRING
+	class_name: STRING_32
 			-- Name of the singleton class
 
-	access_point_class_name: STRING
+	access_point_class_name: STRING_32
 			-- Name of the singleton access point class
 
-	creation_procedure_name: STRING
+	creation_procedure_name: STRING_32
 			-- Name of the singleton creation procedure
 
-	access_point_feature_name: STRING
+	access_point_feature_name: STRING_32
 			-- Name of the singleton access point feature
 
 feature -- Status report
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN
 			-- Is singleton information complete
 			-- (i.e. ready for code generation)?
 		do
@@ -52,12 +52,12 @@ feature -- Status report
 										access_point_class_name /= Void and
 										creation_procedure_name /= Void and
 										access_point_feature_name /= Void
-										) 
+										)
 		end
 
 feature -- Element change
 
-	set_class_name (a_name: like class_name) is
+	set_class_name (a_name: like class_name)
 			-- Set `class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -68,7 +68,7 @@ feature -- Element change
 			class_name_set: class_name = a_name
 		end
 
-	set_access_point_class_name (a_name: like access_point_class_name) is
+	set_access_point_class_name (a_name: like access_point_class_name)
 			-- Set `access_point_class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -79,7 +79,7 @@ feature -- Element change
 			access_point_class_name_set: access_point_class_name = a_name
 		end
 
-	set_creation_procedure_name (a_name: like creation_procedure_name) is
+	set_creation_procedure_name (a_name: like creation_procedure_name)
 			-- Set `creation_procedure_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -90,7 +90,7 @@ feature -- Element change
 			creation_procedure_name_set: creation_procedure_name = a_name
 		end
 
-	set_access_point_feature_name (a_name: like access_point_feature_name) is
+	set_access_point_feature_name (a_name: like access_point_feature_name) 
 			-- Set `access_point_feature_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -104,7 +104,7 @@ feature -- Element change
 invariant
 
 	class_name_not_empty_if_not_void: class_name /= Void implies not class_name.is_empty
-	access_point_class_name_not_empty_if_not_void: access_point_class_name /= Void implies not access_point_class_name.is_empty 
+	access_point_class_name_not_empty_if_not_void: access_point_class_name /= Void implies not access_point_class_name.is_empty
 	creation_procedure_name_not_empty_if_not_void: creation_procedure_name /= Void implies not creation_procedure_name.is_empty
 	access_point_feature_name_not_empty_if_not_void: access_point_feature_name /= Void implies not access_point_feature_name.is_empty
 

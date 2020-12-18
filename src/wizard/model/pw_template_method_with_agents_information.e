@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -25,34 +25,34 @@ create
 
 feature -- Access
 
-	creation_procedure_name: STRING
+	creation_procedure_name: STRING_32
 			-- Name of the creation procedure of the application class
 
-	client_class_name: STRING
+	client_class_name: STRING_32
 			-- Name of the client class that defines the implementation features
 			-- for the template method's deferred steps
 
 feature -- Status report
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN
 			-- Is template method information complete
 			-- (i.e. ready for code generation)?
 		do
 			Result := (
 						Precursor {PW_TEMPLATE_METHOD_INFORMATION} and
-						creation_procedure_name /= Void and 
+						creation_procedure_name /= Void and
 						client_class_name /= Void
 					)
 		ensure then
 			definition: Result implies (
 											creation_procedure_name /= Void and
 											client_class_name /= Void
-										) 
+										)
 		end
 
 feature -- Element change
 
-	set_creation_procedure_name (a_name: like creation_procedure_name) is
+	set_creation_procedure_name (a_name: like creation_procedure_name)
 			-- Set `creation_procedure_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -63,7 +63,7 @@ feature -- Element change
 			creation_procedure_name_set: creation_procedure_name = a_name
 		end
 
-	set_client_class_name (a_name: like client_class_name) is
+	set_client_class_name (a_name: like client_class_name)
 			-- Set `client_class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

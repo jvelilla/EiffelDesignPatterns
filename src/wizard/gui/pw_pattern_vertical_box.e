@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -31,18 +31,18 @@ inherit
 		undefine
 			is_equal, default_create, copy
 		end
-   
+
 feature {NONE} -- Initialization
 
-	initialize is
+	initialize
 			-- Initialize GUI components and build vertical box.
-		do 
+		do
 			Precursor {EV_VERTICAL_BOX}
 			initialize_pattern_components
 			build
 		end
 
-	initialize_pattern_components is
+	initialize_pattern_components
 			-- Initialize pattern-specific GUI components and build vertical box.
 		deferred
 		end
@@ -54,8 +54,8 @@ feature {NONE} -- Initialization
 		do
 			create hbox
 			hbox.extend (create {EV_CELL})
-			pattern_intent_frame.set_minimum_width (window_width - 2 * margin)
-			pattern_intent_frame.set_minimum_height (descriptor_text_field_height)
+			pattern_intent_frame.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 2 * margin))
+			pattern_intent_frame.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (descriptor_text_field_height))
 			hbox.extend (pattern_intent_frame)
 			hbox.disable_item_expand (pattern_intent_frame)
 			hbox.extend (create {EV_CELL})
@@ -64,8 +64,8 @@ feature {NONE} -- Initialization
 
 			create hbox
 			hbox.extend (create {EV_CELL})
-			pattern_applicability_frame.set_minimum_width (window_width - 2 * margin)
-			pattern_applicability_frame.set_minimum_height (descriptor_text_field_height)
+			pattern_applicability_frame.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 2 * margin))
+			pattern_applicability_frame.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (descriptor_text_field_height))
 			hbox.extend (pattern_applicability_frame)
 			hbox.disable_item_expand (pattern_applicability_frame)
 			hbox.extend (create {EV_CELL})
@@ -74,8 +74,8 @@ feature {NONE} -- Initialization
 
 			create hbox
 			hbox.extend (create {EV_CELL})
-			project_location_selector.set_minimum_width (window_width - 2 * margin)
-			project_location_selector.set_minimum_height (project_location_selector_height)
+			project_location_selector.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 2 * margin))
+			project_location_selector.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (project_location_selector_height))
 			hbox.extend (project_location_selector)
 			hbox.disable_item_expand (project_location_selector)
 			hbox.extend (create {EV_CELL})
@@ -84,7 +84,7 @@ feature {NONE} -- Initialization
 
 			create hbox
 			hbox.extend (create {EV_CELL})
-			pattern_properties_frame.set_minimum_width (window_width - 2 * margin)
+			pattern_properties_frame.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 2 * margin))
 			hbox.extend (pattern_properties_frame)
 			hbox.disable_item_expand (pattern_properties_frame)
 			hbox.extend (create {EV_CELL})
@@ -94,7 +94,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN 
 			-- Is name list selector in default state?
 		do
 			Result := (

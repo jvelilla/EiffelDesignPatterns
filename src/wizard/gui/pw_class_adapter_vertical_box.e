@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,7 +18,7 @@ inherit
 		redefine
 			pattern_properties_frame
 		end
-   
+
 create
 
 	default_create
@@ -27,7 +27,7 @@ feature {NONE} -- Initialization
 
 	initialize_pattern_components is
 			-- Initialize pattern-specific GUI components and build vertical box.
-		do 
+		do
 			create pattern_intent_frame.make_with_descriptor_and_text (class_adapter_pattern_name, adapter_intent, pattern_intent_frame_text)
 			create pattern_applicability_frame.make_with_descriptor_and_text (class_adapter_pattern_name, adapter_applicability, pattern_applicability_frame_text)
 			create project_location_selector.make_with_text (project_location_selector_text)

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -76,8 +76,8 @@ feature {NONE} -- Initialization
 
 			create hbox
 			hbox.extend (create {EV_CELL})
-			pattern_selector.set_minimum_width (window_width - 2 * margin)
-			pattern_selector.set_minimum_height (pattern_selector_height)
+			pattern_selector.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 2 * margin))
+			pattern_selector.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (pattern_selector_height))
 			hbox.extend (pattern_selector)
 			hbox.disable_item_expand (pattern_selector)
 			hbox.extend (create {EV_CELL})
@@ -89,8 +89,8 @@ feature {NONE} -- Initialization
 
 			create hbox
 			hbox.extend (create {EV_CELL})
-			check_generate_root_class_button.set_minimum_width (window_width - 2 * margin)
-			check_generate_root_class_button.set_minimum_height (button_height)
+			check_generate_root_class_button.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 2 * margin))
+			check_generate_root_class_button.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (button_height))
 			check_generate_root_class_button.enable_select
 			hbox.extend (check_generate_root_class_button)
 			hbox.disable_item_expand (check_generate_root_class_button)
@@ -100,8 +100,8 @@ feature {NONE} -- Initialization
 
 			create hbox
 			hbox.extend (create {EV_CELL})
-			check_close_wizard_button.set_minimum_width (window_width - 2 * margin)
-			check_close_wizard_button.set_minimum_height (button_height)
+			check_close_wizard_button.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 2 * margin))
+			check_close_wizard_button.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (button_height))
 			check_close_wizard_button.enable_select
 			hbox.extend (check_close_wizard_button)
 			hbox.disable_item_expand (check_close_wizard_button)
@@ -117,7 +117,7 @@ feature {NONE} -- Initialization
 			c.set_minimum_height (margin)
 			vbox.extend (c)
 			vbox.disable_item_expand (c)
-			
+
 			vbox.extend (control_box)
 			vbox.disable_item_expand (control_box)
 
@@ -198,7 +198,7 @@ feature {PW_PATTERN_SELECTOR} -- Event handling
 		ensure
 			pattern_vbox_not_void: pattern_vbox /= Void
 		end
-		
+
 feature {PW_CONTROL_BOX} -- Event handling
 
 	generate_code is
@@ -222,12 +222,12 @@ feature {PW_CONTROL_BOX} -- Event handling
 				else
 					display_error_dialog (incorrect_project_directory_path_text)
 					singleton_pattern_vbox.project_location_selector.remove_location_text
-					error_occurred := True 
+					error_occurred := True
 				end
 			end
 			decorator_pattern_vbox ?= pattern_vbox
 			if decorator_pattern_vbox /= Void then
-				a_project_directory := decorator_pattern_vbox.project_location_selector.project_directory 
+				a_project_directory := decorator_pattern_vbox.project_location_selector.project_directory
 				if directory_exists (a_project_directory) then
 					decorator_code_generator.set_project_directory (a_project_directory)
 					decorator_code_generator.set_root_class_and_ace_file_generation (check_generate_root_class_button.is_selected)
@@ -236,7 +236,7 @@ feature {PW_CONTROL_BOX} -- Event handling
 				else
 					display_error_dialog (incorrect_project_directory_path_text)
 					decorator_pattern_vbox.project_location_selector.remove_location_text
-					error_occurred := True 
+					error_occurred := True
 				end
 			end
 			class_adapter_pattern_vbox ?= pattern_vbox
@@ -250,7 +250,7 @@ feature {PW_CONTROL_BOX} -- Event handling
 				else
 					display_error_dialog (incorrect_project_directory_path_text)
 					class_adapter_pattern_vbox.project_location_selector.remove_location_text
-					error_occurred := True 
+					error_occurred := True
 				end
 			end
 			object_adapter_pattern_vbox ?= pattern_vbox
@@ -278,7 +278,7 @@ feature {PW_CONTROL_BOX} -- Event handling
 				else
 					display_error_dialog (incorrect_project_directory_path_text)
 					template_method_pattern_vbox.project_location_selector.remove_location_text
-					error_occurred := True 
+					error_occurred := True
 				end
 			end
 			template_method_with_agents_pattern_vbox ?= pattern_vbox
@@ -298,7 +298,7 @@ feature {PW_CONTROL_BOX} -- Event handling
 				else
 					display_error_dialog (incorrect_project_directory_path_text)
 					template_method_with_agents_pattern_vbox.project_location_selector.remove_location_text
-					error_occurred := True 
+					error_occurred := True
 				end
 			end
 			bridge_pattern_vbox ?= pattern_vbox
@@ -317,7 +317,7 @@ feature {PW_CONTROL_BOX} -- Event handling
 				else
 					display_error_dialog (incorrect_project_directory_path_text)
 					bridge_pattern_vbox.project_location_selector.remove_location_text
-					error_occurred := True 
+					error_occurred := True
 				end
 			end
 			bridge_with_effective_classes_pattern_vbox ?= pattern_vbox
@@ -335,7 +335,7 @@ feature {PW_CONTROL_BOX} -- Event handling
 					end
 				else
 					display_error_dialog (incorrect_project_directory_path_text)
-					bridge_with_effective_classes_pattern_vbox.project_location_selector.remove_location_text 
+					bridge_with_effective_classes_pattern_vbox.project_location_selector.remove_location_text
 					error_occurred := True
 				end
 			end
@@ -353,7 +353,7 @@ feature {PW_CONTROL_BOX} -- Event handling
 						bridge_with_inheritance_code_generator.generate
 					end
 				else
-					display_error_dialog (incorrect_project_directory_path_text) 
+					display_error_dialog (incorrect_project_directory_path_text)
 					bridge_with_inheritance_pattern_vbox.project_location_selector.remove_location_text
 					error_occurred := True
 				end

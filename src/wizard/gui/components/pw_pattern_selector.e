@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -26,7 +26,7 @@ inherit
 		undefine
 			default_create, copy
 		end
-   
+
 create
 
 	default_create,
@@ -36,7 +36,7 @@ feature {NONE} -- Initialization
 
 	initialize is
 			-- Initialize `tree' and its items.
-		do 
+		do
 			Precursor {EV_FRAME}
 
 				-- Create tree components.
@@ -134,8 +134,8 @@ feature {NONE} -- Initialization
 			bridge_item.expand
 			possible_skeleton_item.expand
 
-			tree.set_minimum_width (window_width - 4 * margin)
-			tree.set_minimum_height (pattern_selector_height - 2 * margin)
+			tree.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 4 * margin))
+			tree.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (pattern_selector_height - 2 * margin))
 
 			hbox.extend (tree)
 			hbox.disable_item_expand (tree)

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -31,25 +31,25 @@ feature -- Access
 
 feature {NONE} -- Implementation (Code generation)
 
-	generate_ace_file is
+	generate_ace_file
 			-- Generate Ace file.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([project_directory_placeholder, project_directory])
 			generate_code (project_directory + bridge_with_deferred_classes_ace_name + ".ace" , pattern_delivery_directory + bridge_ace_file_name, some_changes)
 		end
 
-	generate_root_class is
+	generate_root_class
 			-- Generate root class.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
-			descendants_name: LINKED_LIST [STRING]
-			local_variables_code: STRING
-			local_variable_skeleton: STRING
-			client_code: STRING
-			client_code_skeleton: STRING
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
+			descendants_name: LINKED_LIST [STRING_32]
+			local_variables_code: STRING_32
+			local_variable_skeleton: STRING_32
+			client_code: STRING_32
+			client_code_skeleton: STRING_32
 		do
 			create some_changes.make
 
@@ -83,7 +83,7 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + other_root_class_name.as_lower + ".e", pattern_delivery_directory + bridge_root_class_file_name, some_changes)
 		end
 
-	generate_pattern_code is
+	generate_pattern_code
 			-- Generate Eiffel classes for this pattern (except the root class).
 		do
 			generate_application_class
@@ -92,13 +92,13 @@ feature {NONE} -- Implementation (Code generation)
 			generate_descendant_application_implementation_classes
 		end
 
-	generate_application_class is
+	generate_application_class
 			-- Generate application class.
 		require
 			pattern_info_not_void: pattern_info /= Void
 			pattern_info_complete: pattern_info.is_complete
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([bridge_class_name_placeholder, pattern_info.application_class_name.as_upper])
@@ -110,15 +110,15 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + pattern_info.application_class_name.as_lower + ".e", pattern_delivery_directory + bridge_class_file_name, some_changes)
 		end
 
-	generate_descendant_application_classes is
+	generate_descendant_application_classes
 			-- Generate descendant application classes.
 		require
 			pattern_info_not_void: pattern_info /= Void
 			pattern_info_complete: pattern_info.is_complete
 		local
-			descendants_name: LINKED_LIST [STRING]
-			a_name: STRING
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			descendants_name: LINKED_LIST [STRING_32]
+			a_name: STRING_32
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			descendants_name := pattern_info.descendant_application_classes_name
 			from descendants_name.start until descendants_name.after loop
@@ -134,13 +134,13 @@ feature {NONE} -- Implementation (Code generation)
 			end
 		end
 
-	generate_application_implementation_class is
+	generate_application_implementation_class
 			-- Generate application implementation class.
 		require
 			pattern_info_not_void: pattern_info /= Void
 			pattern_info_complete: pattern_info.is_complete
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([bridge_implementation_class_name_placeholder, pattern_info.application_implementation_class_name.as_upper])
@@ -149,15 +149,15 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + pattern_info.application_implementation_class_name.as_lower + ".e", pattern_delivery_directory + bridge_implementation_class_file_name, some_changes)
 		end
 
-	generate_descendant_application_implementation_classes is
+	generate_descendant_application_implementation_classes
 			-- Generate application implementation classes.
 		require
 			pattern_info_not_void: pattern_info /= Void
 			pattern_info_complete: pattern_info.is_complete
 		local
-			descendants_name: LINKED_LIST [STRING]
-			a_name: STRING
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			descendants_name: LINKED_LIST [STRING_32]
+			a_name: STRING_32
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			descendants_name := pattern_info.descendant_application_implementation_classes_name
 			from descendants_name.start until descendants_name.after loop

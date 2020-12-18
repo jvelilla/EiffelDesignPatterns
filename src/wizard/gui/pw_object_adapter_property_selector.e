@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -23,7 +23,7 @@ create
 
 	make,
 	make_with_name_and_text
-	   
+
 feature {NONE} -- Initialization
 
 	initialize_pattern_components is

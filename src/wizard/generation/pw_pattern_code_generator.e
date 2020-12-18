@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -28,7 +28,7 @@ inherit
 
 feature -- Access
 
-	project_directory: STRING
+	project_directory: STRING_32
 			-- Path of the project directory
 			-- (where the code will be generated)
 
@@ -43,7 +43,7 @@ feature -- Status report
 
 feature -- Element change
 
-	set_project_directory (a_project_directory: like project_directory) is
+	set_project_directory (a_project_directory: like project_directory)
 			-- Set `project_directory' to `a_project_directory'.
 			-- Add '\' at the end if none.
 		require
@@ -59,7 +59,7 @@ feature -- Element change
 			project_directory_set: project_directory /= Void and then not project_directory.is_empty
 		end
 
-	set_root_class_and_ace_file_generation (a_value: like root_class_and_ace_file_generation) is
+	set_root_class_and_ace_file_generation (a_value: like root_class_and_ace_file_generation)
 			-- Set `root_class_and_ace_file_generation' to `a_value'.
 		do
 			root_class_and_ace_file_generation := a_value
@@ -67,7 +67,7 @@ feature -- Element change
 			root_class_and_ace_file_generation_set: root_class_and_ace_file_generation = a_value
 		end
 
-	set_pattern_info (a_pattern_info: like pattern_info) is
+	set_pattern_info (a_pattern_info: like pattern_info)
 			-- Set `pattern_info' to `a_pattern_info'.
 		require
 			a_pattern_info_not_void: a_pattern_info /= Void
@@ -79,7 +79,7 @@ feature -- Element change
 
 feature -- Generation
 
-	generate is
+	generate
 			-- Generate code for this pattern.
 		require
 			pattern_info_not_void: pattern_info /= Void
@@ -94,7 +94,7 @@ feature -- Generation
 
 feature {NONE} -- Implementation (Code generation)
 
-	generate_root_class is
+	generate_root_class
 			-- Generate root class.
 		require
 			root_class_and_ace_file_generation: root_class_and_ace_file_generation
@@ -103,8 +103,9 @@ feature {NONE} -- Implementation (Code generation)
 		deferred
 		end
 
-	generate_ace_file is
+	generate_ace_file
 			-- Generate Ace file.
+			-- TODO generate ecf
 		require
 			root_class_and_ace_file_generation: root_class_and_ace_file_generation
 			pattern_info_not_void: pattern_info /= Void
@@ -112,7 +113,7 @@ feature {NONE} -- Implementation (Code generation)
 		deferred
 		end
 
-	generate_pattern_code is
+	generate_pattern_code
 			-- Generate Eiffel classes for this pattern (except the root class).
 		require
 			pattern_info_not_void: pattern_info /= Void
@@ -120,7 +121,7 @@ feature {NONE} -- Implementation (Code generation)
 		deferred
 		end
 
-	generate_code (a_new_file_name, a_skeleton_file_name: STRING; some_changes: LINKED_LIST [TUPLE [STRING, STRING]]) is
+	generate_code (a_new_file_name, a_skeleton_file_name: STRING_32; some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]])
 			-- Generate new file with file name `a_new_file_name' from the skeleton
 			-- corresponding to `a_skeleton_file_name' by reproducing the skeleton code into the
 			-- new file after `some_changes' (replacing a value by another).
@@ -139,7 +140,7 @@ feature {NONE} -- Implementation (Code generation)
 			file: PLAIN_TEXT_FILE
 			skeleton_file: PLAIN_TEXT_FILE
 			text: STRING
-			a_change: TUPLE [STRING, STRING]
+			a_change: TUPLE [STRING_32, STRING_32]
 			old_string: STRING
 			new_string: STRING
 		do

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -23,14 +23,14 @@ create
 
 	make,
 	make_with_name_and_text
-	   
+
 feature {NONE} -- Initialization
 
 	initialize_pattern_components is
 			-- Initialize GUI components that are pattern-specific.
 		do
 			create singleton_frame.make_with_info_and_text (creation_procedure_name_label_text, Void, singleton_class_text)
-			create access_point_frame.make_with_info_and_text (access_point_feature_name_label_text, Void, access_point_text) 
+			create access_point_frame.make_with_info_and_text (access_point_feature_name_label_text, Void, access_point_text)
 		end
 
 	build_pattern_vbox is
@@ -133,7 +133,7 @@ feature {NONE} -- Implementation (GUI components)
 			-- Frame with properties concerning the Singleton class
 
 	access_point_frame: PW_PATTERN_BASIC_PROPERTY_SELECTOR
-			-- Frame with properties concerning the access point to 
+			-- Frame with properties concerning the access point to
 			-- the singleton class
 
 invariant

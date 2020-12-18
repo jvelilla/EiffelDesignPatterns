@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -33,7 +33,7 @@ inherit
 		undefine
 			is_equal, default_create, copy
 		end
-		
+
 create
 
 	default_create
@@ -42,7 +42,7 @@ feature {NONE} -- Initialization
 
 	initialize is
 			-- Initialize buttons and build the horizontal box.
-		do 
+		do
 			Precursor {EV_HORIZONTAL_BOX}
 			create about_button.make_with_text_and_action (about_button_text, agent show_about)
 			create generate_button.make_with_text_and_action (generate_button_text, agent generate)
@@ -113,7 +113,7 @@ feature -- Status report
 			Result := (
 						about_button /= Void and generate_button /= Void and
 						cancel_button /= Void and help_button /= Void and
-						about_button.is_center_aligned and 
+						about_button.is_center_aligned and
 						generate_button.is_center_aligned and
 						cancel_button.is_center_aligned and
 						help_button.is_center_aligned
@@ -156,26 +156,13 @@ feature -- Event handling
 			(create {EV_ENVIRONMENT}).application.destroy
 		end
 
-	show_help is
+	show_help
 			-- Show the wizard documentation.
 			-- (Action performed when the user clicks the `help_button')
-		local
-			wel_registry: WEL_REGISTRY
-			a_registry_value: WEL_REGISTRY_KEY_VALUE
-			a_pointer: POINTER
-			a_value: STRING
 		do
-			create wel_registry
-			a_pointer := wel_registry.open_key_with_access ("hkey_classes_root" + "\.pdf", feature {WEL_REGISTRY_ACCESS_MODE}.key_query_value)
-			a_registry_value := wel_registry.default_key_value (a_pointer, Void)
-			a_registry_value.set_type (feature {WEL_REGISTRY_KEY_VALUE_TYPE}.reg_sz)
-			a_value := a_registry_value.string_value
-			a_pointer := wel_registry.open_key_with_access ("hkey_classes_root" + "\" + a_value + "\shell\Open\command", feature {WEL_REGISTRY_ACCESS_MODE}.key_query_value)
-			a_registry_value := wel_registry.default_key_value (a_pointer, Void)
-			a_registry_value.set_type (feature {WEL_REGISTRY_KEY_VALUE_TYPE}.reg_sz)
-			a_value := a_registry_value.string_value
-			a_value.replace_substring_all ("%"%%1%"", pattern_delivery_directory + clone (help_file_name))
-			(create {EXECUTION_ENVIRONMENT}).launch (a_value)
+			if {PLATFORM}.is_windows then
+				{EXECUTION_ENVIRONMENT}.launch ("explorer " + {EXECUTION_ENVIRONMENT}.current_working_path.appended ({PW_INTERFACE_NAMES}.help_file_name).utf_8_name )
+			end
 		end
 
 feature {PW_INITIAL_WINDOW} -- Access (GUI components)

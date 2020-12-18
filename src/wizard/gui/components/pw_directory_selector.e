@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -33,16 +33,16 @@ inherit
 		undefine
 			is_equal, default_create, copy
 		end
-   
+
 create
 
 	default_create
 
 feature {NONE} -- Initialization
 
-	initialize is
+	initialize
 			-- Initialize GUI components and build horizontal box.
-		do 
+		do
 			Precursor {EV_HORIZONTAL_BOX}
 			create location_text_field
 			create browse_button.make_with_text (browse_button_text)
@@ -50,13 +50,13 @@ feature {NONE} -- Initialization
 			browse_button.select_actions.extend (agent open_file_dialog)
 		end
 
-	build is
+	build
 			-- Build frame.
 		local
 			c: EV_CELL
 		do
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			extend (c)
 			disable_item_expand (c)
 
@@ -64,25 +64,25 @@ feature {NONE} -- Initialization
 			extend (location_text_field)
 
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			extend (c)
 			disable_item_expand (c)
 
 			browse_button.align_text_center
-			browse_button.set_minimum_width (button_width)
-			browse_button.set_minimum_height (button_height)
+			browse_button.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (button_width))
+			browse_button.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (button_height))
 			extend (browse_button)
 			disable_item_expand (browse_button)
 
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			extend (c)
 			disable_item_expand (c)
 		end
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is directory selector in default state?
 		do
 			Result := (
@@ -94,7 +94,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_default_location (a_path: STRING) is
+	set_default_location (a_path: STRING)
 			-- Set `location_text_field.text' to `a_path'.
 		require
 			a_path_not_void: a_path /= Void
@@ -109,7 +109,7 @@ feature -- Status setting
 
 feature -- Element change
 
-	remove_location_text is
+	remove_location_text
 			-- Remove text of `location_text_field'.
 		do
 			location_text_field.remove_text
@@ -120,7 +120,7 @@ feature -- Element change
 
 feature -- Event handling
 
-	open_file_dialog is
+	open_file_dialog
 			-- Open dialog to choose a directory.
 		local
 			application: PATTERN_WIZARD
@@ -137,10 +137,10 @@ feature -- Event handling
 			end
 		end
 
-	set_directory_path is
+	set_directory_path 
 			-- Set `location_text_field.text' to the directory chosen by the user.
 		do
-			location_text_field.set_text (clone (directory_dialog.directory))
+			location_text_field.set_text (directory_dialog.directory.twin)
 		ensure
 			location_text_not_void: location_text_field.text /= Void
 			location_text_set: location_text_field.text.is_equal (directory_dialog.directory)

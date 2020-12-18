@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -33,7 +33,7 @@ feature {NONE} -- Initialization
 		do
 			create notebook
 			create application_class_frame.make_with_info_and_text (creation_procedure_name_label_text,
-																	template_method_name_label_text, 
+																	template_method_name_label_text,
 																	template_method_application_class_text)
 			create client_class_frame.make_with_info_and_text (Void,
 																template_method_implementation_feature_names_label_text,
@@ -149,7 +149,7 @@ feature -- Access
 			definition: Result.is_equal (client_class_frame.class_name_selector.name_text)
 		end
 
-	implementation_features_name: LINKED_LIST [STRING] is
+	implementation_features_name: LINKED_LIST [STRING_32] is
 			-- Chosen name for the implementation features of the template method
 		do
 			Result := client_class_frame.name_list_selector.names

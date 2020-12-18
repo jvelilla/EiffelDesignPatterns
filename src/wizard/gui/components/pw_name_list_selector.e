@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -31,7 +31,7 @@ inherit
 		undefine
 			is_equal, default_create, copy
 		end
-		
+
 create
 
 	make
@@ -52,7 +52,7 @@ feature {NONE} -- Initialization
 
 	initialize is
 			-- Initialize GUI components and build vertical box.
-		do 
+		do
 			Precursor {EV_VERTICAL_BOX}
 			create label.make_with_text (label_text)
 			create input_text_field
@@ -145,7 +145,7 @@ feature -- Access
 			Result := input_text_field.text
 		end
 
-	names: LINKED_LIST [STRING] is
+	names: LINKED_LIST [STRING_32] is
 			-- Names in the list
 		do
 			Result := name_list.strings
@@ -174,7 +174,7 @@ feature -- Status report
 			a_name_not_void: a_name /= Void
 			a_name_not_empty: not a_name.is_empty
 		local
-			strings: LINKED_LIST [STRING]
+			strings: LINKED_LIST [STRING_32]
 		do
 			strings := name_list.strings
 			from strings.start until Result or strings.after loop
@@ -188,7 +188,7 @@ feature -- Status report
 		do
 			Result := name_list.selected_item
 		end
-		
+
 feature -- Element change
 
 	add_names (a_list: LINKED_LIST [STRING]) is
@@ -257,7 +257,7 @@ feature {NONE} -- Implementation (GUI components)
 
 	label: EV_LABEL
 			-- Label with `label_text'
-			
+
 	input_text_field: EV_TEXT_FIELD
 			-- Field to enter a name
 
@@ -279,7 +279,7 @@ feature {NONE} -- Implementation
 			a_name_not_void: a_name /= Void
 			a_name_not_empty: not a_name.is_empty
 		local
-			strings: LINKED_LIST [STRING]
+			strings: LINKED_LIST [STRING_32]
 		do
 			strings := name_list.strings
 			from strings.start until strings.item.as_lower.is_equal (a_name.as_lower) or strings.after loop

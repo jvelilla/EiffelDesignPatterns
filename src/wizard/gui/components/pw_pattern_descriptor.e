@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -26,7 +26,7 @@ inherit
 		undefine
 			default_create, copy
 		end
-   
+
 create
 
 	make,
@@ -34,7 +34,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_name: like name; a_description: like description) is
+	make (a_name: like name; a_description: like description)
 			-- Initialize descriptor and set `name' to `a_name'
 			-- and `description' to `a_description'.
 		require
@@ -51,7 +51,7 @@ feature {NONE} -- Initialization
 			description_set: description = a_description
 		end
 
-	make_with_descriptor_and_text (a_name: like name; a_description: like description; a_text: like text) is
+	make_with_descriptor_and_text (a_name: like name; a_description: like description; a_text: like text)
 			-- Initialize descriptor and set `name' to `a_name'
 			-- and `description' to `a_description' and `text' to `a_text'.
 		require
@@ -71,16 +71,16 @@ feature {NONE} -- Initialization
 			text_cloned: text.is_equal (a_text) and text /= a_text
 		end
 
-	initialize is
+	initialize
 			-- Initialize `text_field' and build frame.
-		do 
+		do
 			Precursor {EV_FRAME}
 			create text_field
 			align_text_center
 			build
 		end
 
-	build is
+	build
 			-- Build `text_field' from `name' and `description'.
 		local
 			vbox: EV_VERTICAL_BOX
@@ -95,8 +95,8 @@ feature {NONE} -- Initialization
 			text_field.set_background_color (create {EV_COLOR}.make_with_8_bit_rgb (255, 255, 255))
 			text_field.set_text (name + ":%N" + description)
 			text_field.disable_edit
-			text_field.set_minimum_width (window_width - 4 * margin)
-			text_field.set_minimum_height (descriptor_text_field_height - 2 * margin)
+			text_field.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 4 * margin))
+			text_field.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (descriptor_text_field_height - 2 * margin))
 
 			hbox.extend (text_field)
 			hbox.disable_item_expand (text_field)
@@ -118,7 +118,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN 
 			-- Is pattern descriptor in default state?
 		do
 			Result := is_center_aligned

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -31,20 +31,20 @@ feature -- Access
 
 feature {NONE} -- Implementation (Code generation)
 
-	generate_ace_file is
+	generate_ace_file
 			-- Generate Ace file.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([project_directory_placeholder, project_directory])
 			generate_code (project_directory + singleton_ace_name + ".ace" , pattern_delivery_directory + singleton_ace_file_name, some_changes)
 		end
 
-	generate_root_class is
+	generate_root_class
 			-- Generate root class.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([singleton_access_point_class_name_placeholder, pattern_info.access_point_class_name.as_upper])
@@ -53,20 +53,20 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + default_root_class_name.as_lower + ".e", pattern_delivery_directory + singleton_root_class_file_name, some_changes)
 		end
 
-	generate_pattern_code is
+	generate_pattern_code
 			-- Generate Eiffel classes for this pattern (except the root class).
 		do
 			generate_singleton_class
 			generate_singleton_access_point_class
 		end
 
-	generate_singleton_class is
+	generate_singleton_class
 			-- Generate singleton class.
 		require
 			pattern_info_not_void: pattern_info /= Void
 			pattern_info_complete: pattern_info.is_complete
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([singleton_class_name_placeholder, pattern_info.class_name])
@@ -77,13 +77,13 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + pattern_info.class_name.as_lower + ".e", pattern_delivery_directory + singleton_class_file_name, some_changes)
 		end
 
-	generate_singleton_access_point_class is
+	generate_singleton_access_point_class
 			-- Generate singleton access point class.
 		require
 			pattern_info_not_void: pattern_info /= Void
 			pattern_info_complete: pattern_info.is_complete
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([singleton_class_name_placeholder, pattern_info.class_name.as_upper])

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -23,19 +23,19 @@ create
 
 	make,
 	make_with_name_and_text
-	   
+
 feature {NONE} -- Initialization
 
-	initialize_pattern_components is
+	initialize_pattern_components
 			-- Initialize GUI components that are pattern-specific.
 		do
 			create notebook
 			create original_component_vbox
 			create deferred_component_class_frame.make_with_info_and_text (feature_name_label_text, Void, decorator_deferred_component_class_text)
-			create effective_component_class_frame.make_with_info_and_text (Void, Void, decorator_effective_component_class_text) 
+			create effective_component_class_frame.make_with_info_and_text (Void, Void, decorator_effective_component_class_text)
 			create decorated_component_vbox
 			create deferred_decorated_component_class_frame.make_with_info_and_text (creation_procedure_name_label_text + "%N(will be used in descendants)", Void, decorator_deferred_decorated_component_class_text)
-			create effective_decorated_component_class_frame.make_with_text (decorator_effective_decorated_component_class_text) 
+			create effective_decorated_component_class_frame.make_with_text (decorator_effective_decorated_component_class_text)
 			create additional_attribute_name_selector.make (attribute_name_label_text)
 			create additional_attribute_type_name_selector.make (attribute_type_name_label_text)
 			create additional_behavior_name_selector.make (feature_name_label_text)
@@ -59,7 +59,7 @@ feature {NONE} -- Initialization
 
 				-- Deferred component class frame
 			create hbox
-			hbox.set_minimum_width (window_width - 4 * margin)
+			hbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 4 * margin))
 			hbox.extend (create {EV_CELL})
 
 			deferred_component_class_frame.set_default_class_name (default_decorator_deferred_component_class_name)
@@ -72,13 +72,13 @@ feature {NONE} -- Initialization
 			original_component_vbox.disable_item_expand (hbox)
 
 			create c
-			c.set_minimum_height (margin)
+			c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			original_component_vbox.extend (c)
 			original_component_vbox.disable_item_expand (c)
 
 				-- Concrete component class frame
 			create hbox
-			hbox.set_minimum_width (window_width - 4 * margin)
+			hbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 4 * margin))
 			hbox.extend (create {EV_CELL})
 
 			effective_component_class_frame.set_default_class_name (default_decorator_effective_component_class_name)
@@ -90,7 +90,7 @@ feature {NONE} -- Initialization
 			original_component_vbox.disable_item_expand (hbox)
 
 			create c
-			c.set_minimum_height (margin)
+			c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			original_component_vbox.extend (c)
 			original_component_vbox.disable_item_expand (c)
 
@@ -101,7 +101,7 @@ feature {NONE} -- Initialization
 
 				-- Deferred decorated component class frame
 			create hbox
-			hbox.set_minimum_width (window_width - 4 * margin)
+			hbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 4 * margin))
 			hbox.extend (create {EV_CELL})
 
 			deferred_decorated_component_class_frame.set_default_class_name (default_decorator_deferred_decorated_component_class_name)
@@ -114,7 +114,7 @@ feature {NONE} -- Initialization
 			decorated_component_vbox.disable_item_expand (hbox)
 
 			create c
-			c.set_minimum_height (margin)
+			c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_sizE (margin))
 			decorated_component_vbox.extend (c)
 			decorated_component_vbox.disable_item_expand (c)
 
@@ -123,15 +123,15 @@ feature {NONE} -- Initialization
 			hb.extend (create {EV_CELL})
 
 			effective_decorated_component_class_frame.align_text_center
-			effective_decorated_component_class_frame.set_minimum_width (window_width - 4 * margin)
+			effective_decorated_component_class_frame.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 4 * margin))
 
 			create vbox
-			vbox.set_minimum_width (window_width - 6 * margin)
+			vbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 6 * margin))
 
 			create hbox
-			hbox.set_minimum_width (window_width - 6 * margin)
+			hbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 6 * margin))
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			check_additional_attribute_button.enable_select
@@ -141,43 +141,43 @@ feature {NONE} -- Initialization
 			vbox.disable_item_expand (hbox)
 
 			create hbox
-			hbox.set_minimum_width (window_width - 6 * margin)
+			hbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 6 * margin))
 			create c
-			c.set_minimum_width (2 * margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (2 * margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			additional_attribute_name_selector.set_default_name (default_additional_attribute_name)
-			additional_attribute_name_selector.set_minimum_width (window_width - 6 * margin - 5)
+			additional_attribute_name_selector.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 6 * margin - 5))
 			hbox.extend (additional_attribute_name_selector)
 			hbox.disable_item_expand (additional_attribute_name_selector)
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			vbox.extend (hbox)
 			vbox.disable_item_expand (hbox)
 
 			create hbox
-			hbox.set_minimum_width (window_width - 6 * margin)
+			hbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 6 * margin))
 			create c
-			c.set_minimum_width (2 * margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (2 * margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			additional_attribute_type_name_selector.set_default_name (default_attribute_type_name)
-			additional_attribute_type_name_selector.set_minimum_width (window_width - 6 * margin - 5)
+			additional_attribute_type_name_selector.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 6 * margin - 5))
 			hbox.extend (additional_attribute_type_name_selector)
 			hbox.disable_item_expand (additional_attribute_type_name_selector)
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			vbox.extend (hbox)
 			vbox.disable_item_expand (hbox)
 
 			create hbox
-			hbox.set_minimum_width (window_width - 6 * margin)
+			hbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 6 * margin))
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			check_additional_behavior_button.enable_select
@@ -187,24 +187,24 @@ feature {NONE} -- Initialization
 			vbox.disable_item_expand (hbox)
 
 			create hbox
-			hbox.set_minimum_width (window_width - 5 * margin)
+			hbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 5 * margin))
 			create c
-			c.set_minimum_width (2 * margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (2 * margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			additional_behavior_name_selector.set_default_name (default_additional_feature_name)
-			additional_behavior_name_selector.set_minimum_width (window_width - 6 * margin - 5)
+			additional_behavior_name_selector.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 6 * margin - 5))
 			hbox.extend (additional_behavior_name_selector)
 			hbox.disable_item_expand (additional_behavior_name_selector)
 			create c
-			c.set_minimum_width (margin)
+			c.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			hbox.extend (c)
 			hbox.disable_item_expand (c)
 			vbox.extend (hbox)
 			vbox.disable_item_expand (hbox)
 
 			create c
-			c.set_minimum_height (margin)
+			c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			vbox.extend (c)
 			vbox.disable_item_expand (c)
 
@@ -326,9 +326,9 @@ feature -- Status report
 		do
 			 Result := (
 						original_component_vbox /= Void and
-						deferred_component_class_frame /= Void and 
+						deferred_component_class_frame /= Void and
 						effective_component_class_frame /= Void and
-						decorated_component_vbox /= Void and 
+						decorated_component_vbox /= Void and
 						deferred_decorated_component_class_frame /= Void and
 						effective_decorated_component_class_frame /= Void and
 						check_additional_attribute_button /= Void and
@@ -353,7 +353,7 @@ feature {NONE} -- Event handling
 				additional_attribute_name_selector.disable_name_selector_sensitive
 				additional_attribute_type_name_selector.disable_name_selector_sensitive
 			end
-		end 
+		end
 
 	check_additional_behavior is
 			-- Make `additional_behavior_name_selector' sensitive to user input
@@ -365,7 +365,7 @@ feature {NONE} -- Event handling
 			else
 				additional_behavior_name_selector.disable_name_selector_sensitive
 			end
-		end 
+		end
 
 feature {NONE} -- Implementation (GUI components)
 
@@ -374,7 +374,7 @@ feature {NONE} -- Implementation (GUI components)
 			-- properties of the decorated component
 
 	original_component_vbox: EV_VERTICAL_BOX
-			-- Vertical box with properties of deferred and effective 
+			-- Vertical box with properties of deferred and effective
 			-- (non-decorated) component class
 
 	deferred_component_class_frame: PW_PATTERN_BASIC_PROPERTY_SELECTOR
@@ -384,7 +384,7 @@ feature {NONE} -- Implementation (GUI components)
 			-- Frame with properties concerning the effective component class
 
 	decorated_component_vbox: EV_VERTICAL_BOX
-			-- Vertical box with properties of deferred and effective 
+			-- Vertical box with properties of deferred and effective
 			-- decorated) component class
 
 	deferred_decorated_component_class_frame: PW_PATTERN_BASIC_PROPERTY_SELECTOR
@@ -417,7 +417,7 @@ invariant
 
 	original_component_vbox_not_void: original_component_vbox /= Void
 	deferred_component_class_frame_not_void: deferred_component_class_frame /= Void
-	effective_component_class_frame_not_void: effective_component_class_frame /= Void 
+	effective_component_class_frame_not_void: effective_component_class_frame /= Void
 	decorated_component_vbox_not_void: decorated_component_vbox /= Void
 	deferred_decorated_component_class_frame: deferred_decorated_component_class_frame /= Void
 	effective_decorated_component_class_frame: effective_decorated_component_class_frame /= Void

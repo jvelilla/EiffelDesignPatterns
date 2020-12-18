@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -31,10 +31,10 @@ inherit
 		undefine
 			default_create, copy
 		end
-   
+
 feature {NONE} -- Initialization
 
-	make (a_name: like pattern_name; a_file_name: like class_diagram_file_name) is
+	make (a_name: like pattern_name; a_file_name: like class_diagram_file_name)
 			-- Set `pattern_name' to `a_name' and `class_diagram_file_name' to `a_file_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -51,7 +51,7 @@ feature {NONE} -- Initialization
 			class_diagram_file_name_set: class_diagram_file_name = a_file_name
 		end
 
-	make_with_name_and_text (a_name: like pattern_name; a_file_name: like class_diagram_file_name; a_text: like text) is
+	make_with_name_and_text (a_name: like pattern_name; a_file_name: like class_diagram_file_name; a_text: like text)
 			-- Set `pattern_name' to `a_name' and `class_diagram_file_name' to `a_file_name'.
 			-- Set `text' to `a_text'.
 		require
@@ -72,9 +72,9 @@ feature {NONE} -- Initialization
 			text_cloned: text.is_equal (a_text) and text /= a_text
 		end
 
-	initialize is
+	initialize
 			-- Initialize GUI components and build the frame.
-		do 
+		do
 			Precursor {EV_FRAME}
 			initialize_pattern_components
 			align_text_center
@@ -83,12 +83,12 @@ feature {NONE} -- Initialization
 			build
 		end
 
-	initialize_pattern_components is
+	initialize_pattern_components
 			-- Initialize GUI components that are pattern-specific.
 		deferred
 		end
 
-	build is
+	build
 			-- Build the frame.
 		local
 			vbox: EV_VERTICAL_BOX
@@ -96,14 +96,14 @@ feature {NONE} -- Initialization
 			create vbox
 			vbox.extend (create {EV_CELL})
 
-			class_diagram_bar.set_minimum_width (window_width - 4 * margin)
-			class_diagram_bar.set_minimum_height (button_height)
+			class_diagram_bar.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 4 * margin))
+			class_diagram_bar.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (button_height))
 			vbox.extend (class_diagram_bar)
 			vbox.disable_item_expand (class_diagram_bar)
 
 			vbox.extend (create {EV_CELL})
 
-			pattern_vbox.set_minimum_width (window_width - 4 * margin)
+			pattern_vbox.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (window_width - 4 * margin))
 			build_pattern_vbox
 			vbox.extend (pattern_vbox)
 			vbox.disable_item_expand (pattern_vbox)
@@ -111,7 +111,7 @@ feature {NONE} -- Initialization
 			extend (vbox)
 		end
 
-	build_pattern_vbox is
+	build_pattern_vbox
 			-- Build `pattern_vbox'.
 		deferred
 		end
@@ -122,12 +122,12 @@ feature -- Access
 			-- Name of the pattern
 
 	class_diagram_file_name: STRING
-			-- File name of class diagram corresponding to 
+			-- File name of class diagram corresponding to
 			-- pattern with name `pattern_name'
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN 
 			-- Is pattern selector in default state?
 		do
 			Result := (

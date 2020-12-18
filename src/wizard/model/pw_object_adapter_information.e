@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -25,23 +25,23 @@ create
 
 feature -- Access
 
-	adapter_creation_procedure_name: STRING
+	adapter_creation_procedure_name: STRING_32
 			-- Name of the creation procedure of the adapter class
 
 feature -- Status report
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN
 			-- Is object adapter information complete
 			-- (i.e. ready for code generation)?
 		do
 			Result := Precursor {PW_ADAPTER_INFORMATION} and adapter_creation_procedure_name /= Void
 		ensure then
-			definition: Result implies adapter_creation_procedure_name /= Void 
+			definition: Result implies adapter_creation_procedure_name /= Void
 		end
 
 feature -- Element change
 
-	set_adapter_creation_procedure_name (a_name: like adapter_creation_procedure_name) is
+	set_adapter_creation_procedure_name (a_name: like adapter_creation_procedure_name) 
 			-- Set `adapter_creation_procedure_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

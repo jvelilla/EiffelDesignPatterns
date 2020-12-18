@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,24 +18,24 @@ inherit
 
 feature -- Access
 
-	target_class_name: STRING
+	target_class_name: STRING_32
 			-- Name of the target class
 
-	target_feature_name: STRING
+	target_feature_name: STRING_32
 			-- Feature name of the target class
 
-	adaptee_class_name: STRING
+	adaptee_class_name: STRING_32
 			-- Name of the adaptee class
 
-	adaptee_feature_name: STRING
+	adaptee_feature_name: STRING_32
 			-- Feature name of the adaptee class
 
-	adapter_class_name: STRING
+	adapter_class_name: STRING_32
 			-- Name of the adapter class
 
 feature -- Status report
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN
 			-- Is adapter information complete
 			-- (i.e. ready for code generation)?
 		do
@@ -53,12 +53,12 @@ feature -- Status report
 											adaptee_class_name /= Void and
 											adaptee_feature_name /= Void and
 											adapter_class_name /= Void
-										) 
+										)
 		end
 
 feature -- Element change
 
-	set_target_class_name (a_name: like target_class_name) is
+	set_target_class_name (a_name: like target_class_name)
 			-- Set `target_class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -69,7 +69,7 @@ feature -- Element change
 			target_class_name_set: target_class_name = a_name
 		end
 
-	set_target_feature_name (a_name: like target_feature_name) is
+	set_target_feature_name (a_name: like target_feature_name)
 			-- Set `target_feature_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -80,7 +80,7 @@ feature -- Element change
 			target_feature_name_set: target_feature_name = a_name
 		end
 
-	set_adaptee_class_name (a_name: like adaptee_class_name) is
+	set_adaptee_class_name (a_name: like adaptee_class_name)
 			-- Set `adaptee_class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -91,7 +91,7 @@ feature -- Element change
 			adaptee_class_name_set: adaptee_class_name = a_name
 		end
 
-	set_adaptee_feature_name (a_name: like adaptee_feature_name) is
+	set_adaptee_feature_name (a_name: like adaptee_feature_name)
 			-- Set `adaptee_feature_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -102,7 +102,7 @@ feature -- Element change
 			adaptee_feature_name_set: adaptee_feature_name = a_name
 		end
 
-	set_adapter_class_name (a_name: like adapter_class_name) is
+	set_adapter_class_name (a_name: like adapter_class_name) 
 			-- Set `adapter_class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

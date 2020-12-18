@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -36,7 +36,7 @@ feature {NONE} -- Implementation (Pattern-specific GUI components)
 			-- `pattern_vbox' if chosen pattern is the Bridge pattern
 
 	bridge_with_effective_classes_pattern_vbox: PW_BRIDGE_WITH_EFFECTIVE_CLASSES_VERTICAL_BOX
-			-- `pattern_vbox' if chosen pattern is the Bridge pattern 
+			-- `pattern_vbox' if chosen pattern is the Bridge pattern
 			-- implemented with effective classes only
 
 	bridge_with_inheritance_pattern_vbox: PW_BRIDGE_WITH_INHERITANCE_VERTICAL_BOX

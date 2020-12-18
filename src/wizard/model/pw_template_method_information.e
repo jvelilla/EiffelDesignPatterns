@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,19 +18,19 @@ inherit
 
 feature -- Access
 
-	class_name: STRING
+	class_name: STRING_32
 			-- Name of the class containing the template method
 
-	template_method_name: STRING
+	template_method_name: STRING_32
 			-- Name of the template method
 
-	implementation_features_name: LINKED_LIST [STRING]
+	implementation_features_name: LINKED_LIST [STRING_32]
 			-- Name of the template method's implementation features
 
 
 feature -- Status report
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN
 			-- Is template method information complete
 			-- (i.e. ready for code generation)?
 		do
@@ -44,12 +44,12 @@ feature -- Status report
 											class_name /= Void and
 											template_method_name /= Void and
 											implementation_features_name /= Void
-										) 
+										)
 		end
 
 feature -- Element change
 
-	set_class_name (a_name: like class_name) is
+	set_class_name (a_name: like class_name)
 			-- Set `class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -60,7 +60,7 @@ feature -- Element change
 			class_name_set: class_name = a_name
 		end
 
-	set_template_method_name (a_name: like template_method_name) is
+	set_template_method_name (a_name: like template_method_name)
 			-- Set `template_method_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -71,7 +71,7 @@ feature -- Element change
 			template_method_name_set: template_method_name = a_name
 		end
 
-	set_implementation_features_name (a_list: like implementation_features_name) is
+	set_implementation_features_name (a_list: like implementation_features_name)
 			-- Set `implementation_features_name' to `a_list'.
 		require
 			a_list_not_void: a_list /= Void

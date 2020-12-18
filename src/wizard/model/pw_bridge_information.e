@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,22 +18,22 @@ inherit
 
 feature -- Access
 
-	application_class_name: STRING
+	application_class_name: STRING_32
 			-- Name of the application class
 
-	application_feature_name: STRING
+	application_feature_name: STRING_32
 			-- Name of the feature of the application class
 
-	descendant_application_classes_name: LINKED_LIST [STRING]
+	descendant_application_classes_name: LINKED_LIST [STRING_32]
 			-- Name of the descendant application classes
 
-	application_implementation_class_name: STRING
+	application_implementation_class_name: STRING_32
 			-- Name of the application implementation class
 
-	application_implementation_feature_name: STRING
+	application_implementation_feature_name: STRING_32
 			-- Name of the feature of the application implementation class
 
-	descendant_application_implementation_classes_name: LINKED_LIST [STRING]
+	descendant_application_implementation_classes_name: LINKED_LIST [STRING_32]
 			-- Name of the descendant application implementation classes
 
 feature -- Status report
@@ -58,7 +58,7 @@ feature -- Status report
 											application_implementation_class_name /= Void and
 											application_implementation_feature_name /= Void and
 											descendant_application_implementation_classes_name /= Void
-										) 
+										)
 		end
 
 feature -- Element change

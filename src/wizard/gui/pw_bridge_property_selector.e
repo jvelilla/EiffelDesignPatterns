@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -126,7 +126,7 @@ feature -- Access
 			definition: Result.is_equal (application_frame.class_name_selector.name_text)
 		end
 
-	descendant_application_classes_name: LINKED_LIST [STRING] is
+	descendant_application_classes_name: LINKED_LIST [STRING_32] is
 			-- Chosen name for the descendants of the application class
 		do
 			Result := descendant_application_classes_name_list.names
@@ -150,7 +150,7 @@ feature -- Access
 			definition: Result.is_equal (implementation_frame.feature_1_name_selector.name_text)
 		end
 
-	descendant_application_implementation_classes_name: LINKED_LIST [STRING] is
+	descendant_application_implementation_classes_name: LINKED_LIST [STRING_32] is
 			-- Chosen name for the descendants of the application implementation class
 		do
 			Result := descendant_application_implementation_classes_name_list.names

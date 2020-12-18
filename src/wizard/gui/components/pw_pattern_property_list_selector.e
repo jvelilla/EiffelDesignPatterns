@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -29,7 +29,7 @@ inherit
 		undefine
 			default_create, copy
 		end
-   
+
 create
 
 	make,
@@ -48,14 +48,14 @@ feature {NONE} -- Initialization
 			feature_list_label_text := label_2
 			default_create
 		ensure
-			feature_label_text_set: feature_label_text = label_1 
+			feature_label_text_set: feature_label_text = label_1
 			feature_list_label_text_set: feature_list_label_text = label_2
 		end
 
 	make_with_info_and_text (label_1: like feature_label_text; label_2: like feature_list_label_text; a_text: like text) is
 			-- Set `feature_label_text' to `label_1' and `feature_list_label_text' to `label_2'.
 			-- Set `text' to `a_text'.
-		require			
+		require
 			label_1_not_empty_if_not_void: label_1 /= Void implies not label_1.is_empty
 			label_2_not_void: label_2 /= Void
 			label_2_not_empty: not label_2.is_empty
@@ -66,14 +66,14 @@ feature {NONE} -- Initialization
 			feature_list_label_text := label_2
 			make_with_text (a_text)
 		ensure
-			feature_label_text_set: feature_label_text = label_1 
+			feature_label_text_set: feature_label_text = label_1
 			feature_list_label_text_set: feature_list_label_text = label_2
 			text_cloned: text.is_equal (a_text) and text /= a_text
 		end
 
 	initialize is
 			-- Initialize GUI components and build the frame.
-		do 
+		do
 			Precursor {EV_FRAME}
 			create class_name_selector.make (class_name_label_text)
 			if feature_label_text /= Void then
@@ -94,7 +94,7 @@ feature {NONE} -- Initialization
 			create vbox
 
 				-- Class name selector
-			class_name_selector.set_minimum_width (window_width - 6 * margin) 
+			class_name_selector.set_minimum_width (window_width - 6 * margin)
 			vbox.extend (class_name_selector)
 			vbox.disable_item_expand (class_name_selector)
 			create c
@@ -130,7 +130,7 @@ feature -- Access
 			-- Text of label appearing in the feature name selector
 
 	feature_list_label_text: STRING
-			-- Text of label appearing above the name list selector 
+			-- Text of label appearing above the name list selector
 
 feature -- Status report
 

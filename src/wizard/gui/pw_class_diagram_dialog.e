@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 		"[
@@ -42,8 +42,8 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_name: like pattern_name; a_file_name: like class_diagram_file_name) is
-			-- Set `pattern_name' to `a_name' and 
+	make (a_name: like pattern_name; a_file_name: like class_diagram_file_name)
+			-- Set `pattern_name' to `a_name' and
 			-- `class_diagram_file_name' to `a_file_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -60,7 +60,7 @@ feature {NONE} -- Initialization
 			class_diagram_file_name: class_diagram_file_name = a_file_name
 		end
 
-	initialize is
+	initialize
 			-- Initialize GUI components.
 		local
 			pw_icon_pixmap: EV_PIXMAP
@@ -74,9 +74,9 @@ feature {NONE} -- Initialization
 			create pw_icon_pixmap
 			pw_icon_pixmap.set_with_named_file (pattern_delivery_directory + pw_icon_pixmap_file_name)
 			set_icon_pixmap (pw_icon_pixmap)
-		   
+
 			build
-			set_size (class_diagram_pixmap.width + 2 * margin, class_diagram_pixmap.height + button_height + 8 * margin)
+			set_size ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (class_diagram_pixmap.width + 2 * margin), {EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (class_diagram_pixmap.height + button_height + 8 * margin))
 			set_default_push_button (ok_button)
 			set_default_cancel_button (ok_button)
 			close_request_actions.extend (agent close_window)
@@ -87,7 +87,7 @@ feature {NONE} -- Initialization
 			end
 		end
 
-	build is
+	build
 			-- Build interface.
 		local
 			vbox: EV_VERTICAL_BOX
@@ -97,34 +97,34 @@ feature {NONE} -- Initialization
 		do
 			create vbox
 			create c
-			c.set_minimum_height (margin)
+			c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			vbox.extend (c)
 			vbox.disable_item_expand (c)
 			class_diagram_pixmap.set_with_named_file (class_diagram_file_name)
 			vbox.extend (class_diagram_pixmap)
 			create c
-			c.set_minimum_height (margin)
+			c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			vbox.extend (c)
 			vbox.disable_item_expand (c)
 			create h_separator
 			vbox.extend (h_separator)
 			vbox.disable_item_expand (h_separator)
 			create c
-			c.set_minimum_height (margin)
+			c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			vbox.extend (c)
 			vbox.disable_item_expand (c)
 			create hbox
 			hbox.extend (create {EV_CELL})
 			ok_button.align_text_center
-			ok_button.set_minimum_width (button_width)
-			ok_button.set_minimum_height (button_height)
+			ok_button.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (button_width))
+			ok_button.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (button_height))
 			hbox.extend (ok_button)
 			hbox.disable_item_expand (ok_button)
 			hbox.extend (create {EV_CELL})
 			vbox.extend (hbox)
 			vbox.disable_item_expand (hbox)
 			create c
-			c.set_minimum_height (margin)
+			c.set_minimum_height ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (margin))
 			vbox.extend (c)
 			vbox.disable_item_expand (c)
 			extend (vbox)
@@ -132,7 +132,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is the window in its default state
 			-- (as stated in `initialize')
 		do

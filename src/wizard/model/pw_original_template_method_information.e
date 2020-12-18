@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -25,24 +25,24 @@ create
 
 feature -- Access
 
-	effective_class_name: STRING
+	effective_class_name: STRING_32
 			-- Name of the effective descendant class that provides
 			-- an implementation for the template method's deferred steps
 
 feature -- Status report
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN
 			-- Is template method information complete
 			-- (i.e. ready for code generation)?
 		do
 			Result := Precursor {PW_TEMPLATE_METHOD_INFORMATION} and effective_class_name /= Void
 		ensure then
-			definition: Result implies effective_class_name /= Void 
+			definition: Result implies effective_class_name /= Void
 		end
 
 feature -- Element change
 
-	set_effective_class_name (a_name: like effective_class_name) is
+	set_effective_class_name (a_name: like effective_class_name)
 			-- Set `effective_class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

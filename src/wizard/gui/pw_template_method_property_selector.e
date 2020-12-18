@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -126,7 +126,7 @@ feature -- Access
 			definition: Result.is_equal (deferred_application_class_frame.feature_name_selector.name_text)
 		end
 
-	implementation_features_name: LINKED_LIST [STRING] is
+	implementation_features_name: LINKED_LIST [STRING_32] is
 			-- Chosen name for the implementation features of the template method
 		do
 			Result := deferred_application_class_frame.name_list_selector.names

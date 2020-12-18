@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="pattern_wizard" uuid="504AE21E-196A-4431-B4F5-68F974113A58">
+	<target name="pattern_wizard">
+		<description>-- The Eiffel Pattern Wizard application
+					-- EiffelBase
+					-- WEL
+					-- EiffelVision2
+</description>
+		<root class="PATTERN_WIZARD" feature="make_and_launch"/>
+		<option profile="false" debug="false" warning="warning">
+			<assertions precondition="true" postcondition="true" check="true"/>
+			<warning name="export_class_missing" enabled="false"/>
+			<warning name="syntax" enabled="false"/>
+			<warning name="vjrv" enabled="false"/>
+		</option>
+		<capability>
+			<void_safety support="none" use="none"/>
+		</capability>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="vision2" location="$ISE_LIBRARY\library\vision2\vision2.ecf"/>
+		<library name="wel" location="$ISE_LIBRARY\library\wel\wel.ecf"/>
+		<cluster name="pattern_wizard" location=".\">
+			<cluster name="generation" location="$|generation\"/>
+			<cluster name="gui" location="$|gui\">
+				<cluster name="components" location="$|components\"/>
+			</cluster>
+			<cluster name="model" location="$|model\"/>
+			<cluster name="support" location="$|support\"/>
+		</cluster>
+	</target>
+</system>

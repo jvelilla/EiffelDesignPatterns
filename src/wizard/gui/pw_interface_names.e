@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,8 +18,8 @@ create
 
 feature -- Initial window
 
-	window_width: INTEGER is 600
-	window_height: INTEGER is 800
+	window_width: INTEGER = 600
+	window_height: INTEGER = 800
 	window_title: STRING is "Eiffel Pattern Wizard, version 1.0"
 	pattern_selector_text: STRING is "Pattern selection"
 	pattern_selector_height: INTEGER is 300
@@ -38,7 +38,7 @@ feature -- Initial window
 	incorrect_project_directory_path_text: STRING is "The project directory path you selected is not valid. Please choose a valid directory."
 	error_dialog_title: STRING is "Error"
 	error_pattern_environment_variable_not_defined_text: STRING is "The environment variable PATTERN is not defined.%NPlease set the environment variable PATTERN to the Pattern Wizard's installation directory and restart the application.%N(See `Readme.txt%' of the Pattern Wizard's delivery for more information.)"
- 
+
 feature -- Pattern selector
 
 	non_componentizable_item_text: STRING is "Non-componentizable"
@@ -82,7 +82,8 @@ feature -- Control box
 	generate_button_text: STRING is "Generate"
 	cancel_button_text: STRING is "Cancel"
 	help_button_text: STRING is "Help"
-	help_file_name: STRING is "\src\wizard\doc\pattern_wizard_help.pdf"
+--	help_file_name: STRING is "\src\wizard\doc\pattern_wizard_help.pdf"
+	help_file_name: STRING is "\doc\pattern_wizard_help.pdf"
 
 feature -- Class diagram bar
 
@@ -227,7 +228,7 @@ feature -- Patterns' applicability
 	adapter_applicability: STRING is "* you want to use an existing class, and its interface does not match the one you need.%N*you want to create a reusable class that cooperates with unrelated or unforeseen classes, that is, classes that don't necessarily have compatible interfaces.%N*(object adapter only) you need to use several existing subclasses, but it's impractical to adapt their interface by subclassing every one. An object adapter can adapt the interface of its parent class. [Gamma 1995, p 140]"
 	template_method_applicability: STRING is "* to implement the invariant parts of an algorithm once and leave it up to subclasses to implement the behavior that can vary.%N* when common behavior among subclasses should be factored and localized in a common class to avoid code duplication.%N* to control subclasses extensions. You can define a template method that calls 'hook' operations at specific points, thereby permitting extensions only at those points. [Gamma 1995, p 326]"
 	bridge_applicability: STRING is "* you want to avoid a permanent binding between an abstraction and its implementation. This might be the case, for example, when the implementation must be selected or switched at run-time.%N* both the abstractions and their implementations should be extensible by subclassing. In this case, the Bridge pattern lets you combine the different abstractions and implementations and extend them independently.%N* changes in the implementation of an abstraction should have no impact on clients; that is, their code should not have to be recompiled.%N* you have a proliferation of classes. Such a class hierarchy indicates the need for splitting an object into two parts.%N* you want to share an implementation among multiple objects, and this fact should be hidden from the client. [Gamma 1995, p 153]"
- 
+
 feature -- Patterns' class diagram file name
 
 	singleton_class_diagram_file_name: STRING is "\src\wizard\pixmaps\singleton_class_diagram.PNG"

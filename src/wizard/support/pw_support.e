@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -18,7 +18,7 @@ create
 
 feature -- Access
 
-	pattern_delivery_directory: STRING is
+	pattern_delivery_directory: STRING
 			-- Path to the directory where the Pattern delivery was unzipped
 			-- (Value of the environment variable %PATTERN%)
 		once
@@ -28,7 +28,7 @@ feature -- Access
 					Result.remove (Result.count)
 				end
 			else
-				create Result.make_empty
+				create Result.make_from_string ({EXECUTION_ENVIRONMENT}.current_working_path.parent.parent.utf_8_name)
 			end
 		ensure
 			pattern_delivery_directory_path_not_void: Result /= Void
@@ -36,7 +36,7 @@ feature -- Access
 
 feature -- Status report
 
-	directory_exists (a_path: STRING): BOOLEAN is
+	directory_exists (a_path: STRING): BOOLEAN
 			-- Does a directory corresponding to path `a_path' exist?
 		require
 			a_path_not_void: a_path /= Void
@@ -45,7 +45,7 @@ feature -- Status report
 			Result := (create {DIRECTORY}.make (a_path)).exists
 		end
 
-	file_exists (a_path: STRING): BOOLEAN is
+	file_exists (a_path: STRING): BOOLEAN
 			-- Does a file corresponding to path `a_path' exist?
 		require
 			a_path_not_void: a_path /= Void
@@ -56,7 +56,7 @@ feature -- Status report
 
 feature -- Code generators
 
-	singleton_code_generator: PW_SINGLETON_CODE_GENERATOR is
+	singleton_code_generator: PW_SINGLETON_CODE_GENERATOR
 			-- Code generator
 		once
 			create Result
@@ -64,7 +64,7 @@ feature -- Code generators
 			code_generator_not_void: Result /= Void
 		end
 
-	decorator_code_generator: PW_DECORATOR_CODE_GENERATOR is
+	decorator_code_generator: PW_DECORATOR_CODE_GENERATOR
 			-- Code generator
 		once
 			create Result
@@ -72,7 +72,7 @@ feature -- Code generators
 			code_generator_not_void: Result /= Void
 		end
 
-	class_adapter_code_generator: PW_CLASS_ADAPTER_CODE_GENERATOR is
+	class_adapter_code_generator: PW_CLASS_ADAPTER_CODE_GENERATOR
 			-- Code generator
 		once
 			create Result
@@ -80,7 +80,7 @@ feature -- Code generators
 			code_generator_not_void: Result /= Void
 		end
 
-	object_adapter_code_generator: PW_OBJECT_ADAPTER_CODE_GENERATOR is
+	object_adapter_code_generator: PW_OBJECT_ADAPTER_CODE_GENERATOR
 			-- Code generator
 		once
 			create Result
@@ -88,7 +88,7 @@ feature -- Code generators
 			code_generator_not_void: Result /= Void
 		end
 
-	template_method_code_generator: PW_TEMPLATE_METHOD_CODE_GENERATOR is
+	template_method_code_generator: PW_TEMPLATE_METHOD_CODE_GENERATOR
 			-- Code generator
 		once
 			create Result
@@ -96,7 +96,7 @@ feature -- Code generators
 			code_generator_not_void: Result /= Void
 		end
 
-	template_method_with_agents_code_generator: PW_TEMPLATE_METHOD_WITH_AGENTS_CODE_GENERATOR is
+	template_method_with_agents_code_generator: PW_TEMPLATE_METHOD_WITH_AGENTS_CODE_GENERATOR
 			-- Code generator
 		once
 			create Result
@@ -104,7 +104,7 @@ feature -- Code generators
 			code_generator_not_void: Result /= Void
 		end
 
-	bridge_code_generator: PW_BRIDGE_CODE_GENERATOR is
+	bridge_code_generator: PW_BRIDGE_CODE_GENERATOR
 			-- Code generator
 		once
 			create Result
@@ -112,7 +112,7 @@ feature -- Code generators
 			code_generator_not_void: Result /= Void
 		end
 
-	bridge_with_effective_classes_code_generator: PW_BRIDGE_WITH_EFFECTIVE_CLASSES_CODE_GENERATOR is
+	bridge_with_effective_classes_code_generator: PW_BRIDGE_WITH_EFFECTIVE_CLASSES_CODE_GENERATOR
 			-- Code generator
 		once
 			create Result
@@ -120,7 +120,7 @@ feature -- Code generators
 			code_generator_not_void: Result /= Void
 		end
 
-	bridge_with_inheritance_code_generator: PW_BRIDGE_WITH_INHERITANCE_CODE_GENERATOR is
+	bridge_with_inheritance_code_generator: PW_BRIDGE_WITH_INHERITANCE_CODE_GENERATOR
 			-- Code generator
 		once
 			create Result

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -31,10 +31,10 @@ feature -- Access
 
 feature {NONE} -- Implementation (Code generation)
 
-	generate_ace_file is
+	generate_ace_file
 			-- Generate Ace file.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([project_directory_placeholder, project_directory])
@@ -43,15 +43,15 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + template_method_with_agents_ace_name + ".ace" , pattern_delivery_directory + template_method_with_agents_ace_file_name, some_changes)
 		end
 
-	generate_root_class is
+	generate_root_class
 			-- Generate root class.
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
-			implementation_features_name: LINKED_LIST [STRING]
-			features_name: STRING
-			feature_name_skeleton: STRING
-			features_code: STRING
-			feature_code_skeleton: STRING
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
+			implementation_features_name: LINKED_LIST [STRING_32]
+			features_name: STRING_32
+			feature_name_skeleton: STRING_32
+			features_code: STRING_32
+			feature_code_skeleton: STRING_32
 		do
 			create some_changes.make
 			some_changes.extend ([template_method_client_class_name_placeholder, pattern_info.client_class_name.as_upper])
@@ -64,7 +64,7 @@ feature {NONE} -- Implementation (Code generation)
 			create features_code.make (128)
 			from implementation_features_name.start until implementation_features_name.after loop
 				feature_name_skeleton := clone (implementation_feature_name_skeleton)
-				feature_name_skeleton.replace_substring_all (implementation_feature_name_placeholder, implementation_features_name.item.as_lower) 
+				feature_name_skeleton.replace_substring_all (implementation_feature_name_placeholder, implementation_features_name.item.as_lower)
 				features_name := features_name + feature_name_skeleton
 
 				features_code := features_code + implementation_features_name.item.as_lower
@@ -84,19 +84,19 @@ feature {NONE} -- Implementation (Code generation)
 			generate_code (project_directory + pattern_info.client_class_name.as_lower + ".e", pattern_delivery_directory + template_method_with_agents_root_class_file_name, some_changes)
 		end
 
-	generate_pattern_code is
+	generate_pattern_code
 			-- Generate Eiffel classes for this pattern (except the root class).
 		do
 			generate_template_method_class
 		end
 
-	generate_template_method_class is
+	generate_template_method_class
 			-- Generate class containint the template method.
 		require
 			pattern_info_not_void: pattern_info /= Void
 			pattern_info_complete: pattern_info.is_complete
 		local
-			some_changes: LINKED_LIST [TUPLE [STRING, STRING]]
+			some_changes: LINKED_LIST [TUPLE [STRING_32, STRING_32]]
 		do
 			create some_changes.make
 			some_changes.extend ([template_method_class_name_placeholder, pattern_info.class_name.as_upper])
