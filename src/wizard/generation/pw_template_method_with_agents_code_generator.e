@@ -63,12 +63,12 @@ feature {NONE} -- Implementation (Code generation)
 			create features_name.make (128)
 			create features_code.make (128)
 			from implementation_features_name.start until implementation_features_name.after loop
-				feature_name_skeleton := clone (implementation_feature_name_skeleton)
+				feature_name_skeleton := implementation_feature_name_skeleton.twin
 				feature_name_skeleton.replace_substring_all (implementation_feature_name_placeholder, implementation_features_name.item.as_lower)
 				features_name := features_name + feature_name_skeleton
 
 				features_code := features_code + implementation_features_name.item.as_lower
-				feature_code_skeleton := clone (implementation_feature_code_skeleton)
+				feature_code_skeleton := implementation_feature_code_skeleton.twin
 				feature_code_skeleton.replace_substring_all (feature_number_placeholder, implementation_features_name.index.out)
 				features_code := features_code + feature_code_skeleton
 

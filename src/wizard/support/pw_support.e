@@ -36,7 +36,7 @@ feature -- Access
 
 feature -- Status report
 
-	directory_exists (a_path: STRING): BOOLEAN
+	directory_exists (a_path: READABLE_STRING_GENERAL): BOOLEAN
 			-- Does a directory corresponding to path `a_path' exist?
 		require
 			a_path_not_void: a_path /= Void
@@ -45,13 +45,13 @@ feature -- Status report
 			Result := (create {DIRECTORY}.make (a_path)).exists
 		end
 
-	file_exists (a_path: STRING): BOOLEAN
+	file_exists (a_path: READABLE_STRING_GENERAL): BOOLEAN
 			-- Does a file corresponding to path `a_path' exist?
 		require
 			a_path_not_void: a_path /= Void
 			a_path_not_empty: not a_path.is_empty
 		do
-			Result := (create {RAW_FILE}.make (a_path)).exists
+			Result := (create {RAW_FILE}.make_with_name (a_path)).exists
 		end
 
 feature -- Code generators

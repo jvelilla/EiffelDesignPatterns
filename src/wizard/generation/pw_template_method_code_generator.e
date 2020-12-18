@@ -88,7 +88,7 @@ feature {NONE} -- Implementation (Code generation)
 				features_name := features_name + implementation_features_name.item.as_lower
 
 				if implementation_features_name.index <= implementation_features_name.count - 1 then
-					part_done_skeleton := clone (part_done_code_skeleton)
+					part_done_skeleton := part_done_code_skeleton.twin
 					part_done_skeleton.replace_substring_all (feature_number_placeholder, implementation_features_name.index.out)
 					part_done_skeleton.replace_substring_all (implementation_feature_name_placeholder, implementation_features_name.item.as_lower)
 					parts_done := parts_done + part_done_skeleton
@@ -105,7 +105,7 @@ feature {NONE} -- Implementation (Code generation)
 				if implementation_features_name.index = 1 then
 					implementation_features_code := implementation_features_code + implementation_feature_first_precondition
 				else
-					assertion_skeleton := clone (implementation_feature_assertion_skeleton)
+					assertion_skeleton := implementation_feature_assertion_skeleton.twin
 					assertion_skeleton.replace_substring_all (feature_number_placeholder, (implementation_features_name.index - 1).out)
 					implementation_features_code := implementation_features_code + assertion_skeleton
 				end
@@ -113,7 +113,7 @@ feature {NONE} -- Implementation (Code generation)
 
 				if implementation_features_name.index /= implementation_features_name.count then
 					features_name := features_name + "%N%T%T%T"
-					assertion_skeleton := clone (implementation_feature_assertion_skeleton)
+					assertion_skeleton := implementation_feature_assertion_skeleton.twin
 					assertion_skeleton.replace_substring_all (feature_number_placeholder, implementation_features_name.index.out)
 					implementation_features_code := implementation_features_code + assertion_skeleton
 				else
@@ -157,7 +157,7 @@ feature {NONE} -- Implementation (Code generation)
 
 			from implementation_features_name.start until implementation_features_name.after loop
 				if implementation_features_name.index <= implementation_features_name.count - 1 then
-					part_done_skeleton := clone (effective_part_done_skeleton)
+					part_done_skeleton := effective_part_done_skeleton.twin
 					part_done_skeleton.replace_substring_all (feature_number_placeholder, implementation_features_name.index.out)
 					part_done_skeleton.replace_substring_all (implementation_feature_name_placeholder, implementation_features_name.item.as_lower)
 					parts_done := parts_done + part_done_skeleton
@@ -167,11 +167,11 @@ feature {NONE} -- Implementation (Code generation)
 				end
 
 				implementation_features_code := implementation_features_code + implementation_features_name.item.as_lower
-				implementation_feature_skeleton := clone (effective_implementation_feature_code_skeleton_first)
+				implementation_feature_skeleton := effective_implementation_feature_code_skeleton_first.twin
 				implementation_feature_skeleton.replace_substring_all (feature_number_placeholder, implementation_features_name.index.out)
 				implementation_features_code := implementation_features_code + implementation_feature_skeleton
 				if implementation_features_name.index /= implementation_features_name.count then
-					assignment_target_skeleton := clone (effective_implementation_feature_assignment_target_skeleton)
+					assignment_target_skeleton := effective_implementation_feature_assignment_target_skeleton.twin
 					assignment_target_skeleton.replace_substring_all (feature_number_placeholder, implementation_features_name.index.out)
 					implementation_features_code := implementation_features_code + assignment_target_skeleton + effective_implementation_feature_code_skeleton_end + "%N%N%T"
 				else

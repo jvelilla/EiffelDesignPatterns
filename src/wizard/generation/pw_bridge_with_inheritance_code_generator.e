@@ -57,12 +57,12 @@ feature {NONE} -- Implementation (Code generation)
 			create local_variables_code.make (128)
 			create client_code.make (256)
 			from descendants_name.start until descendants_name.after loop
-				local_variable_skeleton := clone (bridge_local_variable_code_skeleton)
+				local_variable_skeleton := bridge_local_variable_code_skeleton.twin
 				local_variable_skeleton.replace_substring_all (descendant_class_number_placeholder, descendants_name.index.out)
 				local_variable_skeleton.replace_substring_all (descendant_class_name_placeholder, descendants_name.item.as_upper)
 				local_variables_code := local_variables_code + local_variable_skeleton
 
-				client_code_skeleton := clone (bridge_with_inheritance_client_code_skeleton)
+				client_code_skeleton := bridge_with_inheritance_client_code_skeleton.twin
 				client_code_skeleton.replace_substring_all (descendant_class_number_placeholder, descendants_name.index.out)
 				client_code_skeleton.replace_substring_all (bridge_feature_name_placeholder, pattern_info.application_feature_name)
 				client_code := client_code + client_code_skeleton
