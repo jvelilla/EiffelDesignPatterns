@@ -118,16 +118,16 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	pattern_name: STRING
+	pattern_name: STRING_32
 			-- Name of the pattern
 
-	class_diagram_file_name: STRING
+	class_diagram_file_name: STRING_32
 			-- File name of class diagram corresponding to
 			-- pattern with name `pattern_name'
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN 
+	is_in_default_state: BOOLEAN
 			-- Is pattern selector in default state?
 		do
 			Result := (

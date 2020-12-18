@@ -225,7 +225,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	component_class_name: STRING is
+	component_class_name: STRING_32
 			-- Chosen name for the component class
 		do
 			Result := deferred_component_class_frame.class_name_selector.name_text
@@ -234,7 +234,7 @@ feature -- Access
 			definition: Result.is_equal (deferred_component_class_frame.class_name_selector.name_text)
 		end
 
-	component_feature_name: STRING is
+	component_feature_name: STRING_32
 			-- Chosen name for the feature of the component class
 		do
 			Result := deferred_component_class_frame.feature_1_name_selector.name_text
@@ -243,7 +243,7 @@ feature -- Access
 			definition: Result.is_equal (deferred_component_class_frame.feature_1_name_selector.name_text)
 		end
 
-	effective_component_class_name: STRING is
+	effective_component_class_name: STRING_32
 			-- Chosen name for the effective component class
 		do
 			Result := effective_component_class_frame.class_name_selector.name_text
@@ -252,7 +252,7 @@ feature -- Access
 			definition: Result.is_equal (effective_component_class_frame.class_name_selector.name_text)
 		end
 
-	decorated_component_class_name: STRING is
+	decorated_component_class_name: STRING_32
 			-- Chosen name for the decorated component class
 		do
 			Result := deferred_decorated_component_class_frame.class_name_selector.name_text
@@ -261,7 +261,7 @@ feature -- Access
 			definition: Result.is_equal (deferred_decorated_component_class_frame.class_name_selector.name_text)
 		end
 
-	decorated_component_creation_procedure_name: STRING is
+	decorated_component_creation_procedure_name: STRING_32
 			-- Chosen name for the creation procedure of the decorated component class
 		do
 			Result := deferred_decorated_component_class_frame.feature_1_name_selector.name_text
@@ -270,7 +270,7 @@ feature -- Access
 			definition: Result.is_equal (deferred_decorated_component_class_frame.feature_1_name_selector.name_text)
 		end
 
-	additional_attribute_name: STRING is
+	additional_attribute_name: STRING_32
 			-- Name of the additional attribute of the decorated component
 		require
 			is_component_with_additional_attribute_generation: is_component_with_additional_attribute_generation
@@ -281,7 +281,7 @@ feature -- Access
 			definition: Result.is_equal (additional_attribute_name_selector.name_text)
 		end
 
-	additional_attribute_type_name: STRING is
+	additional_attribute_type_name: STRING_32
 			-- Type name of the additional attribute of the decorated component
 		require
 			is_component_with_additional_attribute_generation: is_component_with_additional_attribute_generation
@@ -292,7 +292,7 @@ feature -- Access
 			definition: Result.is_equal (additional_attribute_type_name_selector.name_text)
 		end
 
-	additional_feature_name: STRING is
+	additional_feature_name: STRING_32
 			-- Name of the additional feature of the decorated component
 		require
 			is_component_with_additional_behavior_generation: is_component_with_additional_behavior_generation
@@ -305,7 +305,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_component_with_additional_attribute_generation: BOOLEAN is
+	is_component_with_additional_attribute_generation: BOOLEAN
 			 -- Should a decorated component with additional attribute be generated?
 		do
 			Result := check_additional_attribute_button.is_selected
@@ -313,7 +313,7 @@ feature -- Status report
 			definition: Result = check_additional_attribute_button.is_selected
 		end
 
-	is_component_with_additional_behavior_generation: BOOLEAN is
+	is_component_with_additional_behavior_generation: BOOLEAN
 			 -- Should a decorated component with additional behavior be generated?
 		do
 			Result := check_additional_behavior_button.is_selected
@@ -321,7 +321,7 @@ feature -- Status report
 			definition: Result = check_additional_behavior_button.is_selected
 		end
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is decorator property selector in default state?
 		do
 			 Result := (
@@ -341,7 +341,7 @@ feature -- Status report
 
 feature {NONE} -- Event handling
 
-	check_additional_attribute is
+	check_additional_attribute
 			-- Make `additional_attribute_name_selector' and `additional_attribute_type_name_selector'
 			-- sensitive to user input if `check_additional_attribute_button' is selected;
 			-- make them unsensitive otherwise.
@@ -355,7 +355,7 @@ feature {NONE} -- Event handling
 			end
 		end
 
-	check_additional_behavior is
+	check_additional_behavior
 			-- Make `additional_behavior_name_selector' sensitive to user input
 			-- if `check_additional_behavior_button' is selected;
 			-- make it unsensitive otherwise.

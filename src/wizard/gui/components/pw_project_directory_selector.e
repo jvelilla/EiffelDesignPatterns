@@ -86,7 +86,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	project_directory: STRING is
+	project_directory: STRING_32
 			-- Path of chosen project directory
 		do
 			Result := directory_selector.location_text_field.text

@@ -64,7 +64,7 @@ feature {NONE} -- Initialization
 			-- and build horizontal box.
 		do
 			Precursor {EV_HORIZONTAL_BOX}
-			create pattern_name_label.make_with_text ("Pattern: " + pattern_name)
+			create pattern_name_label.make_with_text ({STRING_32}"Pattern: " + pattern_name)
 			create class_diagram_button.make_with_text_and_action (class_diagram_button_text, agent show_class_diagram)
 			build
 		end
@@ -99,10 +99,10 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	pattern_name: STRING
+	pattern_name: STRING_32
 			-- Pattern name
 
-	class_diagram_file_name: STRING
+	class_diagram_file_name: STRING_32
 			-- File name of class diagram corresponding to
 			-- pattern with name `pattern_name'
 

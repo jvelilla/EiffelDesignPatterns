@@ -127,10 +127,10 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	feature_1_label_text: STRING
+	feature_1_label_text: STRING_32
 			-- Text of label appearing in the name selector for the first feature
 
-	feature_2_label_text: STRING
+	feature_2_label_text: STRING_32
 			-- Text of label appearing in the name selector for the second feature
 
 feature -- Status report
@@ -146,7 +146,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_default_class_name (a_name: STRING)
+	set_default_class_name (a_name: STRING_32)
 			-- Set default class name of `class_name_selector' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -155,7 +155,7 @@ feature -- Status setting
 			class_name_selector.set_default_name (a_name)
 		end
 
-	set_default_feature_1_name (a_name: STRING)
+	set_default_feature_1_name (a_name: STRING_32)
 			-- Set default name of `feature_1_name_selector' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -164,7 +164,7 @@ feature -- Status setting
 			feature_1_name_selector.set_default_name (a_name)
 		end
 
-	set_default_feature_2_name (a_name: STRING)
+	set_default_feature_2_name (a_name: STRING_32)
 			-- Set default name of `feature_2_name_selector' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

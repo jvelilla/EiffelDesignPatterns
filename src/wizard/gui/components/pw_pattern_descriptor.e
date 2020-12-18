@@ -110,15 +110,15 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	name: STRING
+	name: STRING_32
 			-- Pattern name
 
-	description: STRING
+	description: STRING_32
 			-- Pattern description
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN 
+	is_in_default_state: BOOLEAN
 			-- Is pattern descriptor in default state?
 		do
 			Result := is_center_aligned

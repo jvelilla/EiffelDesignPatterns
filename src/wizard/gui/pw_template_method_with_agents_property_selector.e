@@ -28,7 +28,7 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize_pattern_components is
+	initialize_pattern_components
 			-- Initialize GUI components that are pattern-specific.
 		do
 			create notebook
@@ -40,13 +40,13 @@ feature {NONE} -- Initialization
 																template_method_client_class_text)
 		end
 
-	build_pattern_vbox is
+	build_pattern_vbox
 			-- Build `pattern_vbox'.
 		local
 			hbox: EV_HORIZONTAL_BOX
 			vbox: EV_VERTICAL_BOX
 			c: EV_CELL
-			feature_name_list: LINKED_LIST [STRING]
+			feature_name_list: LINKED_LIST [STRING_32]
 		do
 			notebook.position_tabs_top
 
@@ -113,7 +113,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	application_class_name: STRING is
+	application_class_name: STRING_32
 			-- Chosen name for the application class
 		do
 			Result := application_class_frame.class_name_selector.name_text
@@ -122,7 +122,7 @@ feature -- Access
 			definition: Result.is_equal (application_class_frame.class_name_selector.name_text)
 		end
 
-	creation_procedure_name: STRING is
+	creation_procedure_name: STRING_32
 			-- Chosen name for the application's creation procedure
 		do
 			Result := application_class_frame.feature_1_name_selector.name_text
@@ -131,7 +131,7 @@ feature -- Access
 			definition: Result.is_equal (application_class_frame.feature_1_name_selector.name_text)
 		end
 
-	template_method_name: STRING is
+	template_method_name: STRING_32
 			-- Chosen name for the template method
 		do
 			Result := application_class_frame.feature_2_name_selector.name_text
@@ -140,7 +140,7 @@ feature -- Access
 			definition: Result.is_equal (application_class_frame.feature_2_name_selector.name_text)
 		end
 
-	client_class_name: STRING is
+	client_class_name: STRING_32
 			-- Chosen name for the client class
 		do
 			Result := client_class_frame.class_name_selector.name_text
@@ -149,7 +149,7 @@ feature -- Access
 			definition: Result.is_equal (client_class_frame.class_name_selector.name_text)
 		end
 
-	implementation_features_name: LINKED_LIST [STRING_32] is
+	implementation_features_name: LINKED_LIST [STRING_32]
 			-- Chosen name for the implementation features of the template method
 		do
 			Result := client_class_frame.name_list_selector.names
@@ -157,7 +157,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is template method property selector in default state?
 		do
 			 Result := (

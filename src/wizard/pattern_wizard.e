@@ -34,14 +34,13 @@ create
 
 feature -- Initialization
 
-	make_and_launch is
+	make_and_launch
 			-- Initialize and launch application.
 		local
 			error_dialog: EV_ERROR_DIALOG
 		do
 			default_create
 			prepare
-
 				-- Check that the environment variable $PATTERN has been set.
 			if pattern_delivery_directory.is_empty then
 				create error_dialog.make_with_text (error_pattern_environment_variable_not_defined_text)

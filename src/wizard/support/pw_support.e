@@ -18,17 +18,17 @@ create
 
 feature -- Access
 
-	pattern_delivery_directory: STRING
+	pattern_delivery_directory: STRING_32
 			-- Path to the directory where the Pattern delivery was unzipped
 			-- (Value of the environment variable %PATTERN%)
 		once
-			Result := (create {EXECUTION_ENVIRONMENT}).get ("PATTERN")
+			Result := (create {EXECUTION_ENVIRONMENT}).item ("PATTERN")
 			if Result /= Void and then not Result.is_empty then
 				if Result.item (Result.count) = '\' then
 					Result.remove (Result.count)
 				end
 			else
-				create Result.make_from_string ({EXECUTION_ENVIRONMENT}.current_working_path.parent.parent.utf_8_name)
+				create Result.make_from_string ({EXECUTION_ENVIRONMENT}.current_working_path.parent.parent.name)
 			end
 		ensure
 			pattern_delivery_directory_path_not_void: Result /= Void

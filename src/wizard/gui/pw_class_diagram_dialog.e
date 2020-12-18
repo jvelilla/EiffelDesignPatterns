@@ -145,15 +145,15 @@ feature -- Status report
 
 feature -- Access
 
-	pattern_name: STRING
+	pattern_name: STRING_32
 			-- Name of the pattern corresponding to the class diagram to display
 
-	class_diagram_file_name: STRING
+	class_diagram_file_name: STRING_32
 			-- File name of the pixmap corresponding to the class diagram to display
 
 feature -- Event handling
 
-	close_window is
+	close_window 
 			-- Close window.
 			-- (Action performed when the user clicks on the cross in the title bar.)
 		do

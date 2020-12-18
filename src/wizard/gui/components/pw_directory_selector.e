@@ -94,7 +94,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_default_location (a_path: STRING)
+	set_default_location (a_path: STRING_32)
 			-- Set `location_text_field.text' to `a_path'.
 		require
 			a_path_not_void: a_path /= Void
@@ -137,7 +137,7 @@ feature -- Event handling
 			end
 		end
 
-	set_directory_path 
+	set_directory_path
 			-- Set `location_text_field.text' to the directory chosen by the user.
 		do
 			location_text_field.set_text (directory_dialog.directory.twin)

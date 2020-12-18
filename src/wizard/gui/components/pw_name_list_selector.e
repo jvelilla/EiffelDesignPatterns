@@ -38,7 +38,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (a_label_text: like label_text) is
+	make (a_label_text: like label_text)
 			-- Set `label_text' to `a_label_text'.
 		require
 			a_label_text_not_void: a_label_text /= Void
@@ -50,7 +50,7 @@ feature {NONE} -- Initialization
 			label_text_set: label_text = a_label_text
 		end
 
-	initialize is
+	initialize
 			-- Initialize GUI components and build vertical box.
 		do
 			Precursor {EV_VERTICAL_BOX}
@@ -62,7 +62,7 @@ feature {NONE} -- Initialization
 			build
 		end
 
-	build is
+	build
 			-- Build frame.
 		local
 			hbox: EV_HORIZONTAL_BOX
@@ -136,16 +136,16 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	label_text: STRING
+	label_text: STRING_32
 			-- Text on `label'
 
-	input_text: STRING is
+	input_text: STRING_32
 			-- Text of `input_text_field'
 		do
 			Result := input_text_field.text
 		end
 
-	names: LINKED_LIST [STRING_32] is
+	names: LINKED_LIST [STRING_32]
 			-- Names in the list
 		do
 			Result := name_list.strings
@@ -153,7 +153,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is name list selector in default state?
 		do
 			Result := (
@@ -168,7 +168,7 @@ feature -- Status report
 					)
 		end
 
-	name_in_list (a_name: STRING): BOOLEAN is
+	name_in_list (a_name: STRING_32): BOOLEAN
 			-- Is `a_name' in `name_list'?
 		require
 			a_name_not_void: a_name /= Void
@@ -183,7 +183,7 @@ feature -- Status report
 			end
 		end
 
-	selected_item: EV_LIST_ITEM is
+	selected_item: EV_LIST_ITEM
 			-- Selected items in `name_list' if any.
 		do
 			Result := name_list.selected_item
@@ -191,7 +191,7 @@ feature -- Status report
 
 feature -- Element change
 
-	add_names (a_list: LINKED_LIST [STRING]) is
+	add_names (a_list: LINKED_LIST [STRING_32])
 			-- Add `a_list' of names to `name_list'.
 		require
 			a_list_not_void: a_list /= Void
@@ -207,7 +207,7 @@ feature -- Element change
 
 feature -- Event handling
 
-	add_name is
+	add_name
 			-- Add `input_text_field.text' to `name_list'.
 		require
 			input_text_not_void: input_text /= Void
@@ -233,7 +233,7 @@ feature -- Event handling
 			end
 		end
 
-	remove_name is
+	remove_name
 			-- Remove `input_text_field.text' from `name_list'.
 		require
 			something_to_remove: (input_text /= Void and then not input_text.is_empty) or else selected_item /= Void
@@ -272,7 +272,7 @@ feature {NONE} -- Implementation (GUI components)
 
 feature {NONE} -- Implementation
 
-	search_name (a_name: STRING) is
+	search_name (a_name: STRING_32)
 			-- Search `a_name' in `name_list'.
 			-- If found: stay at found position; otherwise `name_list' is `off'.
 		require

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ class <ADAPTER_ADAPTEE_CLASS_NAME>
 
 feature -- Basic operations
 
-	<ADAPTER_ADAPTEE_FEATURE_NAME> is
+	<ADAPTER_ADAPTEE_FEATURE_NAME> 
 			-- Do something.
 		do
 			debug

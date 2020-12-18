@@ -97,13 +97,13 @@ feature -- File names (Decorator pattern)
 
 feature -- File names (Adapter pattern)
 
-	class_adapter_ace_file_name: STRING_32 = "\src\wizard\skeletons\adapter\class_adapter\class_adapter_skeleton.ace"
+	class_adapter_ace_file_name: STRING_32 = "\src\wizard\skeletons\adapter\class_adapter\class_adapter_skeleton.ecf"
 	class_adapter_root_class_file_name: STRING_32 = "\src\wizard\skeletons\adapter\class_adapter\application_skeleton.e"
 	class_adapter_class_file_name: STRING_32 = "\src\wizard\skeletons\adapter\class_adapter\adapter_skeleton.e"
 	class_adapter_adaptee_class_file_name: STRING_32 = "\src\wizard\skeletons\adapter\class_adapter\adaptee_skeleton.e"
 	class_adapter_target_class_file_name: STRING_32 = "\src\wizard\skeletons\adapter\class_adapter\target_skeleton.e"
 
-	object_adapter_ace_file_name: STRING_32 = "\src\wizard\skeletons\adapter\object_adapter\object_adapter_skeleton.ace"
+	object_adapter_ace_file_name: STRING_32 = "\src\wizard\skeletons\adapter\object_adapter\object_adapter_skeleton.ecf"
 	object_adapter_root_class_file_name: STRING_32 = "\src\wizard\skeletons\adapter\object_adapter\application_skeleton.e"
 	object_adapter_class_file_name: STRING_32 = "\src\wizard\skeletons\adapter\object_adapter\adapter_skeleton.e"
 	object_adapter_adaptee_class_file_name: STRING_32 = "\src\wizard\skeletons\adapter\object_adapter\adaptee_skeleton.e"

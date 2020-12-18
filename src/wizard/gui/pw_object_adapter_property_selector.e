@@ -26,7 +26,7 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize_pattern_components is
+	initialize_pattern_components 
 			-- Initialize GUI components that are pattern-specific.
 		do
 			Precursor {PW_ADAPTER_PROPERTY_SELECTOR}
@@ -36,7 +36,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	adapter_creation_procedure_name: STRING is
+	adapter_creation_procedure_name: STRING_32
 			-- Chosen name for the adapter's creation procedure
 		do
 			Result := adapter_frame.feature_1_name_selector.name_text

@@ -21,7 +21,7 @@ inherit
 
 feature {NONE} -- Initialization
 
-	initialize_pattern_components is
+	initialize_pattern_components
 			-- Initialize GUI components that are pattern-specific.
 		do
 			create notebook
@@ -29,7 +29,7 @@ feature {NONE} -- Initialization
 			create adaptee_frame.make_with_info_and_text (feature_name_label_text, Void, adapter_adaptee_class_text)
 		end
 
-	build_pattern_vbox is
+	build_pattern_vbox
 			-- Build `pattern_vbox'.
 		local
 			hbox: EV_HORIZONTAL_BOX
@@ -122,7 +122,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	target_class_name: STRING is
+	target_class_name: STRING_32
 			-- Chosen class name for the target class
 		do
 			Result := target_frame.class_name_selector.name_text
@@ -131,7 +131,7 @@ feature -- Access
 			definition: Result.is_equal (target_frame.class_name_selector.name_text)
 		end
 
-	target_feature_name: STRING is
+	target_feature_name: STRING_32
 			-- Chosen name for the target's feature
 		do
 			Result := target_frame.feature_1_name_selector.name_text
@@ -140,7 +140,7 @@ feature -- Access
 			definition: Result.is_equal (target_frame.feature_1_name_selector.name_text)
 		end
 
-	adaptee_class_name: STRING is
+	adaptee_class_name: STRING_32
 			-- Chosen class name for the adaptee class
 		do
 			Result := adaptee_frame.class_name_selector.name_text
@@ -149,7 +149,7 @@ feature -- Access
 			definition: Result.is_equal (adaptee_frame.class_name_selector.name_text)
 		end
 
-	adaptee_feature_name: STRING is
+	adaptee_feature_name: STRING_32
 			-- Chosen name for the adaptee's feature
 		do
 			Result := adaptee_frame.feature_1_name_selector.name_text
@@ -158,7 +158,7 @@ feature -- Access
 			definition: Result.is_equal (adaptee_frame.feature_1_name_selector.name_text)
 		end
 
-	adapter_class_name: STRING is
+	adapter_class_name: STRING_32
 			-- Chosen class name for the adapter class
 		do
 			Result := adapter_frame.class_name_selector.name_text
@@ -169,7 +169,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is adapter property selector in default state?
 		do
 			 Result := (

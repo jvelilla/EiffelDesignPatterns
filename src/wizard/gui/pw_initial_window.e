@@ -43,7 +43,7 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize is
+	initialize
 			-- Initialize GUI components.
 		do
 			Precursor {EV_TITLED_WINDOW}
@@ -64,7 +64,7 @@ feature {NONE} -- Initialization
 			end
 		end
 
-	build is
+	build
 			-- Build interface.
 		local
 			vbox: EV_VERTICAL_BOX
@@ -131,7 +131,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is the window in its default state
 			-- (as stated in `initialize')
 		do
@@ -147,7 +147,7 @@ feature -- Status report
 
 feature {PW_PATTERN_SELECTOR} -- Event handling
 
-	select_pattern (a_name: STRING) is
+	select_pattern (a_name: STRING_32)
 			-- Select pattern corresponding to `a_name' and display the corresponding GUI.
 		require
 			a_name_not_void: a_name /= Void
@@ -201,12 +201,12 @@ feature {PW_PATTERN_SELECTOR} -- Event handling
 
 feature {PW_CONTROL_BOX} -- Event handling
 
-	generate_code is
+	generate_code
 			-- Generate code for the selected pattern according to the chosen properties.
 		require
 			pattern_vbox_not_void: pattern_vbox /= Void
 		local
-			a_project_directory: STRING
+			a_project_directory: STRING_32
 			information_dialog: EV_INFORMATION_DIALOG
 			warning_dialog: EV_WARNING_DIALOG
 			error_occurred: BOOLEAN
@@ -372,7 +372,7 @@ feature {PW_CONTROL_BOX} -- Event handling
 
 feature {NONE} -- Event handling
 
-	display_error_dialog (a_text: STRING) is
+	display_error_dialog (a_text: STRING_32)
 			-- Display an error dialog with message `a_text'.
 		require
 			a_text_not_void: a_text /= Void
@@ -389,7 +389,7 @@ feature {NONE} -- Event handling
 			error_dialog.show_modal_to_window (Current)
 		end
 
-	close_window is
+	close_window
 			-- Close window.
 			-- (Action performed when the user clicks on the cross in the title bar.)
 		do
@@ -426,6 +426,7 @@ feature {NONE} -- Implementation (GUI components)
 	control_box: PW_CONTROL_BOX
 			-- Horizontal box with control buttons "Generate", "Cancel"
 			-- and buttons "Help" and "About"
+
 
 invariant
 

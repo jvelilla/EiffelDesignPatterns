@@ -37,7 +37,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make (label_1: like feature_label_text; label_2: like feature_list_label_text) is
+	make (label_1: like feature_label_text; label_2: like feature_list_label_text)
 			-- Set `feature_label_text' to `label_1' and `feature_list_label_text' to `label_2'.
 		require
 			label_1_not_empty_if_not_void: label_1 /= Void implies not label_1.is_empty
@@ -52,7 +52,7 @@ feature {NONE} -- Initialization
 			feature_list_label_text_set: feature_list_label_text = label_2
 		end
 
-	make_with_info_and_text (label_1: like feature_label_text; label_2: like feature_list_label_text; a_text: like text) is
+	make_with_info_and_text (label_1: like feature_label_text; label_2: like feature_list_label_text; a_text: like text)
 			-- Set `feature_label_text' to `label_1' and `feature_list_label_text' to `label_2'.
 			-- Set `text' to `a_text'.
 		require
@@ -71,7 +71,7 @@ feature {NONE} -- Initialization
 			text_cloned: text.is_equal (a_text) and text /= a_text
 		end
 
-	initialize is
+	initialize
 			-- Initialize GUI components and build the frame.
 		do
 			Precursor {EV_FRAME}
@@ -84,7 +84,7 @@ feature {NONE} -- Initialization
 			build
 		end
 
-	build is
+	build
 			-- Build the frame.
 		local
 			vbox: EV_VERTICAL_BOX
@@ -126,15 +126,15 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	feature_label_text: STRING
+	feature_label_text: STRING_32
 			-- Text of label appearing in the feature name selector
 
-	feature_list_label_text: STRING
+	feature_list_label_text: STRING_32
 			-- Text of label appearing above the name list selector
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is basic pattern property selector in default state?
 		do
 			Result := (
@@ -146,7 +146,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_default_class_name (a_name: STRING) is
+	set_default_class_name (a_name: READABLE_STRING_GENERAL)
 			-- Set default class name of `class_name_selector' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -155,7 +155,7 @@ feature -- Status setting
 			class_name_selector.set_default_name (a_name)
 		end
 
-	set_default_feature_name (a_name: STRING) is
+	set_default_feature_name (a_name: READABLE_STRING_GENERAL) 
 			-- Set default name of `feature_name_selector' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -164,7 +164,7 @@ feature -- Status setting
 			feature_name_selector.set_default_name (a_name)
 		end
 
-	set_default_feature_names (a_list: LINKED_LIST [STRING]) is
+	set_default_feature_names (a_list: LINKED_LIST [STRING_32])
 			-- Add `a_list' of names to `name_list_selector'.
 		require
 			a_list_not_void: a_list /= Void

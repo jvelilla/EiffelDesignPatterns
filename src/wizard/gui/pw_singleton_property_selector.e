@@ -26,14 +26,14 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize_pattern_components is
+	initialize_pattern_components
 			-- Initialize GUI components that are pattern-specific.
 		do
 			create singleton_frame.make_with_info_and_text (creation_procedure_name_label_text, Void, singleton_class_text)
 			create access_point_frame.make_with_info_and_text (access_point_feature_name_label_text, Void, access_point_text)
 		end
 
-	build_pattern_vbox is
+	build_pattern_vbox
 			-- Build `pattern_vbox'.
 		local
 			hbox: EV_HORIZONTAL_BOX
@@ -80,7 +80,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	singleton_class_name: STRING is
+	singleton_class_name: STRING_32
 			-- Chosen name for the Singleton class
 		do
 			Result := singleton_frame.class_name_selector.name_text
@@ -89,7 +89,7 @@ feature -- Access
 			definition: Result.is_equal (singleton_frame.class_name_selector.name_text)
 		end
 
-	singleton_creation_procedure_name: STRING is
+	singleton_creation_procedure_name: STRING_32
 			-- Chosen name for the creation procedure of the Singleton class
 		do
 			Result := singleton_frame.feature_1_name_selector.name_text
@@ -98,7 +98,7 @@ feature -- Access
 			definition: Result.is_equal (singleton_frame.feature_1_name_selector.name_text)
 		end
 
-	access_point_class_name: STRING is
+	access_point_class_name: STRING_32
 			-- Chosen name for the Singleton access point class
 		do
 			Result := access_point_frame.class_name_selector.name_text
@@ -107,7 +107,7 @@ feature -- Access
 			definition: Result.is_equal (access_point_frame.class_name_selector.name_text)
 		end
 
-	access_point_feature_name: STRING is
+	access_point_feature_name: STRING_32
 			-- Chosen name for the feature name of the Singleton access point class
 		do
 			Result := access_point_frame.feature_1_name_selector.name_text
@@ -118,7 +118,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is pattern selector in default state?
 		do
 			 Result := (

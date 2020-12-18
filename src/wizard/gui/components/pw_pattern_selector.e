@@ -157,7 +157,7 @@ feature -- Status report
 
 feature -- Event handling
 
-	select_pattern (a_name: STRING) is
+	select_pattern (a_name: STRING_32) 
 			-- Select pattern corresponding to `a_name'.
 		require
 			a_name_not_void: a_name /= Void

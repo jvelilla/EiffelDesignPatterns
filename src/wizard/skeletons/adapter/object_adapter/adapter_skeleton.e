@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -26,7 +26,7 @@ create
 
 feature {NONE} -- Initialization
 
-	<ADAPTER_CREATION_PROCEDURE_NAME> (an_adaptee: like adaptee) is
+	<ADAPTER_CREATION_PROCEDURE_NAME> (an_adaptee: like adaptee) 
 			-- Set `adaptee' to `an_adaptee'.
 		require
 			an_adaptee_not_void: an_adaptee /= Void
@@ -43,7 +43,7 @@ feature -- Access
 
 feature -- Basic operations
 
-	<ADAPTER_TARGET_FEATURE_NAME> is
+	<ADAPTER_TARGET_FEATURE_NAME> 
 			-- Perform an operation.
 			-- Delegate work to `adaptee'.
 		do

@@ -25,7 +25,7 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize_pattern_components is
+	initialize_pattern_components 
 			-- Initialize GUI components that are pattern-specific.
 		do
 			create notebook
@@ -41,7 +41,7 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	application_feature_name: STRING is
+	application_feature_name: STRING_32
 			-- Chosen name for the application class's feature
 		do
 			Result := application_frame.feature_1_name_selector.name_text

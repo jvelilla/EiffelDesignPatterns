@@ -52,7 +52,7 @@ feature {NONE} -- Initialization
 			build
 		end
 
-	build 
+	build
 			-- Build horizontal box.
 		local
 			c: EV_CELL
@@ -80,10 +80,10 @@ feature {NONE} -- Initialization
 
 feature -- Access
 
-	label_name: STRING
+	label_name: STRING_32
 			-- Name of label in front of the `label_text_field'
 
-	name_text: STRING is
+	name_text: STRING_32
 			-- Text of `name_text_field'
 		do
 			Result := name_text_field.text
@@ -93,7 +93,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is name selector in default state?
 		do
 			Result := (
@@ -105,7 +105,7 @@ feature -- Status report
 
 feature -- Status setting
 
-	set_default_name (a_name: STRING) is
+	set_default_name (a_name: STRING_32)
 			-- Set `name_text_field.text' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -119,7 +119,7 @@ feature -- Status setting
 
 feature -- Element change
 
-	enable_name_selector_sensitive is
+	enable_name_selector_sensitive
 			-- Make `name_label' and `name_text_field' sensitive to user input.
 		do
 			name_label.enable_sensitive
@@ -129,7 +129,7 @@ feature -- Element change
 			name_text_field_is_sensitive: name_text_field.is_sensitive
 		end
 
-	disable_name_selector_sensitive is
+	disable_name_selector_sensitive
 			-- Make `name_label' and `name_text_field' unsensitive to user input.
 		do
 			name_label.disable_sensitive
