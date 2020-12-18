@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create
 
 feature -- Basic operation
 
-	make is
+	make 
 			-- Do something.
 		do
 			(create {FACADE}).r

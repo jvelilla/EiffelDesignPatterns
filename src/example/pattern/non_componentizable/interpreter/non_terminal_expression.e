@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -23,7 +23,7 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make
 			-- Initialize `expressions'.
 		do
 			create expressions.make
@@ -36,7 +36,7 @@ feature -- Access
 
 feature -- Element change
 
-	extend (an_expression: EXPRESSION) is
+	extend (an_expression: EXPRESSION)
 			-- Extend `expressions' with `an_expression'.
 		require
 			an_expression_not_void: an_expression /= Void
@@ -49,7 +49,7 @@ feature -- Element change
 
 feature -- Basic operation
 
-	interpret (a_context: CONTEXT) is
+	interpret (a_context: CONTEXT)
 			-- Interpret non-terminal symbols of the grammar
 			-- using shared information of `a_context.
 		do
@@ -66,6 +66,6 @@ feature -- Basic operation
 invariant
 
 	expressions_not_void: expressions /= Void
-	no_void_expression: not expressions.has (Void)
+--	no_void_expression: not expressions.has (Void)
 
 end

@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,9 +19,9 @@ create
 
 feature {NONE} -- Initialization
 
-	make is
+	make 
 			-- Interpret a non-terminal expression
-			-- made of two terminal expressions. 
+			-- made of two terminal expressions.
 		local
 			a_context: CONTEXT
 			non_terminal: NON_TERMINAL_EXPRESSION

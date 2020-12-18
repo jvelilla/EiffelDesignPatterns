@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ class FACADE
 
 feature -- Basic operation
 
-	r is
+	r 
 			-- Do something.
 		do
 			(create {A}).ra;

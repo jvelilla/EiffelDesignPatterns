@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create {FACADE}
 
 feature {FACADE} -- Basic operation
 
-	ra is
+	ra 
 			-- Do something.
 		do
 			debug

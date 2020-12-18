@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ create {FACADE}
 
 feature {FACADE} -- Basic operation
 
-	rc is
+	rc 
 			-- Do something.
 		do
 			debug

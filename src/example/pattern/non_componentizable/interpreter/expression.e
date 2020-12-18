@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -15,7 +15,7 @@ deferred class EXPRESSION
 
 feature -- Basic operation
 
-	interpret (a_context: CONTEXT) is
+	interpret (a_context: CONTEXT) 
 			-- Interpret the symbols of the grammar
 			-- using shared information of `a_context'.
 		require

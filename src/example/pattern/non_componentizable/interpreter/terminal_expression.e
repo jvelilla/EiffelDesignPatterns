@@ -1,4 +1,4 @@
-indexing
+note
 
 	description:
 
@@ -19,7 +19,7 @@ inherit
 
 feature -- Basic operation
 
-	interpret (a_context: CONTEXT) is
+	interpret (a_context: CONTEXT)
 			-- Interpret terminal symbols of the grammar
 			-- using shared information of `a_context.
 		do
