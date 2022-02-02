@@ -14,7 +14,7 @@ deferred class PW_PATTERN_INFORMATION
 
 feature -- Status report
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN 
 			-- Is pattern information complete
 			-- (i.e. ready for code generation)?
 		deferred

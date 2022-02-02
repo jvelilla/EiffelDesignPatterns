@@ -25,7 +25,7 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize_pattern_components is
+	initialize_pattern_components 
 			-- Initialize pattern-specific GUI components and build vertical box.
 		do
 			create pattern_intent_frame.make_with_descriptor_and_text (object_adapter_pattern_name, adapter_intent, pattern_intent_frame_text)

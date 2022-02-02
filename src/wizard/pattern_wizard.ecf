@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-21-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-21-0 http://www.eiffel.com/developers/xml/configuration-1-21-0.xsd" name="pattern_wizard" uuid="504AE21E-196A-4431-B4F5-68F974113A58">
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-22-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-22-0 http://www.eiffel.com/developers/xml/configuration-1-22-0.xsd" name="pattern_wizard" uuid="504AE21E-196A-4431-B4F5-68F974113A58">
 	<target name="pattern_wizard">
 		<description>-- The Eiffel Pattern Wizard application
 					-- EiffelBase
@@ -7,25 +7,50 @@
 					-- EiffelVision2
 		</description>
 		<root class="PATTERN_WIZARD" feature="make_and_launch"/>
-		<option profile="false" debug="false" warning="warning">
+		<option profile="false" debug="false" warning="warning" is_obsolete_iteration="true" syntax="standard">
 			<assertions precondition="true" postcondition="true" check="true"/>
 			<warning name="export_class_missing" enabled="false"/>
 			<warning name="syntax" enabled="false"/>
 			<warning name="vjrv" enabled="false"/>
 		</option>
 		<capability>
-			<void_safety support="none" use="none"/>
+			<void_safety support="none"/>
 		</capability>
-		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
-		<library name="vision2" location="$ISE_LIBRARY\library\vision2\vision2.ecf"/>
-		<library name="wel" location="$ISE_LIBRARY\library\wel\wel.ecf"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf">
+			<option>
+			</option>
+		</library>
+		<library name="vision2" location="$ISE_LIBRARY\library\vision2\vision2.ecf">
+			<option>
+			</option>
+		</library>
+		<library name="wel" location="$ISE_LIBRARY\library\wel\wel.ecf">
+			<option>
+			</option>
+		</library>
 		<cluster name="pattern_wizard" location=".\">
-			<cluster name="generation" location="$|generation\"/>
-			<cluster name="gui" location="$|gui\">
-				<cluster name="components" location="$|components\"/>
+			<option is_obsolete_iteration="true">
+			</option>
+			<cluster name="generation" location="$|generation\">
+				<option is_obsolete_iteration="true">
+				</option>
 			</cluster>
-			<cluster name="model" location="$|model\"/>
-			<cluster name="support" location="$|support\"/>
+			<cluster name="gui" location="$|gui\">
+				<option is_obsolete_iteration="true">
+				</option>
+				<cluster name="components" location="$|components\">
+					<option is_obsolete_iteration="true">
+					</option>
+				</cluster>
+			</cluster>
+			<cluster name="model" location="$|model\">
+				<option is_obsolete_iteration="true">
+				</option>
+			</cluster>
+			<cluster name="support" location="$|support\">
+				<option is_obsolete_iteration="true">
+				</option>
+			</cluster>
 		</cluster>
 	</target>
 </system>

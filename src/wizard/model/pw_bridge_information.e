@@ -38,7 +38,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_complete: BOOLEAN is
+	is_complete: BOOLEAN
 			-- Is bridge information complete
 			-- (i.e. ready for code generation)?
 		do
@@ -63,7 +63,7 @@ feature -- Status report
 
 feature -- Element change
 
-	set_application_class_name (a_name: like application_class_name) is
+	set_application_class_name (a_name: like application_class_name)
 			-- Set `application_class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -74,7 +74,7 @@ feature -- Element change
 			application_class_name_set: application_class_name = a_name
 		end
 
-	set_application_feature_name (a_name: like application_feature_name) is
+	set_application_feature_name (a_name: like application_feature_name)
 			-- Set `application_feature_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -85,7 +85,7 @@ feature -- Element change
 			application_feature_name_set: application_feature_name = a_name
 		end
 
-	set_descendant_application_classes_name (a_list: like descendant_application_classes_name) is
+	set_descendant_application_classes_name (a_list: like descendant_application_classes_name)
 			-- Set `descendant_application_classes_name' to `a_list'.
 		require
 			a_list_not_void: a_list /= Void
@@ -97,7 +97,7 @@ feature -- Element change
 			descendant_application_classes_name_set: descendant_application_classes_name = a_list
 		end
 
-	set_application_implementation_class_name (a_name: like application_implementation_class_name) is
+	set_application_implementation_class_name (a_name: like application_implementation_class_name)
 			-- Set `application_implementation_class_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -108,7 +108,7 @@ feature -- Element change
 			application_implementation_class_name_set: application_implementation_class_name = a_name
 		end
 
-	set_application_implementation_feature_name (a_name: like application_implementation_feature_name) is
+	set_application_implementation_feature_name (a_name: like application_implementation_feature_name)
 			-- Set `application_implementation_feature_name' to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
@@ -119,7 +119,7 @@ feature -- Element change
 			application_implementation_feature_name_set: application_implementation_feature_name = a_name
 		end
 
-	set_descendant_application_implementation_classes_name (a_list: like descendant_application_implementation_classes_name) is
+	set_descendant_application_implementation_classes_name (a_list: like descendant_application_implementation_classes_name) 
 			-- Set `descendant_application_implementation_classes_name' to `a_list'.
 		require
 			a_list_not_void: a_list /= Void
