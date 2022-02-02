@@ -47,7 +47,7 @@ feature {NONE} -- Initialization
 		deferred
 		end
 
-	build is
+	build
 			-- Build frame.
 		local
 			hbox: EV_HORIZONTAL_BOX
@@ -94,7 +94,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN 
+	is_in_default_state: BOOLEAN
 			-- Is name list selector in default state?
 		do
 			Result := (

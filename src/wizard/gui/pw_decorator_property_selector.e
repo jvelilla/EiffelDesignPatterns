@@ -46,7 +46,7 @@ feature {NONE} -- Initialization
 			check_additional_behavior_button.select_actions.extend (agent check_additional_behavior)
 		end
 
-	build_pattern_vbox is
+	build_pattern_vbox 
 			-- Build `pattern_vbox'.
 		local
 			hbox, hb: EV_HORIZONTAL_BOX

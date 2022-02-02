@@ -45,7 +45,7 @@ feature {NONE} -- Implementation (Pattern-specific GUI components)
 
 feature {NONE} -- Implementation (Pattern information)
 
-	singleton_info: PW_SINGLETON_INFORMATION is
+	singleton_info: PW_SINGLETON_INFORMATION
 			-- Selected information about the chosen pattern
 		require
 			singleton_pattern_vbox_not_void: singleton_pattern_vbox /= Void
@@ -62,7 +62,7 @@ feature {NONE} -- Implementation (Pattern information)
 			singleton_info_not_void: Result /= Void
 		end
 
-	decorator_info: PW_DECORATOR_INFORMATION is
+	decorator_info: PW_DECORATOR_INFORMATION
 			-- Selected information about the chosen pattern
 		require
 			decorator_pattern_vbox_not_void: decorator_pattern_vbox /= Void
@@ -89,7 +89,7 @@ feature {NONE} -- Implementation (Pattern information)
 			decorator_info_not_void: Result /= Void
 		end
 
-	class_adapter_info: PW_CLASS_ADAPTER_INFORMATION is
+	class_adapter_info: PW_CLASS_ADAPTER_INFORMATION
 			-- Selected information about the chosen pattern
 		require
 			class_adapter_pattern_vbox_not_void: class_adapter_pattern_vbox /= Void
@@ -107,7 +107,7 @@ feature {NONE} -- Implementation (Pattern information)
 			class_adapter_info_not_void: Result /= Void
 		end
 
-	object_adapter_info: PW_OBJECT_ADAPTER_INFORMATION is
+	object_adapter_info: PW_OBJECT_ADAPTER_INFORMATION
 			-- Selected information about the chosen pattern
 		require
 			object_adapter_pattern_vbox_not_void: object_adapter_pattern_vbox /= Void
@@ -126,7 +126,7 @@ feature {NONE} -- Implementation (Pattern information)
 			object_adapter_info_not_void: Result /= Void
 		end
 
-	template_method_info: PW_ORIGINAL_TEMPLATE_METHOD_INFORMATION is
+	template_method_info: PW_ORIGINAL_TEMPLATE_METHOD_INFORMATION
 			-- Selected information about the chosen pattern
 		require
 			template_method_pattern_vbox_not_void: template_method_pattern_vbox /= Void
@@ -143,7 +143,7 @@ feature {NONE} -- Implementation (Pattern information)
 			template_method_info_not_void: Result /= Void
 		end
 
-	template_method_with_agents_info: PW_TEMPLATE_METHOD_WITH_AGENTS_INFORMATION is
+	template_method_with_agents_info: PW_TEMPLATE_METHOD_WITH_AGENTS_INFORMATION
 			-- Selected information about the chosen pattern
 		require
 			template_method_with_agents_pattern_vbox_not_void: template_method_with_agents_pattern_vbox /= Void
@@ -161,7 +161,7 @@ feature {NONE} -- Implementation (Pattern information)
 			template_method_with_agents_info_not_void: Result /= Void
 		end
 
-	bridge_info: PW_ORIGINAL_BRIDGE_INFORMATION is
+	bridge_info: PW_ORIGINAL_BRIDGE_INFORMATION
 			-- Selected information about the chosen pattern
 		require
 			bridge_pattern_vbox_not_void: bridge_pattern_vbox /= Void
@@ -181,7 +181,7 @@ feature {NONE} -- Implementation (Pattern information)
 			bridge_info_not_void: Result /= Void
 		end
 
-	bridge_with_effective_classes_info: PW_BRIDGE_WITH_EFFECTIVE_CLASSES_INFORMATION is
+	bridge_with_effective_classes_info: PW_BRIDGE_WITH_EFFECTIVE_CLASSES_INFORMATION
 			-- Selected information about the chosen pattern
 		require
 			bridge_with_effective_classes_pattern_vbox_not_void: bridge_with_effective_classes_pattern_vbox /= Void
@@ -201,7 +201,7 @@ feature {NONE} -- Implementation (Pattern information)
 			bridge_with_effective_classes_info_not_void: Result /= Void
 		end
 
-	bridge_with_inheritance_info: PW_BRIDGE_WITH_INHERITANCE_INFORMATION is
+	bridge_with_inheritance_info: PW_BRIDGE_WITH_INHERITANCE_INFORMATION
 			-- Selected information about the chosen pattern
 		require
 			bridge_with_inheritance_pattern_vbox_not_void: bridge_with_inheritance_pattern_vbox /= Void

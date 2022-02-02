@@ -39,7 +39,7 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize is
+	initialize
 			-- Initialize GUI components and build the dialog.
 		local
 			pw_icon_pixmap: EV_PIXMAP
@@ -56,7 +56,7 @@ feature {NONE} -- Initialization
 			build
 		end
 
-	build is
+	build
 			-- Build dialog.
 		local
 			hbox: EV_HORIZONTAL_BOX
@@ -143,7 +143,7 @@ feature {NONE} -- Initialization
 
 feature {NONE} -- Event handling
 
-	close_dialog is
+	close_dialog 
 			-- Close dialog.
 		do
 			destroy
