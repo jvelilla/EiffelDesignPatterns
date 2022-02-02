@@ -139,21 +139,18 @@ feature {NONE} -- Implementation (Code generation)
 		local
 			file: PLAIN_TEXT_FILE
 			skeleton_file: PLAIN_TEXT_FILE
-			text: STRING
+			text: STRING_8
 			a_change: TUPLE [STRING_32, STRING_32]
-			old_string: STRING_32
-			new_string: STRING_32
 		do
 			create skeleton_file.make_open_read (a_skeleton_file_name)
 			skeleton_file.read_stream (skeleton_file.count)
 			text := skeleton_file.last_string
 			from some_changes.start until some_changes.after loop
 				a_change := some_changes.item
-				old_string ?= a_change.item (1)
-				if old_string /= Void then
-					new_string ?= a_change.item (2)
-					if new_string /= Void then
-						text.replace_substring_all (old_string, new_string)
+				if attached {STRING_32} a_change.item (1) as old_string then
+					if attached {STRING_32} a_change.item (2) as new_string then
+							--| TODO check if it's ok to use to_string_8
+						text.replace_substring_all (old_string.to_string_8, new_string.to_string_8)
 					end
 				end
 				some_changes.forth

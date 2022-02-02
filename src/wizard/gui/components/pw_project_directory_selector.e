@@ -97,7 +97,7 @@ feature -- Access
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is project directory selector in default state?
 		do
 			Result := (
@@ -110,7 +110,7 @@ feature -- Status report
 
 feature -- Element change
 
-	remove_location_text is
+	remove_location_text
 			-- Remove text of text field of `directory_selector'.
 		do
 			directory_selector.remove_location_text

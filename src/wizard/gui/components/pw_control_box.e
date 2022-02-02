@@ -40,7 +40,7 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize is
+	initialize
 			-- Initialize buttons and build the horizontal box.
 		do
 			Precursor {EV_HORIZONTAL_BOX}
@@ -51,7 +51,7 @@ feature {NONE} -- Initialization
 			build
 		end
 
-	build is
+	build
 			-- Build control box with `about_button', `generate_button'
 			-- `cancel_button' and `help_button'.
 		local
@@ -107,7 +107,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is control box in default state?
 		do
 			Result := (
@@ -122,7 +122,7 @@ feature -- Status report
 
 feature -- Event handling
 
-	show_about is
+	show_about
 			-- Show the "About Eiffel Pattern Wizard" dialog.
 			-- (Action performed when the user clicks the `about_button')
 		local
@@ -136,7 +136,7 @@ feature -- Event handling
 			end
 		end
 
-	generate is
+	generate
 			-- Generate code from the selected information.
 			-- (Action performed when the user clicks the `generate_button')
 		local
@@ -148,7 +148,7 @@ feature -- Event handling
 			end
 		end
 
-	close_window is
+	close_window
 			-- Close window.
 			-- (Action performed when the user clicks the `cancel_button')
 		do

@@ -18,7 +18,7 @@ inherit
 
 feature {NONE} -- Implementation (Code generation)
 
-	generate_pattern_code is
+	generate_pattern_code
 			-- Generate Eiffel classes for this pattern (except the root class).
 		do
 			generate_target_class
@@ -26,7 +26,7 @@ feature {NONE} -- Implementation (Code generation)
 			generate_adapter_class
 		end
 
-	generate_target_class is
+	generate_target_class
 			-- Generate target class.
 		require
 			pattern_info_not_void: pattern_info /= Void
@@ -34,7 +34,7 @@ feature {NONE} -- Implementation (Code generation)
 		deferred
 		end
 
-	generate_adaptee_class is
+	generate_adaptee_class
 			-- Generate adaptee class.
 		require
 			pattern_info_not_void: pattern_info /= Void
@@ -42,7 +42,7 @@ feature {NONE} -- Implementation (Code generation)
 		deferred
 		end
 
-	generate_adapter_class is
+	generate_adapter_class
 			-- Generate adapter class.
 		require
 			pattern_info_not_void: pattern_info /= Void

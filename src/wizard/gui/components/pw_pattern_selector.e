@@ -34,7 +34,7 @@ create
 
 feature {NONE} -- Initialization
 
-	initialize is
+	initialize
 			-- Initialize `tree' and its items.
 		do
 			Precursor {EV_FRAME}
@@ -92,7 +92,7 @@ feature {NONE} -- Initialization
 			singleton_item.select_actions.extend (agent select_pattern (singleton_pattern_name))
 		end
 
-	build is
+	build
 			-- Build `tree' representation of the pattern classification.
 		local
 			vbox: EV_VERTICAL_BOX
@@ -149,7 +149,7 @@ feature {NONE} -- Initialization
 
 feature -- Status report
 
-	is_in_default_state: BOOLEAN is
+	is_in_default_state: BOOLEAN
 			-- Is pattern selector in default state?
 		do
 			Result := is_center_aligned
@@ -157,7 +157,7 @@ feature -- Status report
 
 feature -- Event handling
 
-	select_pattern (a_name: STRING_32) 
+	select_pattern (a_name: STRING_32)
 			-- Select pattern corresponding to `a_name'.
 		require
 			a_name_not_void: a_name /= Void
