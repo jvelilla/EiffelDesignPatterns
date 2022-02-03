@@ -127,11 +127,9 @@ feature -- Event handling
 			-- (Action performed when the user clicks the `about_button')
 		local
 			about_dialog: PW_ABOUT_DIALOG
-			application: PATTERN_WIZARD
 		do
 			create about_dialog
-			application ?= (create {EV_ENVIRONMENT}).application
-			if application /= Void then
+			if attached {PATTERN_WIZARD} (create {EV_ENVIRONMENT}).application as application then
 				about_dialog.show_modal_to_window (application.initial_window)
 			end
 		end
@@ -139,11 +137,8 @@ feature -- Event handling
 	generate
 			-- Generate code from the selected information.
 			-- (Action performed when the user clicks the `generate_button')
-		local
-			application: PATTERN_WIZARD
 		do
-			application ?= (create {EV_ENVIRONMENT}).application
-			if application /= Void then
+			if attached {PATTERN_WIZARD} (create {EV_ENVIRONMENT}).application as application then
 				application.initial_window.generate_code
 			end
 		end

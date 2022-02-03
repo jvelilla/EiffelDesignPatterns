@@ -215,7 +215,6 @@ feature -- Event handling
 		local
 			warning_dialog: EV_WARNING_DIALOG
 			pw_icon_pixmap: EV_PIXMAP
-			application: PATTERN_WIZARD
 		do
 			if not name_in_list (input_text) then
 				name_list.extend (create {EV_LIST_ITEM}.make_with_text (input_text))
@@ -225,8 +224,7 @@ feature -- Event handling
 				create pw_icon_pixmap
 				pw_icon_pixmap.set_with_named_file (pattern_delivery_directory + pw_icon_pixmap_file_name)
 				warning_dialog.set_icon_pixmap (pw_icon_pixmap)
-				application ?= (create {EV_ENVIRONMENT}).application
-				if application /= Void then
+				if attached {PATTERN_WIZARD} (create {EV_ENVIRONMENT}).application as application then
 					warning_dialog.show_modal_to_window (application.initial_window)
 				end
 				input_text_field.remove_text

@@ -122,8 +122,6 @@ feature -- Event handling
 
 	open_file_dialog
 			-- Open dialog to choose a directory.
-		local
-			application: PATTERN_WIZARD
 		do
 			create directory_dialog.make_with_title (directory_dialog_text)
 			if location_text_field.text /= Void then
@@ -131,8 +129,7 @@ feature -- Event handling
 			end
 			directory_dialog.ok_actions.extend (agent set_directory_path)
 
-			application ?= (create {EV_ENVIRONMENT}).application
-			if application /= Void then
+			if attached {PATTERN_WIZARD} (create {EV_ENVIRONMENT}).application as application then
 				directory_dialog.show_modal_to_window (application.initial_window)
 			end
 		end
